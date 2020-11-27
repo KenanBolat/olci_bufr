@@ -88,6 +88,21 @@ class S3olciBUFR(object):
 
         def encode_observations(bufr, dims, vals):
             """Encode observations into BUFR."""
+            """Encode observations into BUFR."""
+            SZAintp = np.zeros(vals['longitude'].shape)                        
+            SAAintp = np.zeros(vals['longitude'].shape)                        
+            OZAintp = np.zeros(vals['longitude'].shape)                        
+            OAAintp = np.zeros(vals['longitude'].shape)
+            intpFac = ((vals['longitude'].shape[1]-1) // (SZA.shape[1]-1))                        
+            for m in range(SZA.shape[0]):
+                k=0
+                for i in range(SZA.shape[1]-1):
+                    for j in range(intpFac):
+                    SZAintp[m,k] =  SZA[m,i] + j*((SZA[m,i+1] - SZA[m,i]) / intpFac)
+                    SAAintp[m,k] =  SAA[m,i] + j*((SAA[m,i+1] - SAA[m,i]) / intpFac)
+                    OZAintp[m,k] =  OZA[m,i] + j*((OZA[m,i+1] - OZA[m,i]) / intpFac)
+                    OAAintp[m,k] =  OAA[m,i] + j*((OAA[m,i+1] - OAA[m,i]) / intpFac)
+                    k=k+1
             #date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
             for t in xrange(len(dims['rows'])):
                 print (t)
