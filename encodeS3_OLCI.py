@@ -88,43 +88,46 @@ class S3olciBUFR(object):
 
         def encode_observations(bufr, dims, vals):
             """Encode observations into BUFR."""
-            """Encode observations into BUFR."""
             SZAintp = np.zeros(vals['longitude'].shape)                        
             SAAintp = np.zeros(vals['longitude'].shape)                        
             OZAintp = np.zeros(vals['longitude'].shape)                        
             OAAintp = np.zeros(vals['longitude'].shape)
-            intpFac = ((vals['longitude'].shape[1]-1) // (SZA.shape[1]-1))                        
-            for m in range(SZA.shape[0]):
+            intpFac = ((vals['longitude'].shape[1]-1) // (vals['SZA'].shape[1]-1))                        
+            for m in range(vals['SZA'].shape[0]-14950):
                 k=0
-                for i in range(SZA.shape[1]-1):
+                for i in range(vals['SZA'].shape[1]-1):
                     for j in range(intpFac):
-                    SZAintp[m,k] =  SZA[m,i] + j*((SZA[m,i+1] - SZA[m,i]) / intpFac)
-                    SAAintp[m,k] =  SAA[m,i] + j*((SAA[m,i+1] - SAA[m,i]) / intpFac)
-                    OZAintp[m,k] =  OZA[m,i] + j*((OZA[m,i+1] - OZA[m,i]) / intpFac)
-                    OAAintp[m,k] =  OAA[m,i] + j*((OAA[m,i+1] - OAA[m,i]) / intpFac)
-                    k=k+1
+                        SZAintp[m,k] =  vals['SZA'][m,i] + j*((vals['SZA'][m,i+1] - vals['SZA'][m,i]) / intpFac)
+                        SAAintp[m,k] =  vals['SAA'][m,i] + j*((vals['SAA'][m,i+1] - vals['SAA'][m,i]) / intpFac)
+                        OZAintp[m,k] =  vals['OZA'][m,i] + j*((vals['OZA'][m,i+1] - vals['OZA'][m,i]) / intpFac)
+                        OAAintp[m,k] =  vals['OAA'][m,i] + j*((vals['OAA'][m,i+1] - vals['OAA'][m,i]) / intpFac)
+                        k=k+1
+                        print(m,i,j,k)
+
             #date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
             for t in xrange(len(dims['rows'])):
                 print (t)
-                date = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)
-                codes_set(bufr, 'year', date.year)
-                codes_set(bufr, 'month', date.month)
-                codes_set(bufr, 'day', date.day)
-                codes_set(bufr, 'hour', date.hour)
-                codes_set(bufr, 'minute', date.minute)
-                codes_set(bufr, 'second', date.second)
-                #codes_set_double_array(bufr, 'longitude(highAccuracy)',vals['longitude'][t])
+                for m in xrange(len(dims['columns'])): 
+                    date = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)
+                    codes_set(bufr, 'year', date.year)
+                    codes_set(bufr, 'month', date.month)
+                    codes_set(bufr, 'day', date.day)
+                    codes_set(bufr, 'hour', date.hour)
+                    codes_set(bufr, 'minute', date.minute)
+                    codes_set(bufr, 'second', date.second)
+                    codes_set(bufr, 'longitude(highAccuracy)',vals['longitude'][t][m])
+                    print (vals['longitude'][t][m])
                 #for en in xrange(len(dims['columns'])):
                     #codes_set(bufr, "#%d#latitude(highAccuracy)" %(en+1),vals['latitude'][t][en])
                 #codes_set_double_array(bufr, 'solarZenithAngle',vals['SZA'][t])
                 #codes_set_double_array(bufr, 'solarAzimuth',vals['SAA'][t])
                 #codes_set_double_array(bufr, 'viewingZenithAngle',vals['OZA'][t])
                 #codes_set_double_array(bufr, 'viewingAzimuthAngle',vals['OAA'][t])
-                codes_set(bufr, 'verticalSignificance(satelliteObservations)',2)
-                codes_set(bufr, 'pixel(sType',0)
-                codes_set(bufr, 'pressure',CODES_MISSING_DOUBLE)
-                codes_set(bufr, 'cloudOpticalThickness',CODES_MISSING_DOUBLE)
-                codes_set(bufr, 'verticalSignificance(satelliteObservations)',0)
+                    codes_set(bufr, 'verticalSignificance(satelliteObservations)',2)
+                    codes_set(bufr, 'pixel(sType',0)
+                    codes_set(bufr, 'pressure',CODES_MISSING_DOUBLE)
+                    codes_set(bufr, 'cloudOpticalThickness',CODES_MISSING_DOUBLE)
+                    codes_set(bufr, 'verticalSignificance(satelliteObservations)',0)
                 #codes_set_array(bufr, '#%d#radiometerSensedSurfaceType',vals['WQFS'][t])
                 #codes_set(bufr, '#%d#presure'%(t+1),1)
                 #codes_set_double_array(bufr, "#%d#presure"%(p+1),vals['sea_level_pressure'][t])
