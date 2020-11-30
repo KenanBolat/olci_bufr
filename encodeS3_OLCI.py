@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # Copyright 2020 EUMETSAT
 # Author: Aydin Erturk inspiration from S1 encoder
 
@@ -67,23 +67,23 @@ class S3olciBUFR(object):
         def set_metadata(bufr, attrs, satelliteID ):
             """Set identifying metadata."""
             # Set metadata
-            codes_set(bufr, 'typicalYear', int(attrs['start_time'][2:6]))
-            codes_set(bufr, 'typicalMonth', int(attrs['start_time'][7:9]))
-            codes_set(bufr, 'typicalDay', int(attrs['start_time'][10:12]))
-            codes_set(bufr, 'typicalHour', int(attrs['start_time'][13:15]))
-            codes_set(bufr, 'typicalMinute', int(attrs['start_time'][16:18]))
-            codes_set(bufr, 'typicalSecond', int(attrs['start_time'][19:21]))
+            codes_set(bufr, 'typicalYear', int(attrs['start_time'][1:5]))
+            codes_set(bufr, 'typicalMonth', int(attrs['start_time'][6:8]))
+            codes_set(bufr, 'typicalDay', int(attrs['start_time'][9:11]))
+            codes_set(bufr, 'typicalHour', int(attrs['start_time'][12:14]))
+            codes_set(bufr, 'typicalMinute', int(attrs['start_time'][15:17]))
+            codes_set(bufr, 'typicalSecond', int(attrs['start_time'][18:20]))
             codes_set(bufr, 'satelliteIdentifier', satelliteID) 
             codes_set(bufr, 'satelliteInstruments', 179)
             codes_set(bufr, 'stationAcquisition', (attrs['institution']))
             #codes_set(bufr, 'softwareVersionNumber', (attrs['source'][11:]))
             codes_set(bufr, 'orbitNumber', int(attrs['absolute_orbit_number']))
-            codes_set(bufr, 'year', int(attrs['start_time'][2:6]))
-            codes_set(bufr, 'month', int(attrs['start_time'][7:9]))
-            codes_set(bufr, 'day', int(attrs['start_time'][10:12]))
-            codes_set(bufr, 'hour', int(attrs['start_time'][13:15]))
-            codes_set(bufr, 'minute', int(attrs['start_time'][16:18]))
-            codes_set(bufr, 'second', int(attrs['start_time'][19:21]))
+            codes_set(bufr, 'year', int(attrs['start_time'][1:5]))
+            codes_set(bufr, 'month', int(attrs['start_time'][6:8]))
+            codes_set(bufr, 'day', int(attrs['start_time'][9:11]))
+            codes_set(bufr, 'hour', int(attrs['start_time'][12:14]))
+            codes_set(bufr, 'minute', int(attrs['start_time'][15:17]))
+            codes_set(bufr, 'second', int(attrs['start_time'][18:20]))
             return bufr
 
         def encode_observations(bufr, dims, vals):
@@ -92,7 +92,9 @@ class S3olciBUFR(object):
             SAAintp = np.zeros(vals['longitude'].shape)                        
             OZAintp = np.zeros(vals['longitude'].shape)                        
             OAAintp = np.zeros(vals['longitude'].shape)
-            intpFac = ((vals['longitude'].shape[1]-1) // (vals['SZA'].shape[1]-1))                        
+            intpFac = ((vals['longitude'].shape[1]-1) // (vals['SZA'].shape[1]-1))
+
+            #TODO interpolation
             for m in range(vals['SZA'].shape[0]-14950):
                 k=0
                 for i in range(vals['SZA'].shape[1]-1):
@@ -105,9 +107,10 @@ class S3olciBUFR(object):
                         print(m,i,j,k)
 
             #date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
-            for t in xrange(len(dims['rows'])):
-                print (t)
-                for m in xrange(len(dims['columns'])): 
+            for en, t in  enumerate(range(len(dims['rows']))):
+                print(t)
+
+                for m in range(len(dims['columns'])):
                     date = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)
                     codes_set(bufr, 'year', date.year)
                     codes_set(bufr, 'month', date.month)
@@ -115,7 +118,7 @@ class S3olciBUFR(object):
                     codes_set(bufr, 'hour', date.hour)
                     codes_set(bufr, 'minute', date.minute)
                     codes_set(bufr, 'second', date.second)
-                    codes_set(bufr, 'longitude(highAccuracy)',vals['longitude'][t][m])
+                    # codes_set(bufr, 'longitude(highAccuracy)',vals['longitude'][t][m])
                     print (vals['longitude'][t][m])
                 #for en in xrange(len(dims['columns'])):
                     #codes_set(bufr, "#%d#latitude(highAccuracy)" %(en+1),vals['latitude'][t][en])

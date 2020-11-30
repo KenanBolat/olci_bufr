@@ -1,0 +1,1700 @@
+000001|tableAEntry|string|Table A: entry|CCITT IA5|0|0|24
+000002|tableADataCategoryDescriptionLine1|string|Table A: data category description, line 1|CCITT IA5|0|0|256
+000003|tableADataCategoryDescriptionLine2|string|Table A: data category description, line 2|CCITT IA5|0|0|256
+000004|bufr/crexMasterTable|string|BUFR/CREX Master table|CCITT IA5|0|0|16
+000005|bufr/crexEditionNumber|string|BUFR/CREX edition number|CCITT IA5|0|0|24
+000006|bufrMasterTableVersionNumber|string|BUFR Master table version number|CCITT IA5|0|0|16
+000007|crexMasterTableVersionNumber|string|CREX Master table version number|CCITT IA5|0|0|16
+000008|bufrLocalTableVersionNumber|string|BUFR Local table version number|CCITT IA5|0|0|16
+000010|fDescriptorToBeAddedOrDefined|string|F descriptor to be added or defined|CCITT IA5|0|0|8
+000011|xDescriptorToBeAddedOrDefined|string|X descriptor to be added or defined|CCITT IA5|0|0|16
+000012|yDescriptorToBeAddedOrDefined|string|Y descriptor to be added or defined|CCITT IA5|0|0|24
+000013|elementNameLine1|string|Element name, line 1|CCITT IA5|0|0|256
+000014|elementNameLine2|string|Element name, line 2|CCITT IA5|0|0|256
+000015|unitsName|string|Units name|CCITT IA5|0|0|192
+000016|unitsScaleSign|string|Units scale sign|CCITT IA5|0|0|8
+000017|unitsScale|string|Units scale|CCITT IA5|0|0|24
+000018|unitsReferenceSign|string|Units reference sign|CCITT IA5|0|0|8
+000019|unitsReferenceValue|string|Units reference value|CCITT IA5|0|0|80
+000020|elementDataWidth|string|Element data width|CCITT IA5|0|0|24
+000024|codeFigure|string|Code figure|CCITT IA5|0|0|64
+000025|codeFigureMeaning|string|Code figure meaning|CCITT IA5|0|0|496
+000026|bitNumber|string|Bit number|CCITT IA5|0|0|48
+000027|bitNumberMeaning|string|Bit number meaning|CCITT IA5|0|0|496
+000030|descriptorDefiningSequence|string|Descriptor defining sequence|CCITT IA5|0|0|48
+001001|wmoBlockNumber|long|WMO block number|Numeric|0|0|7
+001002|wmoStationNumber|long|WMO station number|Numeric|0|0|10
+001003|wmoRegionNumber/geographicalArea|table|WMO Region number/geographical area|Code table|0|0|3
+001004|wmoRegionSub-area|long|WMO Region sub-area|Numeric|0|0|3
+001005|buoy/platformIdentifier|long|Buoy/platform identifier|Numeric|0|0|17
+001006|aircraftFlightNumber|string|Aircraft flight number|CCITT IA5|0|0|64
+001007|satelliteIdentifier|table|Satellite identifier|Code table|0|0|10
+001008|aircraftRegistrationNumberOrOtherIdentification|string|Aircraft registration number or other identification|CCITT IA5|0|0|64
+001009|typeOfCommercialAircraft|string|Type of commercial aircraft|CCITT IA5|0|0|64
+001010|stationaryBuoyPlatformIdentifierE.gC-manBuoys|string|Stationary buoy platform identifier; e.g. C-MAN buoys|CCITT IA5|0|0|64
+001011|shipOrMobileLandStationIdentifier|string|Ship or mobile land station identifier|CCITT IA5|0|0|72
+001012|directionOfMotionOfMovingObservingPlatform|long|Direction of motion of moving observing platform|degree true|0|0|9
+001013|speedOfMotionOfMovingObservingPlatform|long|Speed of motion of moving observing platform|m/s|0|0|10
+001014|platformDriftSpeed(highPrecision)|double|Platform drift speed (high precision)|m/s|2|0|10
+001015|stationOrSiteName|string|Station or site name|CCITT IA5|0|0|160
+001018|shortStationOrSiteName|string|Short station or site name|CCITT IA5|0|0|40
+001019|longStationOrSiteName|string|Long station or site name|CCITT IA5|0|0|256
+001020|wmoRegionSub-area|long|WMO Region sub-area|Numeric|0|0|4
+001021|synopticFeatureIdentifier|long|Synoptic feature identifier|Numeric|0|0|14
+001022|nameOfFeature|string|Name of feature|CCITT IA5|0|0|224
+001023|observationSequenceNumber|long|Observation sequence number|Numeric|0|0|9
+001024|windSpeedSource|table|Wind speed source|Code table|0|0|5
+001025|stormIdentifier|string|Storm identifier|CCITT IA5|0|0|24
+001026|wmoStormName|string|WMO storm name|CCITT IA5|0|0|64
+001027|wmoLongStormName|string|WMO long storm name|CCITT IA5|0|0|80
+001028|aerosolOpticalDepth(aodSource|table|Aerosol optical depth (AOD) source|Code table|0|0|5
+001029|ssiSource|table|SSI source|Code table|0|0|5
+001030|numericalModelIdentifier|string|Numerical model identifier|CCITT IA5|0|0|128
+001031|identificationOfOriginating/generatingCentre|table|Identification of originating/generating centre|Code table|0|0|16
+001032|generatingApplication|long|Generating application|Code table defined by originating/generating centre|0|0|8
+001033|identificationOfOriginating/generatingCentre|long|Identification of originating/generating centre|Common Code table C-1|0|0|8
+001034|identificationOfOriginating/generatingSub-centre|long|Identification of originating/generating sub-centre|Common Code table C-12|0|0|8
+001035|originatingCentre|long|Originating centre|Common Code table C-11|0|0|16
+001036|agencyInChargeOfOperatingTheObservingPlatform|table|Agency in charge of operating the observing platform|Code table|0|0|20
+001037|sigmetSequenceIdentifier|string|SIGMET sequence identifier|CCITT IA5|0|0|24
+001038|sourceOfSeaIceFraction|table|Source of sea ice fraction|Code table|0|0|5
+001039|graphicalAreaForecast(gfaSequenceIdentifier|string|Graphical Area Forecast (GFA) sequence identifier|CCITT IA5|0|0|40
+001040|processingCentreIdCode|string|Processing centre ID code|CCITT IA5|0|0|48
+001041|absolutePlatformVelocityFirstComponent|double|Absolute platform velocity - first component|m/s|5|-1073741824|31
+001042|absolutePlatformVelocitySecondComponent|double|Absolute platform velocity - second component|m/s|5|-1073741824|31
+001043|absolutePlatformVelocityThirdComponent|double|Absolute platform velocity - third component|m/s|5|-1073741824|31
+001044|standardGeneratingApplication|table|Standard generating application|Code table|0|0|8
+001050|platformTransmitterIdNumber|long|Platform transmitter ID number|Numeric|0|0|17
+001051|platformTransmitterIdNumber|string|Platform transmitter ID number|CCITT IA5|0|0|96
+001052|platformTransmitterId|table|Platform transmitter ID|Code table|0|0|3
+001053|tsunameterReportSequenceNumberTriggeredByATsunamiEvent|long|Tsunameter report sequence number triggered by a tsunami event|Numeric|0|0|7
+001060|aircraftReportingPoint(beaconIdentifier)|string|Aircraft reporting point (Beacon identifier)|CCITT IA5|0|0|64
+001062|shortIcaoLocationIndicator|string|Short ICAO location indicator|CCITT IA5|0|0|32
+001063|icaoLocationIndicator|string|ICAO location indicator|CCITT IA5|0|0|64
+001064|runwayDesignator|string|Runway designator|CCITT IA5|0|0|32
+001065|icaoRegionIdentifier|string|ICAO region identifier|CCITT IA5|0|0|256
+001075|tideStationIdentification|string|Tide station identification|CCITT IA5|0|0|40
+001079|uniqueIdentifierForTheProfile|string|Unique identifier for the profile|CCITT IA5|0|0|64
+001080|shipLineNumberAccordingToSoop|string|Ship line number according to SOOP|CCITT IA5|0|0|32
+001081|radiosondeSerialNumber|string|Radiosonde serial number|CCITT IA5|0|0|160
+001082|radiosondeAscensionNumber|long|Radiosonde ascension number|Numeric|0|0|14
+001083|radiosondeReleaseNumber|long|Radiosonde release number|Numeric|0|0|3
+001085|observingPlatformManufacturer'sModel|string|Observing platform manufacturer's model|CCITT IA5|0|0|160
+001086|observingPlatformManufacturer'sSerialNumber|string|Observing platform manufacturer's serial number|CCITT IA5|0|0|256
+001087|wmoMarineObservingPlatformExtendedIdentifier|long|WMO marine observing platform extended identifier|Numeric|0|0|23
+001090|techniqueForMakingUpInitialPerturbations|table|Technique for making up initial perturbations|Code table|0|0|8
+001091|ensembleMemberNumber|long|Ensemble member number|Numeric|0|0|10
+001092|typeOfEnsembleForecast|table|Type of ensemble forecast|Code table|0|0|8
+001093|balloonLotNumber|string|Balloon lot number|CCITT IA5|0|0|96
+001094|wbanNumber|long|WBAN number|Numeric|0|0|17
+001095|observerIdentification|string|Observer identification|CCITT IA5|0|0|32
+001096|stationAcquisition|string|Station acquisition|CCITT IA5|0|0|160
+001099|uniqueProductDefinition|string|Unique product definition|CCITT IA5|0|0|248
+001101|stateIdentifier|table|State identifier|Code table|0|0|10
+001102|nationalStationNumber|long|National station number|Numeric|0|0|30
+001103|imoNumberUniqueLloyd'sRegister|long|IMO Number. Unique Lloyd's register|Numeric|0|0|24
+001104|state/federalStateIdentifier|string|State/federal state identifier|CCITT IA5|0|0|32
+001105|highwayDesignator|string|Highway designator|CCITT IA5|0|0|40
+001106|locationAlongHighwayAsIndicatedByPositionMarkers|double|Location along highway as indicated by position markers|m|-2|0|14
+001110|aircraftTailNumber|string|Aircraft tail number|CCITT IA5|0|0|48
+001111|originationAirport|string|Origination airport|CCITT IA5|0|0|24
+001112|destinationAirport|string|Destination airport|CCITT IA5|0|0|24
+001113|templateVersionNumberDefinedByOriginatingCentre|double|Template version number defined by originating centre|Numeric|1|0|9
+001114|encryptedShipOrMobileLandStationIdentifier(base6Encoding)|string|Encrypted ship or mobile land station identifier (base64 encoding)|CCITT IA5|0|0|352
+001115|identifierOfTheCruiseOrMissionUnderWhichTheDataWereCollected|string|Identifier of the cruise or mission under which the data were collected|CCITT IA5|0|0|160
+001124|gridPointIdentifier|long|Grid point identifier|Numeric|0|0|24
+001125|wigosIdentifierSeries|long|WIGOS identifier series|Numeric|0|0|4
+001126|wigosIssuerOfIdentifier|long|WIGOS issuer of identifier|Numeric|0|0|16
+001127|wigosIssueNumber|long|WIGOS issue number|Numeric|0|0|16
+001128|wigosLocalIdentifier(character)|string|WIGOS local identifier (character)|CCITT IA5|0|0|128
+001144|snapshotIdentifier|long|Snapshot identifier|Numeric|0|0|31
+001150|coordinateReferenceSystem|table|Coordinate reference system|Code table|0|0|16
+001151|fixedMeanSea-levelReferenceDatum|table|Fixed mean sea-level reference datum|Code table|0|0|12
+001152|semi-majorAxisOfRotationEllipsoid|double|Semi-major axis of rotation ellipsoid|m|2|0|31
+001153|semi-minorAxisOfRotationEllipsoid|double|Semi-minor axis of rotation ellipsoid|m|2|0|31
+002001|typeOfStation|table|Type of station|Code table|0|0|2
+002002|typeOfInstrumentationForWindMeasurement|flag|Type of instrumentation for wind measurement|Flag table|0|0|4
+002003|typeOfMeasuringEquipmentUsed|table|Type of measuring equipment used|Code table|0|0|4
+002004|typeOfInstrumentationForEvaporationMeasurementOrTypeOfCropForWhichEvapotranspirationIsReported|table|Type of instrumentation for evaporation measurement or type of crop for which evapotranspiration is reported|Code table|0|0|4
+002005|precisionOfTemperatureObservation|double|Precision of temperature observation|K|2|0|7
+002007|typeOfSensorForWaterLevelMeasuringInstrument|table|Type of sensor for water level measuring instrument|Code table|0|0|6
+002008|typeOfOffshorePlatform|table|Type of offshore platform|Code table|0|0|4
+002011|radiosondeType|table|Radiosonde type|Code table|0|0|8
+002012|radiosondeComputationalMethod|table|Radiosonde computational method|Code table|0|0|4
+002013|solarAndInfraredRadiationCorrection|table|Solar and infrared radiation correction|Code table|0|0|4
+002014|trackingTechnique/statusOfSystemUsed|table|Tracking technique/status of system used|Code table|0|0|7
+002015|radiosondeCompleteness|table|Radiosonde completeness|Code table|0|0|4
+002016|radiosondeConfiguration|flag|Radiosonde configuration|Flag table|0|0|5
+002017|correctionAlgorithmsForHumidityMeasurements|table|Correction algorithms for humidity measurements|Code table|0|0|5
+002019|satelliteInstruments|table|Satellite instruments|Code table|0|0|11
+002020|satelliteClassification|table|Satellite classification|Code table|0|0|9
+002021|satelliteInstrumentDataUsedInProcessing|flag|Satellite instrument data used in processing|Flag table|0|0|9
+002022|satelliteData-processingTechniqueUsed|flag|Satellite data-processing technique used|Flag table|0|0|8
+002023|satellite-derivedWindComputationMethod|table|Satellite-derived wind computation method|Code table|0|0|4
+002024|integratedMeanHumidityComputationalMethod|table|Integrated mean humidity computational method|Code table|0|0|4
+002025|satelliteChannel(sUsedInComputation|flag|Satellite channel(s) used in computation|Flag table|0|0|25
+002026|cross-trackResolution|double|Cross-track resolution|m|2|0|12
+002027|along-trackResolution|double|Along-track resolution|m|2|0|12
+002028|segmentSizeAtNadirInX-direction|long|Segment size at nadir in x-direction|m|0|0|18
+002029|segmentSizeAtNadirInY-direction|long|Segment size at nadir in y-direction|m|0|0|18
+002030|methodOfCurrentMeasurement|table|Method of current measurement|Code table|0|0|3
+002031|durationAndTimeOfCurrentMeasurement|table|Duration and time of current measurement|Code table|0|0|5
+002032|indicatorForDigitization|table|Indicator for digitization|Code table|0|0|2
+002033|methodOfSalinity/depthMeasurement|table|Method of salinity/depth measurement|Code table|0|0|3
+002034|drogueType|table|Drogue type|Code table|0|0|5
+002035|cableLength|long|Cable length|m|0|0|9
+002036|buoyType|table|Buoy type|Code table|0|0|2
+002037|methodOfTidalObservation|table|Method of tidal observation|Code table|0|0|3
+002038|methodOfWaterTemperatureAnd/orSalinityMeasurement|table|Method of water temperature and/or salinity measurement|Code table|0|0|4
+002039|methodOfWet-bulbTemperatureMeasurement|table|Method of wet-bulb temperature measurement|Code table|0|0|3
+002040|methodOfRemovingVelocityAndMotionOfPlatformFromCurrent|table|Method of removing velocity and motion of platform from current|Code table|0|0|4
+002041|methodForEstimatingReportsRelatedToSynopticFeatures|table|Method for estimating reports related to synoptic features|Code table|0|0|6
+002042|indicatorForSea-surfaceCurrentSpeed|table|Indicator for sea-surface current speed|Code table|0|0|2
+002044|indicatorForMethodOfCalculatingSpectralWaveData|table|Indicator for method of calculating spectral wave data|Code table|0|0|4
+002045|indicatorForTypeOfPlatform|table|Indicator for type of platform|Code table|0|0|4
+002046|waveMeasurementInstrumentation|table|Wave measurement instrumentation|Code table|0|0|4
+002047|deep-oceanTsunameterType|table|Deep-ocean tsunameter type|Code table|0|0|7
+002048|satelliteSensorIndicator|table|Satellite sensor indicator|Code table|0|0|4
+002049|geostationarySatelliteData-processingTechniqueUsed|flag|Geostationary satellite data-processing technique used|Flag table|0|0|8
+002050|geostationarySounderSatelliteChannelsUsed|flag|Geostationary sounder satellite channels used|Flag table|0|0|20
+002051|indicatorToSpecifyObservingMethodForExtremeTemperatures|table|Indicator to specify observing method for extreme temperatures|Code table|0|0|4
+002052|geostationaryImagerSatelliteChannelsUsed|flag|Geostationary imager satellite channels used|Flag table|0|0|6
+002053|goes-i/mBrightnessTemperatureCharacteristics|table|GOES-I/M brightness temperature characteristics|Code table|0|0|4
+002054|goes-i/mSoundingsParameterCharacteristics|table|GOES-I/M soundings parameter characteristics|Code table|0|0|4
+002055|geostationarySoundingsStatisticalParameters|table|Geostationary soundings statistical parameters|Code table|0|0|4
+002056|geostationarySoundingsAccuracyStatistics|table|Geostationary soundings accuracy statistics|Code table|0|0|4
+002057|originOfFirst-guessInformationForGoes-i/mSoundings|table|Origin of first-guess information for GOES-I/M soundings|Code table|0|0|4
+002058|validTimesOfFirst-guessInformationForGoes-i/mSoundings|table|Valid times of first-guess information for GOES-I/M soundings|Code table|0|0|4
+002059|originOfAnalysisInformationForGoes-i/mSoundings|table|Origin of analysis information for GOES-I/M soundings|Code table|0|0|4
+002060|originOfSurfaceInformationForGoes-i/mSoundings|table|Origin of surface information for GOES-I/M soundings|Code table|0|0|4
+002061|aircraftNavigationalSystem|table|Aircraft navigational system|Code table|0|0|3
+002062|typeOfAircraftDataRelaySystem|table|Type of aircraft data relay system|Code table|0|0|4
+002063|aircraftRollAngle|double|Aircraft roll angle|deg|2|-18000|16
+002064|aircraftRollAngleQuality|table|Aircraft roll angle quality|Code table|0|0|2
+002065|acarsGround-receivingStation|string|ACARS ground-receiving station|CCITT IA5|0|0|40
+002066|radiosondeGroundReceivingSystem|table|Radiosonde ground receiving system|Code table|0|0|6
+002067|radiosondeOperatingFrequency|double|Radiosonde operating frequency|Hz|-5|0|15
+002070|originalSpecificationOfLatitude/longitude|table|Original specification of latitude/longitude|Code table|0|0|4
+002071|spectrographicWavelength|double|Spectrographic wavelength|m|13|0|30
+002072|spectrographicWidth|double|Spectrographic width|m|13|0|30
+002080|balloonManufacturer|table|Balloon manufacturer|Code table|0|0|6
+002081|typeOfBalloon|table|Type of balloon|Code table|0|0|5
+002082|weightOfBalloon|double|Weight of balloon|kg|3|0|12
+002083|typeOfBalloonShelter|table|Type of balloon shelter|Code table|0|0|4
+002084|typeOfGasUsedInBalloon|table|Type of gas used in balloon|Code table|0|0|4
+002085|amountOfGasUsedInBalloon|double|Amount of gas used in balloon|kg|3|0|13
+002086|balloonFlightTrainLength|double|Balloon flight train length|m|1|0|10
+002087|parachuteSurfaceArea|double|Parachute surface area|m2|4|0|15
+002088|volumeOfGasUsedInBalloon|double|Volume of gas used in balloon|m3|3|0|13
+002091|entrySensor4/2Ma|double|Entry sensor 4/20 mA|A|4|0|10
+002092|ozoneProfileComputationMethod|table|Ozone profile computation method|Code table|0|0|3
+002095|typeOfPressureSensor|table|Type of pressure sensor|Code table|0|0|5
+002096|typeOfTemperatureSensor|table|Type of temperature sensor|Code table|0|0|5
+002097|typeOfHumiditySensor|table|Type of humidity sensor|Code table|0|0|5
+002099|polarization|table|Polarization|Code table|0|0|3
+002100|radarConstant|double|Radar constant|dB|1|0|12
+002101|typeOfAntenna|table|Type of antenna|Code table|0|0|4
+002102|antennaHeightAboveTowerBase|long|Antenna height above tower base|m|0|0|8
+002103|radome|flag|Radome|Flag table|0|0|2
+002104|antennaPolarization|table|Antenna polarization|Code table|0|0|4
+002105|maximumAntennaGain|long|Maximum antenna gain|dB|0|0|6
+002106|3-dbBeamwidth|double|3-dB beamwidth|deg|1|0|6
+002107|sidelobeSuppression|long|Sidelobe suppression|dB|0|0|6
+002108|crosspolDiscrimination(onAxis)|long|Crosspol discrimination (on axis)|dB|0|0|6
+002109|antennaSpeed(azimuth)|double|Antenna speed (azimuth)|deg/s|2|0|12
+002110|antennaSpeed(elevation)|double|Antenna speed (elevation)|deg/s|2|0|12
+002111|radarIncidenceAngle|double|Radar incidence angle|deg|1|0|10
+002112|radarLookAngle|double|Radar look angle|deg|1|0|12
+002113|numberOfAzimuthLooks|long|Number of azimuth looks|Numeric|0|0|4
+002114|antennaEffectiveSurfaceArea|long|Antenna effective surface area|m2|0|0|15
+002115|typeOfSurfaceObservingEquipment|table|Type of surface observing equipment|Code table|0|0|5
+002116|percentageOf32MhzBandProcessed|long|Percentage of 320 MHz band processed|%|0|0|7
+002117|percentageOf8MhzBandProcessed|long|Percentage of 80 MHz band processed|%|0|0|7
+002118|percentageOf2MhzBandProcessed|long|Percentage of 20 MHz band processed|%|0|0|7
+002119|ra-InstrumentOperations|table|RA-2 instrument operations|Code table|0|0|3
+002120|oceanWaveFrequency|double|Ocean wave frequency|Hz|3|0|10
+002121|meanFrequency|double|Mean frequency|Hz|-8|0|7
+002122|frequencyAgilityRange|double|Frequency agility range|Hz|-6|-128|8
+002123|peakPower|double|Peak power|W|-4|0|7
+002124|averagePower|double|Average power|W|-1|0|7
+002125|pulseRepetitionFrequency|double|Pulse repetition frequency|Hz|-1|0|8
+002126|pulseWidth|double|Pulse width|s|7|0|6
+002127|receiverIntermediateFrequency|double|Receiver intermediate frequency|Hz|-6|0|7
+002128|intermediateFrequencyBandwidth|double|Intermediate frequency bandwidth|Hz|-5|0|6
+002129|minimumDetectableSignal|long|Minimum detectable signal|dB|0|-150|5
+002130|dynamicRange|long|Dynamic range|dB|0|0|7
+002131|sensitivityTimeControl(stc)|flag|Sensitivity time control (STC)|Flag table|0|0|2
+002132|azimuthPointingAccuracy|double|Azimuth pointing accuracy|deg|2|0|6
+002133|elevationPointingAccuracy|double|Elevation pointing accuracy|deg|2|0|6
+002134|antennaBeamAzimuth|double|Antenna beam azimuth|deg|2|0|16
+002135|antennaElevation|double|Antenna elevation|deg|2|-9000|15
+002136|rangeProcessedByRangeAttenuationCorrection|double|Range processed by range attenuation correction|m|-3|0|16
+002137|radarDualPrfRatio|table|Radar dual PRF ratio|Code table|0|0|4
+002138|antennaRotationDirection|table|Antenna rotation direction|Code table|0|0|2
+002139|siralInstrumentConfiguration|table|SIRAL instrument configuration|Code table|0|0|2
+002140|satelliteRadarBeamAzimuthAngle|long|Satellite radar beam azimuth angle|deg|0|0|9
+002141|measurementType|string|Measurement type|CCITT IA5|0|0|24
+002142|ozoneInstrumentSerialNumber/identification|string|Ozone instrument serial number/identification|CCITT IA5|0|0|32
+002143|ozoneInstrumentType|table|Ozone instrument type|Code table|0|0|7
+002144|lightSourceTypeForBrewerSpectrophotometer|table|Light source type for Brewer spectrophotometer|Code table|0|0|4
+002145|wavelengthSettingForDobsonInstruments|table|Wavelength setting for Dobson instruments|Code table|0|0|4
+002146|sourceConditionsForDobsonInstruments|table|Source conditions for Dobson instruments|Code table|0|0|4
+002147|methodOfTransmissionToCollectionCentre|table|Method of transmission to collection centre|Code table|0|0|6
+002148|dataCollectionAnd/orLocationSystem|table|Data collection and/or location system|Code table|0|0|5
+002149|typeOfDataBuoy|table|Type of data buoy|Code table|0|0|6
+002150|tovs/atovs/avhrrInstrumentationChannelNumber|table|TOVS/ATOVS/AVHRR instrumentation channel number|Code table|0|0|6
+002151|radiometerIdentifier|table|Radiometer identifier|Code table|0|0|11
+002152|satelliteInstrumentUsedInDataProcessing|flag|Satellite instrument used in data processing|Flag table|0|0|31
+002153|satelliteChannelCentreFrequency|double|Satellite channel centre frequency|Hz|-8|0|26
+002154|satelliteChannelBandWidth|double|Satellite channel band width|Hz|-8|0|26
+002155|satelliteChannelWavelength|double|Satellite channel wavelength|m|9|0|16
+002156|percentageOfValidKuOceanRetrackerMeasurements|long|Percentage of valid KU ocean retracker measurements|%|0|0|7
+002157|percentageOfValidSOceanRetrackerMeasurements|long|Percentage of valid S ocean retracker measurements|%|0|0|7
+002158|ra-Instrument|flag|RA-2 instrument|Flag table|0|0|9
+002159|mwrInstrument|flag|MWR instrument|Flag table|0|0|8
+002160|wavelengthOfTheRadar|table|Wavelength of the radar|Code table|0|0|4
+002161|windProcessingMethod|flag|Wind processing method|Flag table|0|0|16
+002162|extendedHeightAssignmentMethod|table|Extended height assignment method|Code table|0|0|6
+002163|heightAssignmentMethod|table|Height assignment method|Code table|0|0|4
+002164|tracerCorrelationMethod|table|Tracer correlation method|Code table|0|0|3
+002165|radianceTypeFlags|flag|Radiance type flags|Flag table|0|0|15
+002166|radianceType|table|Radiance type|Code table|0|0|4
+002167|radianceComputationalMethod|table|Radiance computational method|Code table|0|0|4
+002168|hydrostaticPressureOfLowerEndOfCable(thermistorString)|double|Hydrostatic pressure of lower end of cable (thermistor string)|Pa|-3|0|16
+002169|anemometerType|table|Anemometer type|Code table|0|0|4
+002170|aircraftHumiditySensors|table|Aircraft humidity sensors|Code table|0|0|6
+002171|instrumentSerialNumberForWaterTemperatureProfileMeasurement|string|Instrument serial number for water temperature profile measurement|CCITT IA5|0|0|64
+002172|productTypeForRetrievedAtmosphericGases|table|Product type for retrieved atmospheric gases|Code table|0|0|8
+002173|squareOfTheOff-nadirAngle|double|Square of the off-nadir angle|deg2|4|0|10
+002174|meanAcrossTrackPixelNumber|long|Mean across track pixel number|Numeric|0|0|9
+002175|methodOfPrecipitationMeasurement|table|Method of precipitation measurement|Code table|0|0|4
+002176|methodOfStateOfGroundMeasurement|table|Method of state of ground measurement|Code table|0|0|4
+002177|methodOfSnowDepthMeasurement|table|Method of snow depth measurement|Code table|0|0|4
+002178|methodOfLiquidContentMeasurementOfPrecipitation|table|Method of liquid content measurement of precipitation|Code table|0|0|4
+002179|typeOfSkyConditionAlgorithm|table|Type of sky condition algorithm|Code table|0|0|4
+002180|mainPresentWeatherDetectingSystem|table|Main present weather detecting system|Code table|0|0|4
+002181|supplementaryPresentWeatherSensor|flag|Supplementary present weather sensor|Flag table|0|0|21
+002182|visibilityMeasurementSystem|table|Visibility measurement system|Code table|0|0|4
+002183|cloudDetectionSystem|table|Cloud detection system|Code table|0|0|4
+002184|typeOfLightningDetectionSensor|table|Type of lightning detection sensor|Code table|0|0|4
+002185|methodOfEvaporationMeasurement|table|Method of evaporation measurement|Code table|0|0|4
+002186|capabilityToDetectPrecipitationPhenomena|flag|Capability to detect precipitation phenomena|Flag table|0|0|30
+002187|capabilityToDetectOtherWeatherPhenomena|flag|Capability to detect other weather phenomena|Flag table|0|0|18
+002188|capabilityToDetectObscuration|flag|Capability to detect obscuration|Flag table|0|0|21
+002189|capabilityToDiscriminateLightningStrikes|flag|Capability to discriminate lightning strikes|Flag table|0|0|12
+002190|lagrangianDrifterSubmergence(TimeSubmerged)|long|Lagrangian drifter submergence (% time submerged)|%|0|0|7
+002191|geopotentialHeightCalculation|table|Geopotential height calculation|Code table|0|0|4
+003001|surfaceStationType|table|Surface station type|Code table|0|0|5
+003003|thermometer/hygrometerHousing|table|Thermometer/hygrometer housing|Code table|0|0|4
+003004|typeOfScreen/shelter/radiationShield|table|Type of screen/shelter/radiation shield|Code table|0|0|4
+003005|horizontalWidthOfScreenOrShield(x)|double|Horizontal width of screen or shield (x)|m|3|0|16
+003006|horizontalDepthOfScreenOrShield(y)|double|Horizontal depth of screen or shield (y)|m|3|0|16
+003007|verticalHeightOfScreenOrShield(z)|double|Vertical height of screen or shield (z)|m|3|0|16
+003008|artificiallyVentilatedScreenOrShield|table|Artificially ventilated screen or shield|Code table|0|0|3
+003009|amountOfForcedVentilationAtTimeOfReading|double|Amount of forced ventilation at time of reading|m/s|1|0|9
+003010|methodOfSea/waterCurrentMeasurement|table|Method of sea/water current measurement|Code table|0|0|4
+003011|methodOfDepthCalculation|table|Method of depth calculation|Code table|0|0|2
+003012|instrumentType/sensorForDissolvedOxygenMeasurement|table|Instrument type/sensor for dissolved oxygen measurement|Code table|0|0|4
+003016|positionOfRoadSensors|table|Position of road sensors|Code table|0|0|4
+003017|extendedTypeOfStation|flag|Extended type of station|Flag table|0|0|6
+003018|typeOfRoad|table|Type of road|Code table|0|0|5
+003019|typeOfConstruction|table|Type of construction|Code table|0|0|4
+003020|materialForThermometer/hygrometerHousing|table|Material for thermometer/hygrometer housing|Code table|0|0|3
+003021|hygrometerHeating|table|Hygrometer heating|Code table|0|0|2
+003022|instrumentOwner|table|Instrument owner|Code table|0|0|3
+003023|configurationOfLouversForThermometer/hygrometerScreen|table|Configuration of louvers for thermometer/hygrometer screen|Code table|0|0|3
+003024|psychrometricCoefficient|double|Psychrometric coefficient|K-1|6|0|10
+003025|cross-trackEstimationAreaSize|long|Cross-track estimation area size|m|0|5000|16
+003026|along-trackEstimationAreaSize|long|Along-track estimation area size|m|0|5000|16
+003027|typeOfFlightRig|table|Type of flight rig|Code table|0|0|4
+003028|methodOfSnowWaterEquivalentMeasurement|table|Method of snow water equivalent measurement|Code table|0|0|6
+004001|year|long|Year|a|0|0|12
+004002|month|long|Month|mon|0|0|4
+004003|day|long|Day|d|0|0|6
+004004|hour|long|Hour|h|0|0|5
+004005|minute|long|Minute|min|0|0|6
+004006|second|long|Second|s|0|0|6
+004007|secondsWithinAMinute(microsecondAccuracy)|double|Seconds within a minute (microsecond accuracy)|s|6|0|26
+004011|timeIncrement|long|Time increment|a|0|-1024|11
+004012|timeIncrement|long|Time increment|mon|0|-1024|11
+004013|timeIncrement|long|Time increment|d|0|-1024|11
+004014|timeIncrement|long|Time increment|h|0|-1024|11
+004015|timeIncrement|long|Time increment|min|0|-2048|12
+004016|timeIncrement|long|Time increment|s|0|-4096|13
+004017|referenceTimePeriodForAccumulatedOrExtremeData|long|Reference time period for accumulated or extreme data|min|0|-1440|12
+004021|timePeriodOrDisplacement|long|Time period or displacement|a|0|-1024|11
+004022|timePeriodOrDisplacement|long|Time period or displacement|mon|0|-1024|11
+004023|timePeriodOrDisplacement|long|Time period or displacement|d|0|-1024|11
+004024|timePeriodOrDisplacement|long|Time period or displacement|h|0|-2048|12
+004025|timePeriodOrDisplacement|long|Time period or displacement|min|0|-2048|12
+004026|timePeriodOrDisplacement|long|Time period or displacement|s|0|-4096|13
+004031|durationOfTimeRelatingToFollowingValue|long|Duration of time relating to following value|h|0|0|8
+004032|durationOfTimeRelatingToFollowingValue|long|Duration of time relating to following value|min|0|0|6
+004041|timeDifferenceUtcLmt|long|Time difference, UTC - LMT|min|0|-1440|12
+004043|dayOfTheYear|long|Day of the year|d|0|0|9
+004051|principalTimeOfDailyReadingOfMaximumTemperature|long|Principal time of daily reading of maximum temperature|h|0|0|5
+004052|principalTimeOfDailyReadingOfMinimumTemperature|long|Principal time of daily reading of minimum temperature|h|0|0|5
+004053|numberOfDaysWithPrecipitationEqualToOrMoreThanMm|long|Number of days with precipitation equal to or more than 1 mm|Numeric|0|0|6
+004059|timesOfObservationUsedToComputeTheReportedMeanValues|flag|Times of observation used to compute the reported mean values|Flag table|0|0|6
+004065|shortTimeIncrement|long|Short time increment|min|0|-128|8
+004066|shortTimeIncrement|long|Short time increment|s|0|-128|8
+004073|shortTimePeriodOrDisplacement|long|Short time period or displacement|d|0|-128|8
+004074|shortTimePeriodOrDisplacement|long|Short time period or displacement|h|0|-128|8
+004075|shortTimePeriodOrDisplacement|long|Short time period or displacement|min|0|-128|8
+004080|averagingPeriodForFollowingValue|table|Averaging period for following value|Code table|0|0|4
+004086|longTimePeriodOrDisplacement|long|Long time period or displacement|s|0|-8192|15
+005001|latitude(highAccuracy)|double|Latitude (high accuracy)|deg|5|-9000000|25
+005002|latitude(coarseAccuracy)|double|Latitude (coarse accuracy)|deg|2|-9000|15
+005011|latitudeIncrement(highAccuracy)|double|Latitude increment (high accuracy)|deg|5|-9000000|25
+005012|latitudeIncrement(coarseAccuracy)|double|Latitude increment (coarse accuracy)|deg|2|-9000|15
+005015|latitudeDisplacement(highAccuracy)|double|Latitude displacement (high accuracy)|deg|5|-9000000|25
+005016|latitudeDisplacement(coarseAccuracy)|double|Latitude displacement (coarse accuracy)|deg|2|-9000|15
+005021|bearingOrAzimuth|double|Bearing or azimuth|degree true|2|0|16
+005022|solarAzimuth|double|Solar azimuth|degree true|2|0|16
+005023|sunToSatelliteAzimuthDifference|double|Sun to satellite azimuth difference|deg|1|-1800|12
+005030|direction(spectral)|long|Direction (spectral)|deg|0|0|12
+005031|rowNumber|long|Row number|Numeric|0|0|12
+005032|yOffset|double|Y offset|m|2|-1073741824|31
+005033|pixelSizeOnHorizontal1|double|Pixel size on horizontal - 1|m|-1|0|16
+005034|alongTrackRowNumber|long|Along track row number|Numeric|0|0|11
+005035|maximumSizeOfX-dimension|long|Maximum size of x-dimension|Numeric|0|0|12
+005036|shipTransectNumberAccordingToSoop|long|Ship transect number according to SOOP|Numeric|0|0|7
+005040|orbitNumber|long|Orbit number|Numeric|0|0|24
+005041|scanLineNumber|long|Scan line number|Numeric|0|0|8
+005042|channelNumber|long|Channel number|Numeric|0|0|6
+005043|fieldOfViewNumber|long|Field of view number|Numeric|0|0|8
+005044|satelliteCycleNumber|long|Satellite cycle number|Numeric|0|0|11
+005045|fieldOfRegardNumber|long|Field of regard number|Numeric|0|0|8
+005052|channelNumberIncrement|long|Channel number increment|Numeric|0|0|5
+005053|fieldOfViewNumberIncrement|long|Field of view number increment|Numeric|0|0|5
+005060|yAngularPositionFromCentreOfGravity|double|Y angular position from centre of gravity|deg|6|-8000000|24
+005061|zAngularPositionFromCentreOfGravity|double|Z angular position from centre of gravity|deg|6|-8000000|24
+005063|spacecraftRoll|double|Spacecraft roll|deg|2|0|16
+005064|spacecraftPitch|double|Spacecraft pitch|deg|2|0|16
+005066|spacecraftYaw|double|Spacecraft yaw|deg|2|0|16
+005067|numberOfScanLines|long|Number of scan lines|Numeric|0|0|8
+005068|profileNumber|long|Profile number|Numeric|0|0|16
+005069|receiverChannel|table|Receiver channel|Code table|0|0|2
+005070|observationIdentifier|long|Observation identifier|Numeric|0|0|30
+005071|stripmapIdentifier|long|Stripmap identifier|Numeric|0|0|16
+005072|numberOfSpectraInRangeDirection|long|Number of spectra in range direction|Numeric|0|0|8
+005073|numberOfSpectraInAzimuthalDirection|long|Number of spectra in azimuthal direction|Numeric|0|0|8
+005074|indexInRangeDirection|long|Index in range direction|Numeric|0|0|8
+005075|indexInAzimuthalDirection|long|Index in azimuthal direction|Numeric|0|0|8
+006001|longitude(highAccuracy)|double|Longitude (high accuracy)|deg|5|-18000000|26
+006002|longitude(coarseAccuracy)|double|Longitude (coarse accuracy)|deg|2|-18000|16
+006011|longitudeIncrement(highAccuracy)|double|Longitude increment (high accuracy)|deg|5|-18000000|26
+006012|longitudeIncrement(coarseAccuracy)|double|Longitude increment (coarse accuracy)|deg|2|-18000|16
+006015|longitudeDisplacement(highAccuracy)|double|Longitude displacement (high accuracy)|deg|5|-18000000|26
+006016|longitudeDisplacement(coarseAccuracy)|double|Longitude displacement (coarse accuracy)|deg|2|-18000|16
+006021|distance|double|Distance|m|-1|0|13
+006029|waveNumber|double|Wave number|/m|1|0|22
+006030|waveNumber(spectral)|double|Wave number (spectral)|rad/m|5|0|13
+006031|columnNumber|long|Column number|Numeric|0|0|12
+006032|xOffset|double|X offset|m|2|-1073741824|31
+006033|pixelSizeOnHorizontal2|double|Pixel size on horizontal - 2|m|-1|0|16
+006034|cross-trackCellNumber|long|Cross-track cell number|Numeric|0|0|7
+006035|maximumSizeOfY-dimension|long|Maximum size of y-dimension|Numeric|0|0|12
+006040|radiusOfConfidence|long|Radius of confidence|m|0|0|13
+007001|heightOfStation|long|Height of station|m|0|-400|15
+007002|heightOrAltitude|double|Height or altitude|m|-1|-40|16
+007003|geopotential|double|Geopotential|m2 s-2|-1|-400|17
+007004|pressure|double|Pressure|Pa|-1|0|14
+007005|heightIncrement|long|Height increment|m|0|-400|12
+007006|heightAboveStation|long|Height above station|m|0|0|15
+007007|height|long|Height|m|0|-1000|17
+007008|geopotential|long|Geopotential|m2 s-2|0|-10000|20
+007009|geopotentialHeight|long|Geopotential height|gpm|0|-1000|17
+007010|flightLevel|long|Flight level|m|0|-1024|16
+007012|gridPointAltitude|double|Grid point altitude|m|2|-50000|20
+007021|elevation|double|Elevation|deg|2|-9000|15
+007022|solarElevation|double|Solar elevation|deg|2|-9000|15
+007024|satelliteZenithAngle|double|Satellite zenith angle|deg|2|-9000|15
+007025|solarZenithAngle|double|Solar zenith angle|deg|2|-9000|15
+007026|satelliteZenithAngle|double|Satellite zenith angle|deg|4|-900000|21
+007030|heightOfStationGroundAboveMeanSeaLevel|double|Height of station ground above mean sea level|m|1|-4000|17
+007031|heightOfBarometerAboveMeanSeaLevel|double|Height of barometer above mean sea level|m|1|-4000|17
+007032|heightOfSensorAboveLocalGround(orDeckOfMarinePlatform)|double|Height of sensor above local ground (or deck of marine platform)|m|2|0|16
+007033|heightOfSensorAboveWaterSurface|double|Height of sensor above water surface|m|1|0|12
+007035|maximumSizeOfZ-dimension|long|Maximum size of z-dimension|Numeric|0|0|12
+007036|levelIndexOfZ|long|Level index of z|Numeric|0|0|12
+007040|impactParameter|double|Impact parameter|m|1|62000000|22
+007061|depthBelowLandSurface|double|Depth below land surface|m|2|0|14
+007062|depthBelowSea/waterSurface|double|Depth below sea/water surface|m|1|0|17
+007063|depthBelowSea/waterSurface(cm)|double|Depth below sea/water surface (cm)|m|2|0|20
+007064|representativeHeightOfSensorAboveStation|long|Representative height of sensor above station|m|0|0|4
+007065|waterPressure|double|Water pressure|Pa|-3|0|17
+007070|drogueDepth|long|Drogue depth|m|0|0|10
+007071|height(highResolution)|double|Height (high resolution)|m|3|-10000000|26
+007072|scanAngle|double|Scan angle|deg|2|-9000|15
+008001|verticalSoundingSignificance|flag|Vertical sounding significance|Flag table|0|0|7
+008002|verticalSignificance(surfaceObservations)|table|Vertical significance (surface observations)|Code table|0|0|6
+008003|verticalSignificance(satelliteObservations)|table|Vertical significance (satellite observations)|Code table|0|0|6
+008004|phaseOfAircraftFlight|table|Phase of aircraft flight|Code table|0|0|3
+008005|meteorologicalAttributeSignificance|table|Meteorological attribute significance|Code table|0|0|4
+008006|ozoneVerticalSoundingSignificance|flag|Ozone vertical sounding significance|Flag table|0|0|9
+008007|dimensionalSignificance|table|Dimensional significance|Code table|0|0|4
+008008|radiationVerticalSoundingSignificance|flag|Radiation vertical sounding significance|Flag table|0|0|9
+008009|detailedPhaseOfFlight|table|Detailed phase of flight|Code table|0|0|4
+008010|surfaceQualifier(temperatureData)|table|Surface qualifier (temperature data)|Code table|0|0|5
+008011|meteorologicalFeature|table|Meteorological feature|Code table|0|0|6
+008012|land/seaQualifier|table|Land/sea qualifier|Code table|0|0|2
+008013|day/nightQualifier|table|Day/night qualifier|Code table|0|0|2
+008014|qualifierForRunwayVisualRange|table|Qualifier for runway visual range|Code table|0|0|4
+008015|significantQualifierForSensor|table|Significant qualifier for sensor|Code table|0|0|3
+008016|changeQualifierOfATrend-typeForecastOrAnAerodromeForecast|table|Change qualifier of a trend-type forecast or an aerodrome forecast|Code table|0|0|3
+008017|qualifierOfTheTimeWhenTheForecastChangeIsExpected|table|Qualifier of the time when the forecast change is expected|Code table|0|0|2
+008018|seawindsLand/iceSurfaceType|flag|SEAWINDS land/ice surface type|Flag table|0|0|17
+008019|qualifierForFollowingCentreIdentifier|table|Qualifier for following centre identifier|Code table|0|0|4
+008020|totalNumberOfMissingEntities(withRespectToAccumulationOrAverage)|long|Total number of missing entities (with respect to accumulation or average)|Numeric|0|0|16
+008021|timeSignificance|table|Time significance|Code table|0|0|5
+008022|totalNumber(withRespectToAccumulationOrAverage)|long|Total number (with respect to accumulation or average)|Numeric|0|0|16
+008023|first-orderStatistics|table|First-order statistics|Code table|0|0|6
+008024|differenceStatistics|table|Difference statistics|Code table|0|0|6
+008025|timeDifferenceQualifier|table|Time difference qualifier|Code table|0|0|4
+008026|matrixSignificance|table|Matrix significance|Code table|0|0|6
+008029|surfaceType|table|Surface type|Code table|0|0|8
+008030|manualOnCodes(volumeI.1SectionCCodeTableFromWhichDataAreDerived|long|Manual on Codes (Volume I.1, Section C) Code table from which data are derived|Numeric|0|0|13
+008031|dataCategoryCrexTableA|long|Data category - CREX table A|Numeric|0|0|8
+008032|statusOfOperation|table|Status of operation|Code table|0|0|4
+008033|methodOfDerivationOfPercentageConfidence|table|Method of derivation of percentage confidence|Code table|0|0|7
+008034|temperature/salinityMeasurementQualifier|table|Temperature/salinity measurement qualifier|Code table|0|0|4
+008035|typeOfMonitoringExercise|table|Type of monitoring exercise|Code table|0|0|3
+008036|typeOfCentreOrStationPerformingMonitoring|table|Type of centre or station performing monitoring|Code table|0|0|3
+008037|baselineCheckSignificance|table|Baseline check significance|Code table|0|0|5
+008038|instrumentDataSignificance|table|Instrument data significance|Code table|0|0|8
+008039|timeSignificance(aviationForecast)|table|Time significance (Aviation forecast)|Code table|0|0|6
+008040|flightLevelSignificance|table|Flight level significance|Code table|0|0|6
+008041|dataSignificance|table|Data significance|Code table|0|0|5
+008042|extendedVerticalSoundingSignificance|flag|Extended vertical sounding significance|Flag table|0|0|18
+008043|atmosphericChemicalOrPhysicalConstituentType|table|Atmospheric chemical or physical constituent type|Code table|0|0|8
+008044|casRegistryNumber|string|CAS registry number|CCITT IA5|0|0|88
+008046|atmosphericChemicalOrPhysicalConstituentType|long|Atmospheric chemical or physical constituent type|Common Code table C-14|0|0|16
+008049|numberOfObservations|long|Number of observations|Numeric|0|0|8
+008050|qualifierForNumberOfMissingValuesInCalculationOfStatistic|table|Qualifier for number of missing values in calculation of statistic|Code table|0|0|4
+008051|qualifierForNumberOfMissingValuesInCalculationOfStatistic|table|Qualifier for number of missing values in calculation of statistic|Code table|0|0|3
+008052|conditionForWhichNumberOfDaysOfOccurrenceFollows|table|Condition for which number of days of occurrence follows|Code table|0|0|5
+008053|dayOfOccurrenceQualifier|table|Day of occurrence qualifier|Code table|0|0|2
+008054|qualifierForWindSpeedOrWindGusts|table|Qualifier for wind speed or wind gusts|Code table|0|0|3
+008060|sampleScanningModeSignificance|table|Sample scanning mode significance|Code table|0|0|4
+008065|sun-glintIndicator|table|Sun-glint indicator|Code table|0|0|2
+008066|semi-transparencyIndicator|table|Semi-transparency indicator|Code table|0|0|2
+008070|verticalSoundingProductQualifier|table|Vertical sounding product qualifier|Code table|0|0|4
+008072|pixel(sType|table|Pixel(s) type|Code table|0|0|3
+008074|altimeterEchoType|table|Altimeter echo type|Code table|0|0|2
+008075|ascending/descendingOrbitQualifier|table|Ascending/descending orbit qualifier|Code table|0|0|2
+008076|typeOfBand|table|Type of band|Code table|0|0|6
+008077|radiometerSensedSurfaceType|table|Radiometer sensed surface type|Code table|0|0|7
+008079|productStatus|table|Product status|Code table|0|0|4
+008080|qualifierForGtsppQualityFlag|table|Qualifier for GTSPP quality flag|Code table|0|0|6
+008081|typeOfEquipment|table|Type of equipment|Code table|0|0|6
+008082|modificationOfSensorHeightToAnotherValue|table|Modification of sensor height to another value|Code table|0|0|3
+008083|nominalValueIndicator|flag|Nominal value indicator|Flag table|0|0|15
+008085|beamIdentifier|table|Beam identifier|Code table|0|0|3
+008086|verticalSignificanceForNwp|flag|Vertical significance for NWP|Flag table|0|0|12
+008087|cornerPositionOfObservation|table|Corner position of observation|Code table|0|0|3
+008088|mapSignificance|table|Map significance|Code table|0|0|6
+008090|decimalScaleOfFollowingSignificands|long|Decimal scale of following significands|Numeric|0|-127|8
+008091|coordinatesSignificance|table|Coordinates significance|Code table|0|0|8
+008092|measurementUncertaintyExpression|table|Measurement uncertainty expression|Code table|0|0|5
+008093|measurementUncertaintySignificance|table|Measurement uncertainty significance|Code table|0|0|5
+010001|heightOfLandSurface|long|Height of land surface|m|0|-400|15
+010002|height|double|Height|m|-1|-40|16
+010003|geopotential|double|Geopotential|m2 s-2|-1|-400|17
+010004|pressure|double|Pressure|Pa|-1|0|14
+010007|height|long|Height|m|0|-1000|17
+010008|geopotential|long|Geopotential|m2 s-2|0|-10000|20
+010009|geopotentialHeight|long|Geopotential height|gpm|0|-1000|17
+010010|minimumPressureReducedToMeanSeaLevel|double|Minimum pressure reduced to mean sea level|Pa|-1|0|14
+010011|maximumPressureReducedToMeanSeaLevel|double|Maximum pressure reduced to mean sea level|Pa|-1|0|14
+010031|inDirectionOfTheNorthPoleDistanceFromTheEarth'sCentre|double|In direction of the North Pole, distance from the Earth's centre|m|2|-1073741824|31
+010032|satelliteDistanceToEarth'sCentre|double|Satellite distance to Earth's centre|m|1|0|27
+010033|altitude(platformToEllipsoid)|double|Altitude (platform to ellipsoid)|m|1|0|27
+010034|earth'sRadius|double|Earth's radius|m|1|0|27
+010035|earth'sLocalRadiusOfCurvature|double|Earth's local radius of curvature|m|1|62000000|22
+010036|geoidUndulation|double|Geoid undulation|m|2|-15000|15
+010038|maximumHeightOfDeckCargoAboveSummerLoadLine|long|Maximum height of deck cargo above summer load line|m|0|0|6
+010039|departureOfReferenceLevel(summerMaximumLoadLineFromActualSeaLevel|long|Departure of reference level (summer maximum load line) from actual sea level|m|0|-32|6
+010040|numberOfRetrievedLayers|long|Number of retrieved layers|Numeric|0|0|10
+010050|standardDeviationAltitude|double|Standard deviation altitude|m|2|0|16
+010051|pressureReducedToMeanSeaLevel|double|Pressure reduced to mean sea level|Pa|-1|0|14
+010052|altimeterSetting(qnh)|double|Altimeter setting (QNH)|Pa|-1|0|14
+010053|globalNavigationSatelliteSystemAltitude|long|Global navigation satellite system altitude|m|0|-1000|17
+010060|pressureChange|double|Pressure change|Pa|-1|-1024|11
+010061|3-hourPressureChange|double|3-hour pressure change|Pa|-1|-500|10
+010062|24-hourPressureChange|double|24-hour pressure change|Pa|-1|-1000|11
+010063|characteristicOfPressureTendency|table|Characteristic of pressure tendency|Code table|0|0|4
+010064|sigmetCruisingLevel|table|SIGMET cruising level|Code table|0|0|3
+010070|indicatedAircraftAltitude|long|Indicated aircraft altitude|m|0|-400|16
+010071|verticalResolution|long|Vertical resolution|m|0|0|14
+010079|off-nadirAngleOfTheSatelliteFromPlatformData|double|Off-nadir angle of the satellite from platform data|deg|4|0|16
+010080|viewingZenithAngle|double|Viewing zenith angle|deg|2|-9000|15
+010081|altitudeOfCogAboveReferenceEllipsoid|double|Altitude of COG above reference ellipsoid|m|3|0|31
+010082|instantaneousAltitudeRate|double|Instantaneous altitude rate|m/s|3|-65536|17
+010083|squaredOff-nadirAngleOfTheSatelliteFromPlatformData|double|Squared off-nadir angle of the satellite from platform data|deg2|2|0|16
+010084|squaredOff-nadirAngleOfTheSatelliteFromWaveformData|double|Squared off-nadir angle of the satellite from waveform data|deg2|2|0|16
+010085|meanSea-surfaceHeight|double|Mean sea-surface height|m|3|-131072|18
+010086|geoid'sHeight|double|Geoid's height|m|3|-131072|18
+010087|oceanDepth/landElevation|double|Ocean depth/land elevation|m|1|-131072|18
+010088|totalGeocentricOceanTideHeight(solution1)|double|Total geocentric ocean tide height (solution 1)|m|3|-32768|16
+010089|totalGeocentricOceanTideHeight(solution2)|double|Total geocentric ocean tide height (solution 2)|m|3|-32768|16
+010090|longPeriodTideHeight|double|Long period tide height|m|3|-32768|16
+010091|tidalLoadingHeight|double|Tidal loading height|m|3|-32768|16
+010092|solidEarthTideHeight|double|Solid Earth tide height|m|3|-32768|16
+010093|geocentricPoleTideHeight|double|Geocentric pole tide height|m|3|-32768|16
+010095|heightOfAtmosphereUsed|long|Height of atmosphere used|m|0|0|16
+010096|meanDynamicTopography|double|Mean dynamic topography|m|3|-131072|18
+010097|meanSea-surfaceHeightFromAltimeterOnly|double|Mean sea-surface height from altimeter only|m|3|-131072|18
+010098|loadingTideHeightGeocentricOceanTideSolution1|double|Loading tide height geocentric ocean tide solution 1|m|4|-2000|12
+010099|loadingTideHeightGeocentricOceanTideSolution2|double|Loading tide height geocentric ocean tide solution 2|m|4|-2000|12
+010100|non-equilibriumLongPeriodTideHeight|double|Non-equilibrium long period tide height|m|4|-2000|12
+010101|squaredOff-nadirAngleOfTheSatelliteFromWaveformData|double|Squared off-nadir angle of the satellite from waveform data|deg2|2|-32768|16
+010102|sea-surfaceHeightAnomaly|double|Sea-surface height anomaly|m|3|-32768|16
+010103|meanDynamicTopographyAccuracy|double|Mean dynamic topography accuracy|m|3|-131072|18
+011001|windDirection|long|Wind direction|degree true|0|0|9
+011002|windSpeed|double|Wind speed|m/s|1|0|12
+011003|u-component|double|u-component|m/s|1|-4096|13
+011004|v-component|double|v-component|m/s|1|-4096|13
+011005|w-component|double|w-component|Pa/s|1|-512|10
+011006|w-component|double|w-component|m/s|2|-4096|13
+011007|relativeWindDirection(inDegreesOffBow)|long|Relative wind direction (in degrees off bow)|deg|0|0|9
+011008|relativeWindSpeed|double|Relative wind speed|m/s|1|0|12
+011010|windDirectionAssociatedWithWindSpeedWhichFollows|long|Wind direction associated with wind speed which follows|degree true|0|0|9
+011011|windDirectionAt1M|long|Wind direction at 10 m|degree true|0|0|9
+011012|windSpeedAt1M|double|Wind speed at 10 m|m/s|1|0|12
+011013|windDirectionAtM|long|Wind direction at 5 m|degree true|0|0|9
+011014|windSpeedAtM|double|Wind speed at 5 m|m/s|1|0|12
+011016|extremeCounterclockwiseWindDirectionOfAVariableWind|long|Extreme counterclockwise wind direction of a variable wind|degree true|0|0|9
+011017|extremeClockwiseWindDirectionOfAVariableWind|long|Extreme clockwise wind direction of a variable wind|degree true|0|0|9
+011019|steadinessOfWind|long|Steadiness of wind|%|0|0|7
+011021|relativeVorticity|double|Relative vorticity|/s|9|-65536|17
+011022|divergence|double|Divergence|/s|9|-65536|17
+011023|velocityPotential|double|Velocity potential|m2/s|-2|-65536|17
+011030|extendedDegreeOfTurbulence|table|Extended degree of turbulence|Code table|0|0|6
+011031|degreeOfTurbulence|table|Degree of turbulence|Code table|0|0|4
+011032|heightOfBaseOfTurbulence|double|Height of base of turbulence|m|-1|-40|16
+011033|heightOfTopOfTurbulence|double|Height of top of turbulence|m|-1|-40|16
+011034|verticalGustVelocity|double|Vertical gust velocity|m/s|1|-1024|11
+011035|verticalGustAcceleration|double|Vertical gust acceleration|m s-2|2|-8192|14
+011036|maximumDerivedEquivalentVerticalGustSpeed|double|Maximum derived equivalent vertical gust speed|m/s|1|0|10
+011037|turbulenceIndex|table|Turbulence index|Code table|0|0|6
+011038|timeOfOccurrenceOfPeakEddyDissipationRate|table|Time of occurrence of peak eddy dissipation rate|Code table|0|0|5
+011039|extendedTimeOfOccurrenceOfPeakEddyDissipationRate|table|Extended time of occurrence of peak eddy dissipation rate|Code table|0|0|6
+011040|maximumWindSpeed(meanWind)|double|Maximum wind speed (mean wind)|m/s|1|0|12
+011041|maximumWindGustSpeed|double|Maximum wind gust speed|m/s|1|0|12
+011042|maximumWindSpeed(10-minuteMeanWind)|double|Maximum wind speed (10-minute mean wind)|m/s|1|0|12
+011043|maximumWindGustDirection|long|Maximum wind gust direction|degree true|0|0|9
+011044|meanWindDirectionForSurface50M(00Feet)|long|Mean wind direction for surface - 1 500 m (5 000 feet)|degree true|0|0|9
+011045|meanWindSpeedForSurface50M(00Feet)|double|Mean wind speed for surface - 1 500 m (5 000 feet)|m/s|1|0|12
+011046|maximumInstantaneousWindSpeed|double|Maximum instantaneous wind speed|m/s|1|0|12
+011047|maximumInstantaneousWindSpeedOver1Minutes|double|Maximum instantaneous wind speed over 10 minutes|m/s|1|0|12
+011049|standardDeviationOfWindDirection|long|Standard deviation of wind direction|degree true|0|0|9
+011050|standardDeviationOfHorizontalWindSpeed|double|Standard deviation of horizontal wind speed|m/s|1|0|12
+011051|standardDeviationOfVerticalWindSpeed|double|Standard deviation of vertical wind speed|m/s|1|0|8
+011052|formalUncertaintyInWindSpeed|double|Formal uncertainty in wind speed|m/s|2|0|13
+011053|formalUncertaintyInWindDirection|double|Formal uncertainty in wind direction|degree true|2|0|15
+011054|meanWindDirectionFor5000M|long|Mean wind direction for 1 500 - 3 000 m|degree true|0|0|9
+011055|meanWindSpeedFor5000M|double|Mean wind speed for 1 500 - 3 000 m|m/s|1|0|12
+011061|absoluteWindShearInKmLayerBelow|double|Absolute wind shear in 1 km layer below|m/s|1|0|12
+011062|absoluteWindShearInKmLayerAbove|double|Absolute wind shear in 1 km layer above|m/s|1|0|12
+011070|designatorOfTheRunwayAffectedByWindShear(includingAll)|string|Designator of the runway affected by wind shear (including ALL)|CCITT IA5|0|0|32
+011071|turbulentVerticalMomentumFlux|double|Turbulent vertical momentum flux|m2 s-2|3|-128|14
+011072|turbulentVerticalBuoyancyFlux|double|Turbulent vertical buoyancy flux|K m s-1|3|-128|11
+011073|turbulentKineticEnergy|double|Turbulent kinetic energy|m2 s-2|2|-1024|13
+011074|dissipationEnergy|double|Dissipation energy|m2 s-2|2|-1024|10
+011075|meanTurbulenceIntensity(eddyDissipationRate)|double|Mean turbulence intensity (eddy dissipation rate)|m2/3 s-1|2|0|8
+011076|peakTurbulenceIntensity(eddyDissipationRate)|double|Peak turbulence intensity (eddy dissipation rate)|m2/3 s-1|2|0|8
+011077|reportingIntervalOrAveragingTimeForEddyDissipationRate|long|Reporting interval or averaging time for eddy dissipation rate|s|0|0|12
+011081|modelWindDirectionAt1M|double|Model wind direction at 10 m|degree true|2|0|16
+011082|modelWindSpeedAt1M|double|Model wind speed at 10 m|m/s|2|0|14
+011083|windSpeed|long|Wind speed|km/h|0|0|9
+011084|windSpeed|long|Wind speed|kt|0|0|8
+011085|maximumWindGustSpeed|long|Maximum wind gust speed|km/h|0|0|9
+011086|maximumWindGustSpeed|long|Maximum wind gust speed|kt|0|0|8
+011095|u-componentOfTheModelWindVector|double|u-component of the model wind vector|m/s|1|-4096|13
+011096|v-componentOfTheModelWindVector|double|v-component of the model wind vector|m/s|1|-4096|13
+011097|windSpeedFromAltimeter|double|Wind speed from altimeter|m/s|2|0|12
+011098|windSpeedFromRadiometer|double|Wind speed from radiometer|m/s|2|0|12
+011100|aircraftTrueAirspeed|double|Aircraft true airspeed|m/s|1|0|12
+011101|aircraftGroundSpeedU-component|double|Aircraft ground speed u-component|m/s|1|-4096|13
+011102|aircraftGroundSpeedV-component|double|Aircraft ground speed v-component|m/s|1|-4096|13
+011103|aircraftGroundSpeedW-component|double|Aircraft ground speed w-component|m/s|1|-512|10
+011104|trueHeadingOfAircraftShipOrOtherMobilePlatform|long|True heading of aircraft, ship or other mobile platform|degree true|0|0|9
+011105|edrAlgorithmVersion|long|EDR algorithm version|Numeric|0|0|6
+011106|runningMinimumConfidence|double|Running minimum confidence|Numeric|1|0|4
+011107|maximumNumberBadInputs|long|Maximum number bad inputs|Numeric|0|0|5
+011108|peakLocation|double|Peak location|Numeric|1|0|4
+011109|numberOfGoodEdr|long|Number of good EDR|Numeric|0|0|4
+011110|uncertaintyInU-component|double|Uncertainty in u-component|m/s|1|-4096|13
+011111|uncertaintyInV-component|double|Uncertainty in v-component|m/s|1|-4096|13
+011112|uncertaintyInW-component|double|Uncertainty in w-component|m/s|2|-4096|13
+011113|trackingCorrelationOfVector|double|Tracking correlation of vector|Numeric|3|-1000|12
+012001|temperature/airTemperature|double|Temperature/air temperature|K|1|0|12
+012002|wet-bulbTemperature|double|Wet-bulb temperature|K|1|0|12
+012003|dewpointTemperature|double|Dewpoint temperature|K|1|0|12
+012004|airTemperatureAtM|double|Air temperature at 2 m|K|1|0|12
+012005|wet-bulbTemperatureAtM|double|Wet-bulb temperature at 2 m|K|1|0|12
+012006|dewpointTemperatureAtM|double|Dewpoint temperature at 2 m|K|1|0|12
+012007|virtualTemperature|double|Virtual temperature|K|1|0|12
+012008|uncertaintyInVirtualTemperature|double|Uncertainty in virtual temperature|K|1|0|12
+012011|maximumTemperatureAtHeightAndOverPeriodSpecified|double|Maximum temperature, at height and over period specified|K|1|0|12
+012012|minimumTemperatureAtHeightAndOverPeriodSpecified|double|Minimum temperature, at height and over period specified|K|1|0|12
+012013|groundMinimumTemperaturePast1Hours|double|Ground minimum temperature, past 12 hours|K|1|0|12
+012014|maximumTemperatureAtMPast1Hours|double|Maximum temperature at 2 m, past 12 hours|K|1|0|12
+012015|minimumTemperatureAtMPast1Hours|double|Minimum temperature at 2 m, past 12 hours|K|1|0|12
+012016|maximumTemperatureAtMPast2Hours|double|Maximum temperature at 2 m, past 24 hours|K|1|0|12
+012017|minimumTemperatureAtMPast2Hours|double|Minimum temperature at 2 m, past 24 hours|K|1|0|12
+012021|maximumTemperatureAtM|double|Maximum temperature at 2 m|K|2|0|16
+012022|minimumTemperatureAtM|double|Minimum temperature at 2 m|K|2|0|16
+012023|temperature|long|Temperature|C|0|-99|8
+012024|dewpointTemperature|long|Dewpoint temperature|C|0|-99|8
+012030|soilTemperature|double|Soil temperature|K|1|0|12
+012049|temperatureChangeOverSpecifiedPeriod|long|Temperature change over specified period|K|0|-30|6
+012051|standardDeviationTemperature|double|Standard deviation temperature|K|1|0|10
+012052|highestDailyMeanTemperature|double|Highest daily mean temperature|K|1|0|12
+012053|lowestDailyMeanTemperature|double|Lowest daily mean temperature|K|1|0|12
+012060|awsEnclosureInternalTemperature|double|AWS enclosure internal temperature|K|1|0|12
+012061|skinTemperature|double|Skin temperature|K|1|0|12
+012062|equivalentBlackBodyTemperature|double|Equivalent black body temperature|K|1|0|12
+012063|brightnessTemperature|double|Brightness temperature|K|1|0|12
+012064|instrumentTemperature|double|Instrument temperature|K|1|0|12
+012065|standardDeviationBrightnessTemperature|double|Standard deviation brightness temperature|K|1|0|12
+012066|antennaTemperature|double|Antenna temperature|K|2|0|16
+012070|warmLoadTemperature|double|Warm load temperature|K|2|0|16
+012071|coldestClusterTemperature|double|Coldest cluster temperature|K|1|0|12
+012072|radiance|double|Radiance|W m-2 sr-1|6|0|31
+012075|spectralRadiance|double|Spectral radiance|W m-3 sr-1|-3|0|16
+012076|radiance|double|Radiance|W m-2 sr-1|3|0|16
+012080|brightnessTemperatureRealPart|double|Brightness temperature real part|K|2|-10000|16
+012081|brightnessTemperatureImaginaryPart|double|Brightness temperature imaginary part|K|2|-10000|16
+012082|pixelRadiometricAccuracy|double|Pixel radiometric accuracy|K|2|0|12
+012101|temperature/airTemperature|double|Temperature/air temperature|K|2|0|16
+012102|wet-bulbTemperature|double|Wet-bulb temperature|K|2|0|16
+012103|dewpointTemperature|double|Dewpoint temperature|K|2|0|16
+012104|airTemperatureAtM|double|Air temperature at 2 m|K|2|0|16
+012105|web-bulbTemperatureAtM|double|Web-bulb temperature at 2 m|K|2|0|16
+012106|dewpointTemperatureAtM|double|Dewpoint temperature at 2 m|K|2|0|16
+012107|virtualTemperature|double|Virtual temperature|K|2|0|16
+012111|maximumTemperatureAtHeightAndOverPeriodSpecified|double|Maximum temperature, at height and over period specified|K|2|0|16
+012112|minimumTemperatureAtHeightAndOverPeriodSpecified|double|Minimum temperature, at height and over period specified|K|2|0|16
+012113|groundMinimumTemperaturePast1Hours|double|Ground minimum temperature, past 12 hours|K|2|0|16
+012114|maximumTemperatureAtMPast1Hours|double|Maximum temperature at 2 m, past 12 hours|K|2|0|16
+012115|minimumTemperatureAtMPast1Hours|double|Minimum temperature at 2 m, past 12 hours|K|2|0|16
+012116|maximumTemperatureAtMPast2Hours|double|Maximum temperature at 2 m, past 24 hours|K|2|0|16
+012117|minimumTemperatureAtMPast2Hours|double|Minimum temperature at 2 m, past 24 hours|K|2|0|16
+012118|maximumTemperatureAtHeightSpecifiedPast2Hours|double|Maximum temperature at height specified, past 24 hours|K|2|0|16
+012119|minimumTemperatureAtHeightSpecifiedPast2Hours|double|Minimum temperature at height specified, past 24 hours|K|2|0|16
+012120|groundTemperature|double|Ground temperature|K|2|0|16
+012121|groundMinimumTemperature|double|Ground minimum temperature|K|2|0|16
+012122|groundMinimumTemperatureOfThePrecedingNight|double|Ground minimum temperature of the preceding night|K|2|0|16
+012128|roadSurfaceTemperature|double|Road surface temperature|K|2|0|16
+012129|roadSubsurfaceTemperature|double|Road subsurface temperature|K|2|0|16
+012130|soilTemperature|double|Soil temperature|K|2|0|16
+012131|snowTemperature|double|Snow temperature|K|2|0|16
+012132|iceSurfaceTemperature|double|Ice surface temperature|K|2|0|16
+012151|standardDeviationOfDailyMeanTemperature|double|Standard deviation of daily mean temperature|K|2|0|12
+012152|highestDailyMeanTemperature|double|Highest daily mean temperature|K|2|0|16
+012153|lowestDailyMeanTemperature|double|Lowest daily mean temperature|K|2|0|16
+012158|noise-equivalentDeltaTemperatureWhileViewingColdTarget|double|Noise-equivalent delta temperature while viewing cold target|K|2|0|12
+012159|noise-equivalentDeltaTemperatureWhileViewingWarmTarget|double|Noise-equivalent delta temperature while viewing warm target|K|2|0|12
+012161|skinTemperature|double|Skin temperature|K|2|0|16
+012162|equivalentBlackBodyTemperature|double|Equivalent black body temperature|K|2|0|16
+012163|brightnessTemperature|double|Brightness temperature|K|2|0|16
+012164|instrumentTemperature|double|Instrument temperature|K|2|0|16
+012165|directSunBrightnessTemperature|long|Direct sun brightness temperature|K|0|0|23
+012166|snapshotAccuracy|double|Snapshot accuracy|K|1|-4000|13
+012167|radiometricAccuracy(purePolarization)|double|Radiometric accuracy (pure polarization)|K|1|0|9
+012168|radiometricAccuracy(crossPolarization)|double|Radiometric accuracy (cross polarization)|K|1|0|9
+012171|coldestClusterTemperature|double|Coldest cluster temperature|K|2|0|16
+012180|averaged1MicronBtForAllClearPixelsAtNadir|double|Averaged 12 micron BT for all clear pixels at nadir|K|2|0|16
+012181|averaged1MicronBtForAllClearPixelsAtNadir|double|Averaged 11 micron BT for all clear pixels at nadir|K|2|0|16
+012182|averaged3.MicronBtForAllClearPixelsAtNadir|double|Averaged 3.7 micron BT for all clear pixels at nadir|K|2|0|16
+012183|averaged1MicronBtForAllClearPixelsForwardView|double|Averaged 12 micron BT for all clear pixels, forward view|K|2|0|16
+012184|averaged1MicronBtForAllClearPixelsForwardView|double|Averaged 11 micron BT for all clear pixels, forward view|K|2|0|16
+012185|averaged3.MicronBtForAllClearPixelsForwardView|double|Averaged 3.7 micron BT for all clear pixels, forward view|K|2|0|16
+012186|meanNadirSea-surfaceTemperature|double|Mean nadir sea-surface temperature|K|2|0|16
+012187|meanDualViewSea-surfaceTemperature|double|Mean dual view sea-surface temperature|K|2|0|16
+012188|interpolated23.GhzBrightnessTFromMwr|double|Interpolated 23.8 GHz brightness T from MWR|K|2|0|16
+012189|interpolated36.GhzBrightnessTFromMwr|double|Interpolated 36.5 GHz brightness T from MWR|K|2|0|16
+013001|specificHumidity|double|Specific humidity|kg/kg|5|0|14
+013002|mixingRatio|double|Mixing ratio|kg/kg|5|0|14
+013003|relativeHumidity|long|Relative humidity|%|0|0|7
+013004|vapourPressure|double|Vapour pressure|Pa|-1|0|10
+013005|vapourDensity|double|Vapour density|kg m-3|3|0|7
+013006|mixingHeights|double|Mixing heights|m|-1|-40|16
+013007|minimumRelativeHumidity|long|Minimum relative humidity|%|0|0|7
+013008|maximumRelativeHumidity|long|Maximum relative humidity|%|0|0|7
+013009|relativeHumidity|double|Relative humidity|%|1|-1000|12
+013011|totalPrecipitation/totalWaterEquivalent|double|Total precipitation/total water equivalent|kg m-2|1|-1|14
+013012|depthOfFreshSnow|double|Depth of fresh snow|m|2|-2|12
+013013|totalSnowDepth|double|Total snow depth|m|2|-2|16
+013014|rainfall/waterEquivalentOfSnow(averagedRate)|double|Rainfall/water equivalent of snow (averaged rate)|kg m-2 s-1|4|0|12
+013015|snowfall(averagedRate)|double|Snowfall (averaged rate)|m/s|7|0|12
+013016|precipitableWater|long|Precipitable water|kg m-2|0|0|7
+013019|totalPrecipitationPastHour|double|Total precipitation past 1 hour|kg m-2|1|-1|14
+013020|totalPrecipitationPastHours|double|Total precipitation past 3 hours|kg m-2|1|-1|14
+013021|totalPrecipitationPastHours|double|Total precipitation past 6 hours|kg m-2|1|-1|14
+013022|totalPrecipitationPast1Hours|double|Total precipitation past 12 hours|kg m-2|1|-1|14
+013023|totalPrecipitationPast2Hours|double|Total precipitation past 24 hours|kg m-2|1|-1|14
+013031|evapotranspiration|long|Evapotranspiration|kg m-2|0|0|7
+013032|evaporation/evapotranspiration|double|Evaporation/evapotranspiration|kg m-2|1|0|8
+013033|evaporation/evapotranspiration|double|Evaporation/evapotranspiration|kg m-2|1|0|10
+013038|superadiabaticIndicator|table|Superadiabatic indicator|Code table|0|0|2
+013039|terrainType(ice/snow)|table|Terrain type (ice/snow)|Code table|0|0|3
+013040|surfaceFlag|table|Surface flag|Code table|0|0|4
+013041|pasquill-giffordStabilityCategory|table|Pasquill-Gifford stability category|Code table|0|0|4
+013042|parcelLiftedIndex(to50Hpa)|long|Parcel lifted index (to 500 hPa)|K|0|-20|6
+013043|bestLiftedIndex(to50Hpa)|long|Best lifted index (to 500 hPa)|K|0|-20|6
+013044|kIndex|long|K index|K|0|-30|8
+013045|koIndex|long|KO index|K|0|-30|8
+013046|maximumBuoyancy|long|Maximum buoyancy|K|0|-30|8
+013047|modifiedShowalterStabilityIndex|long|Modified Showalter stability index|K|0|-60|6
+013048|waterFraction|double|Water fraction|%|1|0|10
+013051|frequencyGroupPrecipitation|table|Frequency group, precipitation|Code table|0|0|4
+013052|highestDailyAmountOfPrecipitation|double|Highest daily amount of precipitation|kg m-2|1|-1|14
+013055|intensityOfPrecipitation|double|Intensity of precipitation|kg m-2 s-1|4|0|8
+013056|characterAndIntensityOfPrecipitation|table|Character and intensity of precipitation|Code table|0|0|4
+013057|timeOfBeginningOrEndOfPrecipitation|table|Time of beginning or end of precipitation|Code table|0|0|4
+013058|sizeOfPrecipitatingElement|double|Size of precipitating element|m|4|0|7
+013059|numberOfFlashes(thunderstorm)|long|Number of flashes (thunderstorm)|Numeric|0|0|7
+013060|totalAccumulatedPrecipitation|double|Total accumulated precipitation|kg m-2|1|-1|17
+013071|upstreamWaterLevel|double|Upstream water level|m|2|0|14
+013072|downstreamWaterLevel|double|Downstream water level|m|2|0|14
+013073|maximumWaterLevel|double|Maximum water level|m|2|0|14
+013074|groundWaterLevel|double|Ground water level|m|2|0|18
+013080|waterPh|double|Water pH|pH unit|1|0|10
+013081|waterConductivity|double|Water conductivity|S/m|3|0|14
+013082|waterTemperature|double|Water temperature|K|1|0|12
+013083|dissolvedOxygen|double|Dissolved oxygen|kg m-3|6|0|15
+013084|turbidity|long|Turbidity|lm|0|0|14
+013085|oxidationReductionPotential(orp)|double|Oxidation Reduction Potential (ORP)|V|3|0|14
+013090|radiometerWaterVapourContent|double|Radiometer water vapour content|kg m-2|1|0|10
+013091|radiometerLiquidContent|double|Radiometer liquid content|kg m-2|2|0|8
+013093|cloudOpticalThickness|long|Cloud optical thickness|Numeric|0|0|8
+013095|totalColumnWaterVapour|double|Total column water vapour|kg m-2|4|0|19
+013096|mwrWaterVapourContent|double|MWR water vapour content|kg m-2|2|0|14
+013097|mwrLiquidWaterContent|double|MWR liquid water content|kg m-2|2|0|14
+013098|integratedWaterVapourDensity|double|Integrated water vapour density|kg m-2|8|0|30
+013099|log1OfIntegratedCloudParticleDensity|double|Log10 of integrated cloud particle density|log(m-2)|1|0|7
+013100|log1OfIntegratedCloudParticleArea|double|Log10 of integrated cloud particle area|log(m2 m-2)|1|-70|7
+013101|log1OfIntegratedCloudParticleVolume|double|Log10 of integrated cloud particle volume|log(m3 m-2)|1|-140|7
+013109|ice/liquidWaterPath|double|Ice/liquid water path|kg m-2|3|0|10
+013110|massMixingRatio|long|Mass mixing ratio|%|0|0|7
+013111|soilMoisture|long|Soil moisture|g/kg|0|0|10
+013112|objectWetnessDuration|long|Object wetness duration|s|0|0|17
+013114|rateOfIceAccretion|double|Rate of ice accretion|kg m-2 h-1|1|0|11
+013115|iceThickness|double|Ice thickness|m|2|0|19
+013116|waterFilmThickness|double|Water film thickness|m|4|0|10
+013117|snowDensity(liquidWaterContent)|long|Snow density (liquid water content)|kg m-3|0|0|10
+013118|depthOfFreshSnow(highAccuracy)|double|Depth of fresh snow (high accuracy)|m|3|-2|14
+013155|intensityOfPrecipitation(highAccuracy)|double|Intensity of precipitation (high accuracy)|kg m-2 s-1|5|-1|16
+013160|radiometerLiquidContent|double|Radiometer liquid content|kg m-2|2|-350|10
+013162|cloudLiquidWater|double|Cloud liquid water|kg m-2|2|0|8
+013163|snowWaterEquivalent|long|Snow water equivalent|kg m-2|0|0|16
+013164|seaIceFreeboard|double|Sea ice freeboard|m|3|-131072|18
+014001|long-waveRadiationIntegratedOver2Hours|double|Long-wave radiation, integrated over 24 hours|J m-2|-3|-65536|17
+014002|long-waveRadiationIntegratedOverPeriodSpecified|double|Long-wave radiation, integrated over period specified|J m-2|-3|-65536|17
+014003|short-waveRadiationIntegratedOver2Hours|double|Short-wave radiation, integrated over 24 hours|J m-2|-3|-65536|17
+014004|short-waveRadiationIntegratedOverPeriodSpecified|double|Short-wave radiation, integrated over period specified|J m-2|-3|-65536|17
+014011|netLong-waveRadiationIntegratedOver2Hours|double|Net long-wave radiation, integrated over 24 hours|J m-2|-3|-65536|17
+014012|netLong-waveRadiationIntegratedOverPeriodSpecified|double|Net long-wave radiation, integrated over period specified|J m-2|-3|-65536|17
+014013|netShort-waveRadiationIntegratedOver2Hours|double|Net short-wave radiation, integrated over 24 hours|J m-2|-3|-65536|17
+014014|netShort-waveRadiationIntegratedOverPeriodSpecified|double|Net short-wave radiation, integrated over period specified|J m-2|-3|-65536|17
+014015|netRadiationIntegratedOver2Hours|double|Net radiation, integrated over 24 hours|J m-2|-4|-16384|15
+014016|netRadiationIntegratedOverPeriodSpecified|double|Net radiation, integrated over period specified|J m-2|-4|-16384|15
+014017|instantaneousLong-waveRadiation|long|Instantaneous long-wave radiation|W m-2|0|-512|10
+014018|instantaneousShort-waveRadiation|long|Instantaneous short-wave radiation|W m-2|0|-2048|12
+014019|surfaceAlbedo|long|Surface albedo|%|0|0|7
+014020|globalSolarRadiationIntegratedOver2Hours|double|Global solar radiation, integrated over 24 hours|J m-2|-4|0|15
+014021|globalSolarRadiationIntegratedOverPeriodSpecified|double|Global solar radiation, integrated over period specified|J m-2|-4|0|15
+014022|diffuseSolarRadiationIntegratedOver2Hours|double|Diffuse solar radiation, integrated over 24 hours|J m-2|-4|0|15
+014023|diffuseSolarRadiationIntegratedOverPeriodSpecified|double|Diffuse solar radiation, integrated over period specified|J m-2|-4|0|15
+014024|directSolarRadiationIntegratedOver2Hours|double|Direct solar radiation, integrated over 24 hours|J m-2|-4|0|15
+014025|directSolarRadiationIntegratedOverPeriodSpecified|double|Direct solar radiation, integrated over period specified|J m-2|-4|0|15
+014026|albedoAtTheTopOfClouds|long|Albedo at the top of clouds|%|0|0|7
+014027|albedo|long|Albedo|%|0|0|7
+014028|globalSolarRadiation(highAccuracy)IntegratedOverPeriodSpecified|double|Global solar radiation (high accuracy), integrated over period specified|J m-2|-2|0|20
+014029|diffuseSolarRadiation(highAccuracy)IntegratedOverPeriodSpecified|double|Diffuse solar radiation (high accuracy), integrated over period specified|J m-2|-2|0|20
+014030|directSolarRadiation(highAccuracy)IntegratedOverPeriodSpecified|double|Direct solar radiation (high accuracy), integrated over period specified|J m-2|-2|0|20
+014031|totalSunshine|long|Total sunshine|min|0|0|11
+014032|totalSunshine|long|Total sunshine|h|0|0|10
+014033|totalSunshine|long|Total sunshine|%|0|0|9
+014034|sunshineOverPeriodSpecified|long|Sunshine over period specified|min|0|0|11
+014035|solarRadiationFlux|double|Solar radiation flux|W m-2|1|0|14
+014042|bidirectionalReflectance|long|Bidirectional reflectance|%|0|0|7
+014043|channelRadiance|double|Channel radiance|W m-2 sr-1 um-1|4|0|23
+014044|channelRadiance|double|Channel radiance|W m-2 sr-1 cm|7|-100000|22
+014045|channelRadiance|long|Channel radiance|W m-2 sr-1 cm|0|0|11
+014046|scaledRadiance|long|Scaled radiance|W m-2 sr-1 m|0|-5000|16
+014047|scaledMeanAvhrrRadiance|long|Scaled mean AVHRR radiance|W m-2 sr-1 m|0|0|31
+014048|scaledStandardDeviationAvhrrRadiance|long|Scaled standard deviation AVHRR radiance|W m-2 sr-1 m|0|0|31
+014050|emissivity|double|Emissivity|%|1|0|10
+014051|directSolarRadiationIntegratedOverLastHour|double|Direct solar radiation integrated over last hour|J m-2|-3|0|14
+014052|globalUpwardSolarRadiationIntegratedOverPeriodSpecified|double|Global upward solar radiation, integrated over period specified|J m-2|-2|-1048574|20
+014053|netRadiation(highAccuracy)IntegratedOverPeriodSpecified|double|Net radiation (high accuracy), integrated over period specified|J m-2|-2|-1048574|21
+014054|photosyntheticallyActiveRadiationIntegratedOverPeriodSpecified|double|Photosynthetically active radiation, integrated over period specified|J m-2|-3|0|16
+014055|solarActivityIndex|long|Solar activity index|Numeric|0|-32768|16
+014056|backgroundLuminance|long|Background luminance|Cd m-2|0|0|18
+014057|soilHeatFlux|double|Soil heat flux|J m-2|-2|-1048574|21
+014072|globalUvIrradiation|long|Global UV irradiation|J m-2|0|-4000000|23
+015001|totalOzone|long|Total ozone|DU|0|0|10
+015002|airMass(slantPathAt2Km)|double|Air mass (slant path at 22 km)|Numeric|2|0|10
+015003|measuredOzonePartialPressure(sounding)|double|Measured ozone partial pressure (sounding)|Pa|4|0|9
+015004|ozoneSoundingCorrectionFactor(cf)|double|Ozone sounding correction factor (CF)|Numeric|3|0|11
+015005|ozoneP|long|Ozone p|DU|0|0|10
+015006|log1OfNumberDensityOfAtmosphere|double|Log10 of number density of atmosphere|log(m-3)|5|1800000|20
+015008|significandOfVolumetricMixingRatio|long|Significand of volumetric mixing ratio|Numeric|0|0|10
+015009|log1OfNumberDensityOfOzone|double|Log10 of number density of ozone|log(m-3)|5|1200000|20
+015011|log1OfIntegratedElectronDensity|double|Log10 of integrated electron density|log (m-2)|3|14000|13
+015012|totalElectronCountPerSquareMetre|double|Total electron count per square metre|m-2|-16|0|6
+015015|maximumImageSpectralComponentBeforeNormalization|long|Maximum image spectral component before normalization|Numeric|0|0|31
+015020|integratedOzoneDensity|double|Integrated ozone density|kg m-2|8|0|21
+015021|integratedMassDensity|double|Integrated mass density|kg m-2|11|0|31
+015024|opticalDepth|double|Optical depth|Numeric|4|0|24
+015025|typeOfPollutant|table|Type of pollutant|Code table|0|0|4
+015026|concentrationOfPollutant(molMol-1)|double|Concentration of pollutant (mol mol-1)|mol/mol|9|0|9
+015027|concentrationOfPollutant(kgM-3)|double|Concentration of pollutant (kg m-3)|kg m-3|9|0|10
+015028|moleFractionOfAtmosphericConstituent/pollutantInDryAir|double|Mole fraction of atmospheric constituent/pollutant in dry air|&#8240;|5|0|16
+015029|extinctionCoefficient|double|Extinction coefficient|/m|9|0|30
+015030|aerosolContaminationIndex|double|Aerosol contamination index|Numeric|2|-1000|12
+015031|atmosphericPathDelayInSatelliteSignal|double|Atmospheric path delay in satellite signal|m|4|10000|15
+015032|estimatedErrorInAtmosphericPathDelay|double|Estimated error in atmospheric path delay|m|4|0|10
+015033|differenceInPathDelaysForLimbViewsAtExtremesOfScan|double|Difference in path delays for limb views at extremes of scan|m|5|-10000|15
+015034|estimatedErrorInPathDelayDifference|double|Estimated error in path delay difference|m|5|0|14
+015035|componentOfZenithPathDelayDueToWaterVapour|double|Component of zenith path delay due to water vapour|m|4|0|14
+015036|atmosphericRefractivity|double|Atmospheric refractivity|N units|3|0|19
+015037|bendingAngle|double|Bending angle|rad|8|-100000|23
+015041|sulphurDioxideIndex|double|Sulphur dioxide index|Numeric|2|-1200|14
+015042|reflectance|double|Reflectance|%|2|0|14
+015045|sulphurDioxide|double|Sulphur dioxide|DU|2|-2000|15
+015046|volcanoContaminationIndex|double|Volcano contamination index|Numeric|2|-1000|11
+015049|aerosolAngstromWavelengthExponent|double|Aerosol Angstrom wavelength exponent|Numeric|3|-2000|14
+015051|meteorologicalOpticalRange|long|Meteorological optical range|m|0|0|18
+015052|log1OfNumberDensityOfAerosolParticlesWithDiameterGreaterThanNm|double|Log10 of number density of aerosol particles with diameter greater than 5 nm|log (m-3)|1|60|6
+015053|log1OfNumberDensityOfAerosolParticlesWithDiameterGreaterThan1Nm|double|Log10 of number density of aerosol particles with diameter greater than 14 nm|log (m-3)|2|600|9
+015054|log1OfNumberDensityOfAerosolParticlesWithDiameterBetween0.2And2.&#924;m|double|Log10 of number density of aerosol particles with diameter between 0.25 and 2.5 &#181;m|log (m-3)|2|550|9
+015055|nonVolatileAerosolRatio|double|Non volatile aerosol ratio|Numeric|2|0|7
+015062|aerosolOpticalThickness|double|Aerosol optical thickness|Numeric|3|-1000|14
+015063|attenuatedBackscatter|double|Attenuated backscatter|m-1 sr-1|8|0|20
+015064|uncertaintyInAttenuatedBackscatter|double|Uncertainty in attenuated backscatter|m-1 sr-1|8|0|20
+015065|particleBackscatterCoefficient|double|Particle backscatter coefficient|m-1 sr-1|8|0|20
+015066|uncertaintyInParticleBackscatterCoefficient|double|Uncertainty in particle backscatter coefficient|m-1 sr-1|8|0|20
+015067|particleExtinctionCoefficient|double|Particle extinction coefficient|m-1|8|0|20
+015068|uncertaintyInParticleExtinctionCoefficient|double|Uncertainty in particle extinction coefficient|m-1|8|0|20
+015069|particleLidarRatio|double|Particle lidar ratio|sr|2|0|14
+015070|uncertaintyInLidarRatio|double|Uncertainty in lidar ratio|sr|2|0|14
+015071|particleDepolarizationRatio|double|Particle depolarization ratio|%|2|0|14
+015072|uncertaintyInDepolarizationRatio|double|Uncertainty in depolarization ratio|%|2|0|14
+019001|typeOfSynopticFeature|table|Type of synoptic feature|Code table|0|0|6
+019002|effectiveRadiusOfFeature|double|Effective radius of feature|m|-2|0|12
+019003|windSpeedThreshold|long|Wind speed threshold|m/s|0|0|8
+019004|effectiveRadiusWithRespectToWindSpeedsAboveThreshold|double|Effective radius with respect to wind speeds above threshold|m|-2|0|12
+019005|directionOfMotionOfFeature|long|Direction of motion of feature|degree true|0|0|9
+019006|speedOfMotionOfFeature|double|Speed of motion of feature|m/s|2|0|14
+019007|effectiveRadiusOfFeature|double|Effective radius of feature|m|-3|0|12
+019008|verticalExtentOfCirculation|table|Vertical extent of circulation|Code table|0|0|3
+019009|effectiveRadiusWithRespectToWindSpeedsAboveThreshold(largeStorms)|double|Effective radius with respect to wind speeds above threshold (large storms)|m|-3|0|12
+019010|methodForTrackingTheCentreOfSynopticFeature|table|Method for tracking the centre of synoptic feature|Code table|0|0|4
+019100|timeIntervalToCalculateTheMovementOfTheTropicalCyclone|table|Time interval to calculate the movement of the tropical cyclone|Code table|0|0|4
+019101|accuracyOfThePositionOfTheCentreOfTheTropicalCyclone|table|Accuracy of the position of the centre of the tropical cyclone|Code table|0|0|4
+019102|shapeAndDefinitionOfTheEyeOfTheTropicalCyclone|table|Shape and definition of the eye of the tropical cyclone|Code table|0|0|3
+019103|diameterOfMajorAxisOfTheEyeOfTheTropicalCyclone|table|Diameter of major axis of the eye of the tropical cyclone|Code table|0|0|4
+019104|changeInCharacterOfTheEyeDuringThe3Minutes|table|Change in character of the eye during the 30 minutes|Code table|0|0|4
+019105|distanceBetweenTheEndOfSpiralBandAndTheCentre|table|Distance between the end of spiral band and the centre|Code table|0|0|4
+019106|identificationNumberOfTropicalCyclone|long|Identification number of tropical cyclone|Numeric|0|0|7
+019107|timeIntervalOverWhichTheMovementOfTheTropicalCycloneHasBeenCalculated|table|Time interval over which the movement of the tropical cyclone has been calculated|Code table|0|0|4
+019108|accuracyOfGeographicalPositionOfTheTropicalCyclone|table|Accuracy of geographical position of the tropical cyclone|Code table|0|0|3
+019109|meanDiameterOfTheOvercastCloudOfTheTropicalCyclone|table|Mean diameter of the overcast cloud of the tropical cyclone|Code table|0|0|4
+019110|apparent24-hourChangeInIntensityOfTheTropicalCyclone|table|Apparent 24-hour change in intensity of the tropical cyclone|Code table|0|0|4
+019111|currentIntensity(ciNumberOfTheTropicalCyclone|double|Current Intensity (CI) number of the tropical cyclone|Numeric|1|0|7
+019112|dataTropical(dtNumberOfTheTropicalCyclone|double|Data Tropical (DT) number of the tropical cyclone|Numeric|1|0|7
+019113|cloudPatternTypeOfTheDt-number|table|Cloud pattern type of the DT-number|Code table|0|0|4
+019114|modelExpectedTropical(metNumberOfTheTropicalCyclone|double|Model Expected Tropical (MET) number of the tropical cyclone|Numeric|1|0|7
+019115|trendOfThePast24-hourChange(+Developed-Weakened)|double|Trend of the past 24-hour change (+: Developed, -: Weakened)|Numeric|1|-30|6
+019116|patternTropical(ptNumberOfTheTropicalCyclone|double|Pattern Tropical (PT) number of the tropical cyclone|Numeric|1|0|7
+019117|cloudPictureTypeOfThePt-number|table|Cloud picture type of the PT-number|Code table|0|0|3
+019118|finalTropical(tNumberOfTheTropicalCyclone|double|Final Tropical (T) number of the tropical cyclone|Numeric|1|0|7
+019119|typeOfTheFinalT-number|table|Type of the final T-number|Code table|0|0|3
+019150|typhoonInternationalCommonNumber(typhoonCommittee)|string|Typhoon International Common Number (Typhoon Committee)|CCITT IA5|0|0|32
+020001|horizontalVisibility|double|Horizontal visibility|m|-1|0|13
+020002|verticalVisibility|double|Vertical visibility|m|-1|0|7
+020003|presentWeather|table|Present weather|Code table|0|0|9
+020004|pastWeather(1)|table|Past weather (1)|Code table|0|0|5
+020005|pastWeather(2)|table|Past weather (2)|Code table|0|0|5
+020006|flightRules|table|Flight rules|Code table|0|0|3
+020008|cloudDistributionForAviation|table|Cloud distribution for aviation|Code table|0|0|5
+020009|generalWeatherIndicator(taf/metar)|table|General weather indicator (TAF/METAR)|Code table|0|0|4
+020010|cloudCover(total)|long|Cloud cover (total)|%|0|0|7
+020011|cloudAmount|table|Cloud amount|Code table|0|0|4
+020012|cloudType|table|Cloud type|Code table|0|0|6
+020013|heightOfBaseOfCloud|double|Height of base of cloud|m|-1|-40|11
+020014|heightOfTopOfCloud|double|Height of top of cloud|m|-1|-40|11
+020015|pressureAtBaseOfCloud|double|Pressure at base of cloud|Pa|-1|0|14
+020016|pressureAtTopOfCloud|double|Pressure at top of cloud|Pa|-1|0|14
+020017|cloudTopDescription|table|Cloud top description|Code table|0|0|4
+020018|tendencyOfRunwayVisualRange|table|Tendency of runway visual range|Code table|0|0|2
+020019|significantPresentOrForecastWeather|string|Significant present or forecast weather|CCITT IA5|0|0|72
+020020|significantRecentWeatherPhenomena|string|Significant recent weather phenomena|CCITT IA5|0|0|32
+020021|typeOfPrecipitation|flag|Type of precipitation|Flag table|0|0|30
+020022|characterOfPrecipitation|table|Character of precipitation|Code table|0|0|4
+020023|otherWeatherPhenomena|flag|Other weather phenomena|Flag table|0|0|18
+020024|intensityOfPhenomena|table|Intensity of phenomena|Code table|0|0|3
+020025|obscuration|flag|Obscuration|Flag table|0|0|21
+020026|characterOfObscuration|table|Character of obscuration|Code table|0|0|4
+020027|phenomenaOccurrence|flag|Phenomena occurrence|Flag table|0|0|9
+020028|expectedChangeInIntensity|table|Expected change in intensity|Code table|0|0|3
+020029|rainFlag|table|Rain flag|Code table|0|0|2
+020031|iceDeposit(thickness)|double|Ice deposit (thickness)|m|2|0|7
+020032|rateOfIceAccretion(estimated)|table|Rate of ice accretion (estimated)|Code table|0|0|3
+020033|causeOfIceAccretion|flag|Cause of ice accretion|Flag table|0|0|4
+020034|seaIceConcentration|table|Sea ice concentration|Code table|0|0|5
+020035|amountAndTypeOfIce|table|Amount and type of ice|Code table|0|0|4
+020036|iceSituation|table|Ice situation|Code table|0|0|5
+020037|iceDevelopment|table|Ice development|Code table|0|0|5
+020038|bearingOfIceEdge|long|Bearing of ice edge|degree true|0|0|12
+020039|iceDistance|double|Ice distance|m|-1|0|13
+020040|evolutionOfDriftSnow|table|Evolution of drift snow|Code table|0|0|4
+020041|airframeIcing|table|Airframe icing|Code table|0|0|4
+020042|airframeIcingPresent|table|Airframe icing present|Code table|0|0|2
+020043|peakLiquidWaterContent|double|Peak liquid water content|kg m-3|4|0|7
+020044|averageLiquidWaterContent|double|Average liquid water content|kg m-3|4|0|7
+020045|supercooledLargeDroplet(sldConditions|table|Supercooled large droplet (SLD) conditions|Code table|0|0|2
+020048|evolutionOfFeature|table|Evolution of feature|Code table|0|0|4
+020050|cloudIndex|table|Cloud index|Code table|0|0|8
+020051|amountOfLowClouds|long|Amount of low clouds|%|0|0|7
+020052|amountOfMiddleClouds|long|Amount of middle clouds|%|0|0|7
+020053|amountOfHighClouds|long|Amount of high clouds|%|0|0|7
+020054|trueDirectionFromWhichAPhenomenonOrCloudsAreMovingOrInWhichTheyAreObserved|long|True direction from which a phenomenon or clouds are moving or in which they are observed|degree true|0|0|9
+020055|stateOfSkyInTheTropics|table|State of sky in the tropics|Code table|0|0|4
+020056|cloudPhase|table|Cloud phase|Code table|0|0|3
+020058|visibilitySeawardsFromACoastalStation|double|Visibility seawards from a coastal station|m|-1|0|13
+020059|minimumHorizontalVisibility|double|Minimum horizontal visibility|m|-1|0|9
+020060|prevailingHorizontalVisibility|double|Prevailing horizontal visibility|m|-1|0|10
+020061|runwayVisualRange(rvr)|long|Runway visual range (RVR)|m|0|0|12
+020062|stateOfTheGround(withOrWithoutSnow)|table|State of the ground (with or without snow)|Code table|0|0|5
+020063|specialPhenomena|table|Special phenomena|Code table|0|0|10
+020065|snowCover|long|Snow cover|%|0|0|7
+020066|maximumDiameterOfHailstones|double|Maximum diameter of hailstones|m|3|0|8
+020067|diameterOfDeposit|double|Diameter of deposit|m|3|0|9
+020070|minimumNumberOfAtmospherics|long|Minimum number of atmospherics|Numeric|0|0|7
+020071|accuracyOfFixAndRateOfAtmospherics|table|Accuracy of fix and rate of atmospherics|Code table|0|0|4
+020081|cloudAmountInSegment|long|Cloud amount in segment|%|0|0|7
+020082|amountSegmentCloudFree|long|Amount segment cloud free|%|0|0|7
+020083|amountOfSegmentCoveredByScene|long|Amount of segment covered by scene|%|0|0|7
+020085|generalConditionOfRunway|table|General condition of runway|Code table|0|0|4
+020086|runwayDeposits|table|Runway deposits|Code table|0|0|4
+020087|runwayContamination|table|Runway contamination|Code table|0|0|4
+020088|depthOfRunwayDeposits|double|Depth of runway deposits|m|3|0|12
+020089|runwayFrictionCoefficient|table|Runway friction coefficient|Code table|0|0|7
+020090|specialClouds|table|Special clouds|Code table|0|0|4
+020091|verticalVisibility|double|Vertical visibility|ft|-2|0|10
+020092|heightOfBaseOfCloud|double|Height of base of cloud|ft|-2|0|10
+020093|heightOfInversion|double|Height of inversion|m|-1|0|8
+020095|iceProbability|double|Ice probability|Numeric|3|0|10
+020096|iceAge("aParameter)|double|Ice age ("A" parameter)|dB|2|-4096|13
+020101|locust(acridianName|table|Locust (acridian) name|Code table|0|0|4
+020102|locust(maturityColour|table|Locust (maturity) colour|Code table|0|0|4
+020103|stageOfDevelopmentOfLocusts|table|Stage of development of locusts|Code table|0|0|4
+020104|organizationStateOfSwarmOrBandOfLocusts|table|Organization state of swarm or band of locusts|Code table|0|0|4
+020105|sizeOfSwarmOrBandOfLocustsAndDurationOfPassageOfSwarm|table|Size of swarm or band of locusts and duration of passage of swarm|Code table|0|0|4
+020106|locustPopulationDensity|table|Locust population density|Code table|0|0|4
+020107|directionOfMovementsOfLocustSwarm|table|Direction of movements of locust swarm|Code table|0|0|4
+020108|extentOfVegetation|table|Extent of vegetation|Code table|0|0|4
+020111|x-axisErrorEllipseMajorComponent|double|x-axis error ellipse major component|m|-1|0|17
+020112|y-axisErrorEllipseMinorComponent|double|y-axis error ellipse minor component|m|-1|0|17
+020113|z-axisErrorEllipseComponent|double|z-axis error ellipse component|m|-1|0|17
+020114|angleOfX-axisInErrorEllipse|double|Angle of x-axis in error ellipse|deg|2|-18000|16
+020115|angleOfZ-axisInErrorEllipse|double|Angle of z-axis in error ellipse|deg|2|-18000|16
+020116|emissionHeightOfCloudStroke|long|Emission height of cloud stroke|m|0|0|16
+020117|amplitudeOfLightningStrike|double|Amplitude of lightning strike|A|-1|-32000|16
+020118|lightningDetectionError|long|Lightning detection error|m|0|0|19
+020119|lightningDischargePolarity|table|Lightning discharge polarity|Code table|0|0|2
+020121|thresholdValueForPolarityDecision|double|Threshold value for polarity decision|V|3|0|16
+020122|thresholdValueForPolarityDecision|long|Threshold value for polarity decision|A|0|0|16
+020123|minimumThresholdForDetection|double|Minimum threshold for detection|V/m|3|0|16
+020124|lightningStrokeOrFlash|table|Lightning stroke or flash|Code table|0|0|2
+020126|lightningRateOfDischarge|long|Lightning rate of discharge|/h|0|0|23
+020127|lightningDistanceFromStation|double|Lightning - distance from station|m|-3|0|8
+020128|lightningDirectionFromStation|double|Lightning - direction from station|degree true|1|0|12
+020129|lightningDensity(strokeFlashOrEvent)|double|Lightning density (stroke, flash or event)|m-2|6|0|10
+020130|cloudHydrometeorConcentration|long|Cloud hydrometeor concentration|Numeric|0|0|10
+020131|effectiveRadiusOfCloudHydrometeors|double|Effective radius of cloud hydrometeors|m|5|0|6
+020132|cloudLiquidWaterContent|double|Cloud liquid water content|kg m-3|5|0|11
+020133|hydrometeorRadius|double|Hydrometeor radius|m|5|0|6
+020135|iceMass(onARod)|double|Ice mass (on a rod)|kg/m|1|0|10
+020136|supplementaryCloudType|table|Supplementary cloud type|Code table|0|0|9
+020137|evolutionOfClouds|table|Evolution of clouds|Code table|0|0|4
+020138|roadSurfaceCondition|table|Road surface condition|Code table|0|0|4
+021001|horizontalReflectivity|long|Horizontal reflectivity|dB|0|-64|7
+021002|verticalReflectivity|long|Vertical reflectivity|dB|0|-64|7
+021003|differentialReflectivity|double|Differential reflectivity|dB|1|-5|7
+021004|differentialReflectivity|double|Differential reflectivity|dB|2|-800|11
+021005|linearDepolarizationRatio|long|Linear depolarization ratio|dB|0|-65|6
+021006|circularDepolarizationRatio|long|Circular depolarization ratio|dB|0|-65|6
+021011|dopplerMeanVelocityInX-direction|long|Doppler mean velocity in x-direction|m/s|0|-128|8
+021012|dopplerMeanVelocityInY-direction|long|Doppler mean velocity in y-direction|m/s|0|-128|8
+021013|dopplerMeanVelocityInZ-direction|long|Doppler mean velocity in z-direction|m/s|0|-128|8
+021014|dopplerMeanVelocity(radial)|double|Doppler mean velocity (radial)|m/s|1|-4096|13
+021017|dopplerVelocitySpectralWidth|double|Doppler velocity spectral width|m/s|1|0|8
+021018|extendedNyquistVelocity|double|Extended NYQUIST velocity|m/s|1|0|10
+021019|highNyquistVelocity|double|High NYQUIST velocity|m/s|1|0|10
+021021|echoTops|double|Echo tops|m|-3|0|4
+021022|rangeBinOffset|double|Range bin offset|m|1|0|14
+021023|rangeBinSize|long|Range bin size|m|0|0|14
+021024|azimuthOffset|double|Azimuth offset|deg|1|0|12
+021025|azimuthalResolution|double|Azimuthal resolution|deg|1|0|8
+021028|differentialPhase|double|Differential phase|deg|1|0|12
+021029|cross-polarizationCorrelationCoefficient|double|Cross-polarization correlation coefficient|Numeric|2|-100|8
+021030|signalToNoiseRatio|long|Signal to noise ratio|dB|0|-32|8
+021031|verticallyIntegratedLiquid-waterContent|long|Vertically integrated liquid-water content|kg m-2|0|0|7
+021036|radarRainfallIntensity|double|Radar rainfall intensity|m/s|7|0|12
+021041|bright-bandHeight|double|Bright-band height|m|-2|0|8
+021051|signalPowerAboveMw|long|Signal power above 1 mW|dB|0|-256|8
+021062|backscatter|double|Backscatter|dB|2|-5000|13
+021063|radiometricResolution(noiseValue)|double|Radiometric resolution (noise value)|%|1|0|10
+021064|clutterNoiseEstimate|long|Clutter noise estimate|Numeric|0|0|8
+021065|missingPacketCounter|long|Missing packet counter|Numeric|0|-127|8
+021066|waveScatterometerProductConfidenceData|flag|Wave scatterometer product confidence data|Flag table|0|0|12
+021067|windProductConfidenceData|flag|Wind product confidence data|Flag table|0|0|13
+021068|radarAltimeterProductConfidenceData|flag|Radar altimeter product confidence data|Flag table|0|0|8
+021069|sstProductConfidenceData|flag|SST product confidence data|Flag table|0|0|10
+021070|sstProductConfidenceData(sadist-2)|flag|SST product confidence data (SADIST-2)|Flag table|0|0|23
+021071|peakiness|long|Peakiness|Numeric|0|0|16
+021072|satelliteAltimeterCalibrationStatus|flag|Satellite altimeter calibration status|Flag table|0|0|4
+021073|satelliteAltimeterInstrumentMode|flag|Satellite altimeter instrument mode|Flag table|0|0|9
+021075|imageSpectrumIntensity|long|Image spectrum intensity|Numeric|0|0|8
+021076|representationOfIntensities|table|Representation of intensities|Code table|0|0|3
+021077|altitudeCorrection(ionosphere)|double|Altitude correction (ionosphere)|m|3|0|14
+021078|altitudeCorrection(dryTroposphere)|double|Altitude correction (dry troposphere)|m|3|0|9
+021079|altitudeCorrection(wetTroposphere)|double|Altitude correction (wet troposphere)|m|3|2000|10
+021080|altitudeCorrection(calibrationConstant)|double|Altitude correction (calibration constant)|m|3|0|11
+021081|openLoopCorrection(height-timeLoop)|double|Open loop correction (height-time loop)|m|3|0|10
+021082|openLoopCorrection(autoGainControl)|double|Open loop correction (auto gain control)|dB|3|-3000|14
+021083|warmTargetCalibration|long|Warm target calibration|Numeric|0|0|16
+021084|coldTargetCalibration|long|Cold target calibration|Numeric|0|0|16
+021085|atsrSea-surfaceTemperatureAcross-trackBandNumber|long|ATSR sea-surface temperature across-track band number|Numeric|0|0|4
+021086|numberOfPixelsInNadirOnlyAverage|long|Number of pixels in nadir only, average|Numeric|0|0|9
+021087|numberOfPixelsInDualViewAverage|long|Number of pixels in dual view, average|Numeric|0|0|9
+021088|wetBackscatter|double|Wet backscatter|dB|2|-5000|13
+021091|radarSignalDopplerSpectrum0thMoment|long|Radar signal Doppler spectrum 0th moment|dB|0|-100|8
+021092|rassSignalDopplerSpectrum0thMomentReferringToRassSignal|long|RASS signal Doppler spectrum 0th moment, referring to RASS signal|dB|0|-100|8
+021093|kuBandPeakiness|double|Ku band peakiness|Numeric|3|0|16
+021094|sBandPeakiness|double|S band peakiness|Numeric|3|0|16
+021101|numberOfVectorAmbiguities|long|Number of vector ambiguities|Numeric|0|0|3
+021102|indexOfSelectedWindVector|long|Index of selected wind vector|Numeric|0|0|3
+021103|totalNumberOfSigma-Measurements|long|Total number of sigma-0 measurements|Numeric|0|0|5
+021104|likelihoodComputedForSolution|double|Likelihood computed for solution|Numeric|3|-30000|15
+021105|normalizedRadarCross-section|double|Normalized radar cross-section|dB|2|-10000|14
+021106|kpVarianceCoefficient(alpha)|double|Kp variance coefficient (alpha)|Numeric|3|0|14
+021107|kpVarianceCoefficient(beta)|double|Kp variance coefficient (beta)|Numeric|8|0|16
+021109|seawindsWindVectorCellQuality|flag|SEAWINDS wind vector cell quality|Flag table|0|0|17
+021110|numberOfInner-beamSigma-(forwardOfSatellite)|long|Number of inner-beam sigma-0 (forward of satellite)|Numeric|0|0|6
+021111|numberOfOuter-beamSigma-(forwardOfSatellite)|long|Number of outer-beam sigma-0 (forward of satellite)|Numeric|0|0|6
+021112|numberOfInner-beamSigma-(aftOfSatellite)|long|Number of inner-beam sigma-0 (aft of satellite)|Numeric|0|0|6
+021113|numberOfOuter-beamSigma-(aftOfSatellite)|long|Number of outer-beam sigma-0 (aft of satellite)|Numeric|0|0|6
+021114|kpVarianceCoefficient(gamma)|double|Kp variance coefficient (gamma)|dB|3|-140000|18
+021115|seawindsSigma-Quality|flag|SEAWINDS sigma-0 quality|Flag table|0|0|17
+021116|seawindsSigma-Mode|flag|SEAWINDS sigma-0 mode|Flag table|0|0|17
+021117|sigma-VarianceQualityControl|double|Sigma-0 variance quality control|Numeric|2|0|16
+021118|attenuationCorrectionOnSigma-0|double|Attenuation correction on sigma-0|dB|2|-10000|14
+021119|windScatterometerGeophysicalModelFunction|table|Wind scatterometer geophysical model function|Code table|0|0|6
+021120|probabilityOfRain|double|Probability of rain|Numeric|3|0|10
+021121|seawindsNofRainIndex|long|SEAWINDS NOF* rain index|Numeric|0|0|8
+021122|attenuationCorrectionOnSigma-(fromTb)|double|Attenuation correction on sigma-0 (from tB)|dB|2|-10000|14
+021123|seawindsNormalizedRadarCross-section|double|SEAWINDS normalized radar cross-section|dB|2|-30000|15
+021128|numberOfValidPointsPerSecondUsedToDerivePreviousParameters|long|Number of valid points per second used to derive previous parameters|Numeric|0|0|8
+021130|spectrumTotalEnergy|double|Spectrum total energy|Numeric|6|0|28
+021131|spectrumMaxEnergy|double|Spectrum max energy|Numeric|6|0|28
+021132|directionOfSpectrumMaxOnHigherResolutionGrid|double|Direction of spectrum max on higher resolution grid|deg|3|0|19
+021133|wavelengthOfSpectrumMaxOnHigherResolutionGrid|double|Wavelength of spectrum max on higher resolution grid|m|3|0|29
+021134|rangeResolutionOfCressCovarianceSpectrum|double|Range resolution of cress covariance spectrum|rad/m|3|0|19
+021135|realPartOfCrossSpectraPolarGridNumberOfBins|double|Real part of cross spectra polar grid number of bins|Numeric|3|-524288|20
+021136|imaginaryPartOfCrossSpectraPolarGridNumberOfBins|double|Imaginary part of cross spectra polar grid number of bins|Numeric|3|-524288|20
+021137|kuBandCorrectedOceanBackscatterCoefficient|double|Ku band corrected ocean backscatter coefficient|dB|2|-32768|16
+021138|stdKuBandCorrectedOceanBackscatterCoefficient|double|Std Ku band corrected ocean backscatter coefficient|dB|2|-32768|16
+021139|kuBandNetInstrumentalCorrectionForAgc|double|Ku band net instrumental correction for AGC|dB|2|-2048|12
+021140|sBandCorrectedOceanBackscatterCoefficient|double|S band corrected ocean backscatter coefficient|dB|2|-32768|16
+021141|stdSBandCorrectedOceanBackscatterCoefficient|double|Std S band corrected ocean backscatter coefficient|dB|2|-32768|16
+021142|sBandNetInstrumentalCorrectionForAgc|double|S band net instrumental correction for AGC|dB|2|-1024|11
+021143|kuBandRainAttenuation|double|Ku band rain attenuation|dB|2|-1073741824|31
+021144|altimeterRainFlag|flag|Altimeter rain flag|Flag table|0|0|2
+021145|kuBandAutomaticGainControl|double|Ku band automatic gain control|dB|2|0|13
+021146|rmsKuBandAutomaticGainControl|double|RMS Ku band automatic gain control|dB|2|0|8
+021147|numberOfValidPointsForKuBandAutomaticGainControl|long|Number of valid points for Ku band automatic gain control|Numeric|0|0|5
+021148|trailingEdgeVariationFlag|flag|Trailing edge variation flag|Flag table|0|0|9
+021150|beamCo-location|table|Beam co-location|Code table|0|0|2
+021151|estimatedErrorInSigma-At4DegreesIncidenceAngle|double|Estimated error in sigma-0 at 40 degrees incidence angle|dB|2|0|9
+021152|slopeAt4DegreesIncidenceAngle|double|Slope at 40 degrees incidence angle|dB/deg|2|-80|7
+021153|estimatedErrorInSlopeAt4DegreesIncidenceAngle|double|Estimated error in slope at 40 degrees incidence angle|dB/deg|2|-40|6
+021154|soilMoistureSensitivity|double|Soil moisture sensitivity|dB|2|0|12
+021155|windVectorCellQuality|flag|Wind vector cell quality|Flag table|0|0|24
+021156|backscatterDistance|double|Backscatter distance|Numeric|1|-4096|13
+021157|lossPerUnitLengthOfAtmosphereUsed|double|Loss per unit length of atmosphere used|dB/m|10|0|22
+021158|ascatKpEstimateQuality|table|ASCAT Kp estimate quality|Code table|0|0|2
+021159|ascatSigma-Usability|table|ASCAT sigma-0 usability|Code table|0|0|2
+021160|ascatUseOfSyntheticData|double|ASCAT use of synthetic data|Numeric|3|0|10
+021161|ascatSyntheticDataQuantity|double|ASCAT synthetic data quantity|Numeric|3|0|10
+021162|ascatSatelliteOrbitAndAttitudeQuality|double|ASCAT satellite orbit and attitude quality|Numeric|3|0|10
+021163|ascatSolarArrayReflectionContamination|double|ASCAT solar array reflection contamination|Numeric|3|0|10
+021164|ascatTelemetryPresenceAndQuality|double|ASCAT telemetry presence and quality|Numeric|3|0|10
+021165|ascatExtrapolatedReferenceFunctionPresence|double|ASCAT extrapolated reference function presence|Numeric|3|0|10
+021166|landFraction|double|Land fraction|Numeric|3|0|10
+021169|icePresenceIndicator|table|Ice presence indicator|Code table|0|0|2
+021170|cBandCorrectedOceanBackscatterCoefficient|double|C band corrected ocean backscatter coefficient|dB|2|-32768|16
+021171|rmsCBandCorrectedOceanBackscatterCoefficient|double|RMS C band corrected ocean backscatter coefficient|dB|2|-32768|16
+021172|cBandNetInstrumentalCorrectionForAgc|double|C band net instrumental correction for AGC|dB|2|-2048|12
+021173|cBandAutomaticGainControl|double|C band automatic gain control|dB|2|0|13
+021174|rmsCBandAutomaticGainControl|double|RMS C band automatic gain control|dB|2|0|9
+021175|numberOfValidPointsForCBandAutomaticGainControl|long|Number of valid points for C band automatic gain control|Numeric|0|0|10
+021176|highFrequencyVariabilityCorrection|double|High frequency variability correction|m|3|0|16
+021177|correctedOcogBackscatterCoefficient|double|Corrected OCOG* backscatter coefficient|dB|2|0|16
+021178|stdOf2HzOcogBackscatterCoefficient|double|STD of 20 Hz OCOG backscatter coefficient|dB|2|0|16
+021179|numberOf2HzValidPointsForOcogBackscatterCoefficient|long|Number of 20 Hz valid points for OCOG backscatter coefficient|Numeric|0|0|16
+021180|numberOf2HzValidPointsForOceanBackscatterCoefficient|long|Number of 20 Hz valid points for ocean backscatter coefficient|Numeric|0|0|8
+021181|2HzOceanBackscatterCoefficient|double|20 Hz ocean backscatter coefficient|dB|2|0|16
+021182|2HzKuBandPeakiness|double|20 Hz Ku band peakiness|Numeric|3|0|16
+021183|specificBandCorrectedOceanBackscatterCoefficient|double|Specific band corrected ocean backscatter coefficient|dB|2|-32768|16
+021184|stdSpecificBandCorrectedOceanBackscatterCoefficient|double|STD specific band corrected ocean backscatter coefficient|dB|2|-32768|16
+021185|specificBandNetInstrumentalCorrectionForAgc|double|Specific band net instrumental correction for AGC|dB|2|-2048|12
+021186|specificBandAutomaticGainControl|double|Specific band automatic gain control|dB|2|0|13
+021187|rmsSpecificBandAutomaticGainControl|double|RMS specific band automatic gain control|dB|2|0|8
+021188|numberOfValidPointsForSpecificBandAutomaticGainControl|long|Number of valid points for specific band automatic gain control|Numeric|0|0|7
+022001|directionOfWaves|long|Direction of waves|degree true|0|0|9
+022002|directionOfWindWaves|long|Direction of wind waves|degree true|0|0|9
+022003|directionOfSwellWaves|long|Direction of swell waves|degree true|0|0|9
+022004|directionOfCurrent|long|Direction of current|degree true|0|0|9
+022005|directionOfSea-surfaceCurrent|long|Direction of sea-surface current|degree true|0|0|9
+022011|periodOfWaves|long|Period of waves|s|0|0|6
+022012|periodOfWindWaves|long|Period of wind waves|s|0|0|6
+022013|periodOfSwellWaves|long|Period of swell waves|s|0|0|6
+022021|heightOfWaves|double|Height of waves|m|1|0|10
+022022|heightOfWindWaves|double|Height of wind waves|m|1|0|10
+022023|heightOfSwellWaves|double|Height of swell waves|m|1|0|10
+022025|standardDeviationWaveHeight|double|Standard deviation wave height|m|2|0|10
+022026|standardDeviationOfSignificantWaveHeight|double|Standard deviation of significant wave height|m|2|0|10
+022031|speedOfCurrent|double|Speed of current|m/s|2|0|13
+022032|speedOfSea-surfaceCurrent|double|Speed of sea-surface current|m/s|2|0|13
+022035|tidalElevationWithRespectToLocalChartDatum|double|Tidal elevation with respect to local chart datum|m|2|0|14
+022036|meteorologicalResidualTidalElevation(surgeOrOffset)|double|Meteorological residual tidal elevation (surge or offset)|m|2|0|14
+022037|tidalElevationWithRespectToNationalLandDatum|double|Tidal elevation with respect to national land datum|m|3|-10000|15
+022038|tidalElevationWithRespectToLocalChartDatum|double|Tidal elevation with respect to local chart datum|m|3|-10000|15
+022039|meteorologicalResidualTidalElevation(surgeOrOffset)|double|Meteorological residual tidal elevation (surge or offset)|m|3|-5000|13
+022040|meteorologicalResidualTidalElevation(surgeOrOffset)|double|Meteorological residual tidal elevation (surge or offset)|m|3|-5000|14
+022041|sea-surfaceTemperature(15-dayRunningMean)|double|Sea-surface temperature (15-day running mean)|K|1|0|12
+022042|sea/waterTemperature|double|Sea/water temperature|K|1|0|12
+022043|sea/waterTemperature|double|Sea/water temperature|K|2|0|15
+022044|soundVelocity|double|Sound velocity|m/s|1|0|14
+022045|sea/waterTemperature|double|Sea/water temperature|K|3|0|19
+022046|seaIceFraction|double|Sea ice fraction|Numeric|2|0|7
+022049|sea-surfaceTemperature|double|Sea-surface temperature|K|2|0|15
+022050|standardDeviationSea-surfaceTemperature|double|Standard deviation sea-surface temperature|K|2|0|8
+022055|floatCycleNumber|long|Float cycle number|Numeric|0|0|10
+022056|directionOfProfile|table|Direction of profile|Code table|0|0|2
+022059|sea-surfaceSalinity|double|Sea-surface salinity|0/00|2|0|14
+022060|lagrangianDrifterDrogueStatus|table|Lagrangian drifter drogue status|Code table|0|0|3
+022061|stateOfTheSea|table|State of the sea|Code table|0|0|4
+022062|salinity|double|Salinity|0/00|2|0|14
+022063|totalWaterDepth|long|Total water depth|m|0|0|14
+022064|salinity|double|Salinity|0/00|3|0|17
+022065|waterPressure|double|Water pressure|Pa|-3|0|17
+022066|waterConductivity|double|Water conductivity|S/m|6|0|26
+022067|instrumentTypeForWaterTemperature/salinityProfileMeasurement|table|Instrument type for water temperature/salinity profile measurement|Code table|0|0|10
+022068|waterTemperatureProfileRecorderTypes|table|Water temperature profile recorder types|Code table|0|0|7
+022069|spectralWaveDensity|double|Spectral wave density|m2/Hz|3|0|22
+022070|significantWaveHeight|double|Significant wave height|m|2|0|13
+022071|spectralPeakWavePeriod|double|Spectral peak wave period|s|1|0|9
+022072|spectralPeakWavelength|long|Spectral peak wavelength|m|0|0|13
+022073|maximumWaveHeight|double|Maximum wave height|m|2|0|13
+022074|averageWavePeriod|double|Average wave period|s|1|0|9
+022075|averageWavelength|long|Average wavelength|m|0|0|13
+022076|directionFromWhichDominantWavesAreComing|long|Direction from which dominant waves are coming|degree true|0|0|9
+022077|directionalSpreadOfDominantWave|long|Directional spread of dominant wave|deg|0|0|9
+022078|durationOfWaveRecord|long|Duration of wave record|s|0|0|12
+022079|lengthOfWaveRecord|long|Length of wave record|m|0|0|16
+022080|wavebandCentralFrequency|double|Waveband central frequency|Hz|3|0|10
+022081|wavebandCentralWaveNumber|double|Waveband central wave number|/m|5|0|13
+022082|maximumNon-directionalSpectralWaveDensity|double|Maximum non-directional spectral wave density|m2 s|2|0|20
+022083|maximumNon-directionalSpectralWaveNumber|double|Maximum non-directional spectral wave number|m3|2|0|20
+022084|bandContainingMaximumNon-directionalSpectralWaveDensity|long|Band containing maximum non-directional spectral wave density|Numeric|0|0|7
+022085|spectralWaveDensityRatio|long|Spectral wave density ratio|Numeric|0|0|7
+022086|meanDirectionFromWhichWavesAreComing|long|Mean direction from which waves are coming|degree true|0|0|9
+022087|principalDirectionFromWhichWavesAreComing|long|Principal direction from which waves are coming|degree true|0|0|9
+022088|firstNormalizedPolarCoordinateFromFourierCoefficients|double|First normalized polar coordinate from Fourier coefficients|Numeric|2|0|7
+022089|secondNormalizedPolarCoordinateFromFourierCoefficients|double|Second normalized polar coordinate from Fourier coefficients|Numeric|2|0|7
+022090|non-directionalSpectralEstimateByWaveFrequency|double|Non-directional spectral estimate by wave frequency|m2 s|2|0|20
+022091|non-directionalSpectralEstimateByWaveNumber|double|Non-directional spectral estimate by wave number|m3|2|0|20
+022092|directionalSpectralEstimateByWaveFrequency|double|Directional spectral estimate by wave frequency|m2 rad-1 s|2|0|20
+022093|directionalSpectralEstimateByWaveNumber|double|Directional spectral estimate by wave number|m4|2|0|20
+022094|totalNumberOfWaveBands|long|Total number of wave bands|Numeric|0|0|7
+022095|directionalSpreadOfIndividualWaves|long|Directional spread of individual waves|deg|0|0|8
+022096|spectralBandWidth|double|Spectral band width|/s|3|0|4
+022097|meanWavelength73MOfImageSpectrumAtLowWaveNumbers|long|Mean wavelength > 731 m of image spectrum at low wave numbers|m|0|0|14
+022098|wavelengthSpread(wavelength73MAtLowWaveNumbers|long|Wavelength spread (wavelength > 731 m) at low wave numbers|m|0|0|14
+022099|meanDirectionAtLowWaveNumbers(wavelength73M)|long|Mean direction at low wave numbers (wavelength > 731 m)|degree true|0|0|9
+022100|directionSpreadAtLowWaveNumbers(wavelength73M)|long|Direction spread at low wave numbers (wavelength > 731 m)|deg|0|0|9
+022101|totalEnergy(wavelength731mAtLowWaveNumbers|long|Total energy (wavelength > 731m) at low wave numbers|Numeric|0|0|31
+022102|scaledMaximumNon-directionalSpectralWaveDensityByFrequency|long|Scaled maximum non-directional spectral wave density by frequency|m2 s|0|0|14
+022103|scaledMaximumNon-directionalSpectralWaveDensityByWaveNumber|long|Scaled maximum non-directional spectral wave density by wave number|m3|0|0|14
+022104|scaledNon-directionalSpectralWaveDensityByFrequency|long|Scaled non-directional spectral wave density by frequency|m2 s|0|0|14
+022105|scaledNon-directionalSpectralWaveDensityByWaveNumber|long|Scaled non-directional spectral wave density by wave number|m3|0|0|14
+022106|scaledDirectionalSpectralWaveDensityByFrequency|long|Scaled directional spectral wave density by frequency|m2 s rad-1|0|0|14
+022107|scaledDirectionalSpectralWaveDensityByWaveNumber|long|Scaled directional spectral wave density by wave number|m4|0|0|14
+022108|spectralWaveDensityRatio|long|Spectral wave density ratio|%|0|0|7
+022120|tideStationAutomatedWaterLevelCheck|table|Tide station automated water level check|Code table|0|0|5
+022121|tideStationManualWaterLevelCheck|table|Tide station manual water level check|Code table|0|0|5
+022122|tideStationAutomatedMeteorologicalDataCheck|table|Tide station automated meteorological data check|Code table|0|0|5
+022123|tideStationManualMeteorologicalDataCheck|table|Tide station manual meteorological data check|Code table|0|0|5
+022130|numberOfValidPointsForSpecificBand|long|Number of valid points for specific band|Numeric|0|0|10
+022131|rmsSpecificBandSignificantWaveHeight|double|RMS specific band significant wave height|m|3|0|16
+022132|numberOfValidPointsForSpecificBandSignificantWaveHeight|long|Number of valid points for specific band significant wave height|Numeric|0|0|10
+022133|specificBandNetInstrumentCorrectionForSignificantWaveHeight|double|Specific band net instrument correction for significant wave height|m|3|-1000|11
+022134|numberOfValidPointsForSpecificBandBackscatter|long|Number of valid points for specific band backscatter|Numeric|0|0|10
+022141|sea-surfaceTemperature(15-dayRunningMean)|double|Sea-surface temperature (15-day running mean)|K|2|0|15
+022142|squareOfSignificantWaveHeight|double|Square of significant wave height|m2|3|-33554432|26
+022143|stdOf2HzSwhSquared|double|STD of 20 Hz SWH squared|m2|3|-8388608|24
+022144|numberOf2HzValidPointsForSwhSquared|long|Number of 20 Hz valid points for SWH squared|Numeric|0|0|9
+022145|stdOf2HzOceanRange|double|STD of 20 Hz ocean range|m|3|-33554432|31
+022146|ocogRange|double|OCOG range|m|3|0|31
+022147|stdOf2HzOcogRange|double|STD of 20 Hz OCOG range|m|3|-8388608|31
+022148|numberOf2HzValidPointsForOceanRange|long|Number of 20 Hz valid points for ocean range|Numeric|0|0|9
+022149|2HzSignificantWaveHeightSquared|double|20 Hz significant wave height squared|m2|3|-33554432|26
+022150|numberOf1HzValidPointsForKuBand|long|Number of 18 Hz valid points for Ku band|Numeric|0|0|10
+022151|kuBandOceanRange|double|Ku band ocean range|m|3|0|31
+022152|stdOf1HzKuBandOceanRange|double|STD of 18 Hz Ku band ocean range|m|3|0|16
+022153|numberOf1HzValidPointsForSBand|long|Number of 18 Hz valid points for S band|Numeric|0|0|10
+022154|sBandOceanRange|double|S band ocean range|m|3|0|31
+022155|stdOf1HzSBandOceanRange|double|STD of 18 Hz S band ocean range|m|3|0|16
+022156|kuBandSignificantWaveHeight|double|Ku band significant wave height|m|3|0|16
+022157|stdOf1HzKuBandOceanRange|double|STD of 18 Hz Ku band ocean range|m|3|0|16
+022158|sBandSignificantWaveHeight|double|S band significant wave height|m|3|0|16
+022159|stdOf1HzSBandSignificantWaveHeight|double|STD of 18 Hz S band significant wave height|m|3|0|16
+022160|normalizedInverseWaveAge|double|Normalized inverse wave age|Numeric|6|0|21
+022161|waveSpectra|double|Wave spectra|m4|4|0|27
+022162|rmsOf2HzKuBandOceanRange|double|RMS of 20 Hz Ku band ocean range|m|3|0|16
+022163|numberOf2HzValidPointsForKuBand|long|Number of 20 Hz valid points for Ku band|Numeric|0|0|10
+022164|rms2HzKuBandSignificantWaveHeight|double|RMS 20 Hz Ku band significant wave height|m|3|0|16
+022165|numberOf2HzValidPointsForKuBandSignificantWaveHeight|long|Number of 20 Hz valid points for Ku band significant wave height|Numeric|0|0|10
+022166|kuBandNetInstrumentalCorrectionForSignificantWaveHeight|double|Ku band net instrumental correction for significant wave height|m|3|-1000|11
+022167|numberOfValidPointsForKuBandBackscatter|long|Number of valid points for Ku band backscatter|Numeric|0|0|10
+022168|cBandOceanRange|double|C band ocean range|m|3|0|31
+022169|rmsOfCBandOceanRange|double|RMS of C band ocean range|m|3|0|16
+022170|numberOf2HzValidPointsForCBand|long|Number of 20 Hz valid points for C band|Numeric|0|0|10
+022171|cBandSignificantWaveHeight|double|C band significant wave height|m|3|0|16
+022172|rms2HzCBandSignificantWaveHeight|double|RMS 20 Hz C band significant wave height|m|3|0|16
+022173|numberOf2HzValidPointsForCBandSignificantWaveHeight|long|Number of 20 Hz valid points for C band significant wave height|Numeric|0|0|10
+022174|cBandNetInstrumentalCorrectionForSignificantWaveHeight|double|C band net instrumental correction for significant wave height|m|3|-1000|11
+022175|numberOfValidPointsForCBandBackscatter|long|Number of valid points for C band backscatter|Numeric|0|0|10
+022177|heightOfXbt/xctdLauncher|long|Height of XBT/XCTD launcher|m|0|0|6
+022178|xbt/xctdLauncherType|table|XBT/XCTD launcher type|Code table|0|0|8
+022182|waterColumnHeight|double|Water column height|m|3|0|23
+022184|waterColumnHeightDeviationFromTheReferenceValue|double|Water column height deviation from the reference value|m|3|-2000|12
+022185|bprTransmissionCount|long|BPR transmission count|Numeric|0|0|10
+022186|directionFromWhichWavesAreComing|long|Direction from which waves are coming|degree true|0|0|9
+022187|directionalSpreadOfWave|long|Directional spread of wave|deg|0|0|9
+022188|dissolvedOxygen|double|Dissolved oxygen|umol/kg|3|0|19
+022189|specificBandOceanRange|double|Specific band ocean range|m|3|0|31
+022190|specificBandSignificantWaveHeight|double|Specific band significant wave height|m|3|0|16
+022191|rmsOfSpecificBandOceanRange|double|RMS of specific band ocean range|m|4|0|16
+023001|accidentEarlyNotificationArticleApplicable|table|Accident early notification - article applicable|Code table|0|0|3
+023002|activityOrFacilityInvolvedInIncident|table|Activity or facility involved in incident|Code table|0|0|5
+023003|typeOfRelease|table|Type of release|Code table|0|0|3
+023004|countermeasuresTakenNearBorder|table|Countermeasures taken near border|Code table|0|0|3
+023005|causeOfIncident|table|Cause of incident|Code table|0|0|2
+023006|incidentSituation|table|Incident situation|Code table|0|0|3
+023007|characteristicsOfRelease|table|Characteristics of release|Code table|0|0|3
+023008|stateOfCurrentRelease|table|State of current release|Code table|0|0|2
+023009|stateOfExpectedRelease|table|State of expected release|Code table|0|0|2
+023016|possibilityOfSignificantChemicalToxicHealthEffect|table|Possibility of significant chemical toxic health effect|Code table|0|0|2
+023017|flowDischargeOfMajorRecipient|double|Flow discharge of major recipient|m3/s|6|0|20
+023018|releaseBehaviourOverTime|table|Release behaviour over time|Code table|0|0|3
+023019|actualReleaseHeight|long|Actual release height|m|0|-15000|17
+023021|effectiveReleaseHeight|long|Effective release height|m|0|-15000|17
+023022|distanceOfReleasePointOrSiteOfIncident|long|Distance of release point or site of incident|m|0|0|24
+023023|mainTransportSpeedInTheAtmosphere|double|Main transport speed in the atmosphere|m/s|1|0|12
+023024|mainTransportSpeedInWater|double|Main transport speed in water|m/s|2|0|13
+023025|mainTransportSpeedInGroundWater|double|Main transport speed in ground water|m/s|2|0|13
+023027|mainTransportDirectionInTheAtmosphere|long|Main transport direction in the atmosphere|degree true|0|0|9
+023028|mainTransportDirectionInWater|long|Main transport direction in water|degree true|0|0|9
+023029|mainTransportDirectionInGroundWater|long|Main transport direction in ground water|degree true|0|0|9
+023031|possibilityThatPlumeWillEncounterPrecipitationInStateInWhichIncidentOccurred|table|Possibility that plume will encounter precipitation in State in which incident occurred|Code table|0|0|2
+023032|plumeWillEncounterChangeInWindDirectionAnd/orSpeedFlag|table|Plume will encounter change in wind direction and/or speed flag|Code table|0|0|2
+023040|flowDischargeRiver|double|Flow discharge - river|m3/s|1|0|22
+023041|flowDischargeWell|double|Flow discharge - well|m3/s|3|0|16
+024001|estimateOfAmountOfRadioactivityReleasedUpToSpecifiedTime|double|Estimate of amount of radioactivity released up to specified time|Bq|-11|0|28
+024002|estimatedMaximumPotentialRelease|double|Estimated maximum potential release|Bq|-11|0|28
+024003|compositionOfRelease|table|Composition of release|Code table|0|0|5
+024004|elementName|string|Element name|CCITT IA5|0|0|16
+024005|isotopeMass|long|Isotope mass|Numeric|0|0|9
+024011|dose|double|Dose|mSv|2|0|32
+024012|trajectoryDose(definedLocationAndExpectedTimeOfArrival)|double|Trajectory dose (defined location and expected time of arrival)|mSv|2|0|32
+024013|gammaDoseInAirAlongTheMainTransportPath(definedLocationAndTimePeriod)|double|Gamma dose in air along the main transport path (defined location and time period)|mSv|2|0|32
+024014|gammaRadiationDoseRate|double|Gamma radiation dose rate|nSv/h|1|0|14
+024021|airConcentration(ofNamedIsotopeTypeIncludingGrossBeta)|double|Air concentration (of named isotope type including gross beta)|Bq m-3|2|0|32
+024022|concentrationInPrecipitation(ofNamedIsotopeType)|double|Concentration in precipitation (of named isotope type)|Bq/l|2|0|32
+024023|pulseRateOfBetaRadiation|double|Pulse rate of beta radiation|/s|1|0|14
+024024|pulseRateOfGammaRadiation|double|Pulse rate of gamma radiation|/s|1|0|14
+025001|range-gateLength|double|Range-gate length|m|-1|0|6
+025002|numberOfGatesAveraged|long|Number of gates averaged|Numeric|0|0|4
+025003|numberOfIntegratedPulses|long|Number of integrated pulses|Numeric|0|0|8
+025004|echoProcessing|table|Echo processing|Code table|0|0|2
+025005|echoIntegration|table|Echo integration|Code table|0|0|2
+025006|zToRConversion|table|Z to R conversion|Code table|0|0|3
+025007|zToRConversionFactor|long|Z to R conversion factor|Numeric|0|0|12
+025008|zToRConversionExponent|double|Z to R conversion exponent|Numeric|2|0|9
+025009|calibrationMethod|flag|Calibration method|Flag table|0|0|4
+025010|clutterTreatment|table|Clutter treatment|Code table|0|0|4
+025011|groundOccultationCorrection(screening)|table|Ground occultation correction (screening)|Code table|0|0|2
+025012|rangeAttenuationCorrection|table|Range attenuation correction|Code table|0|0|2
+025013|bright-bandCorrection|flag|Bright-band correction|Flag table|0|0|2
+025014|azimuthClutterCut-off|long|Azimuth clutter cut-off|Numeric|0|0|12
+025015|radomeAttenuationCorrection|flag|Radome attenuation correction|Flag table|0|0|2
+025016|clear-airAttenuationCorrection|double|Clear-air attenuation correction|dB/m|5|0|6
+025017|precipitationAttenuationCorrection|flag|Precipitation attenuation correction|Flag table|0|0|2
+025018|aToZLawForAttenuationFactor|double|A to Z law for attenuation factor|Numeric|7|0|6
+025019|aToZLawForAttenuationExponent|double|A to Z law for attenuation exponent|Numeric|2|0|7
+025020|meanSpeedEstimation|table|Mean speed estimation|Code table|0|0|2
+025021|windComputationEnhancement|flag|Wind computation enhancement|Flag table|0|0|8
+025022|ghrsstRejectionFlag|flag|GHRSST* rejection flag|Flag table|0|0|9
+025023|ghrsstConfidenceFlag|flag|GHRSST confidence flag|Flag table|0|0|9
+025024|ghrsstDataQuality|table|GHRSST data quality|Code table|0|0|4
+025025|batteryVoltage|double|Battery voltage|V|1|0|9
+025026|batteryVoltage(largeRange)|double|Battery voltage (large range)|V|1|0|12
+025028|operatorOrManufacturerDefinedParameter|double|Operator or manufacturer defined parameter|Numeric|1|-16384|15
+025029|calibrationMethod|flag|Calibration method|Flag table|0|0|6
+025030|runningMeanSea-surfaceTemperatureUsage|table|Running mean sea-surface temperature usage|Code table|0|0|2
+025031|nwp-generatedVerticalProfileThinningMethod|table|NWP-generated vertical profile thinning method|Code table|0|0|3
+025032|windProfilerModeInformation|table|Wind profiler mode information|Code table|0|0|2
+025033|windProfilerSubmodeInformation|table|Wind profiler submode information|Code table|0|0|2
+025034|windProfilerQualityControlTestResults|flag|Wind profiler quality control test results|Flag table|0|0|4
+025035|decisionMethodForPolarity|table|Decision method for polarity|Code table|0|0|3
+025036|atmosphericsLocationMethod|table|Atmospherics location method|Code table|0|0|4
+025037|sstBias|double|SST bias|K|2|-127|8
+025038|differenceBetweenSstAndAnalysis|double|Difference between SST and analysis|K|1|-127|8
+025040|coWindProductDerivation|table|CO2 wind product derivation|Code table|0|0|4
+025041|movingPlatformDirectionReportingMethod|table|Moving platform direction reporting method|Code table|0|0|2
+025042|movingPlatformSpeedReportingMethod|table|Moving platform speed reporting method|Code table|0|0|2
+025043|waveSamplingInterval(time)|double|Wave sampling interval (time)|s|4|0|15
+025044|waveSamplingInterval(space)|double|Wave sampling interval (space)|m|2|0|14
+025045|hirsChannelCombination|flag|HIRS channel combination|Flag table|0|0|21
+025046|msuChannelCombination|flag|MSU channel combination|Flag table|0|0|5
+025047|ssuChannelCombination|flag|SSU channel combination|Flag table|0|0|4
+025048|amsu-aChannelCombination|flag|AMSU-A channel combination|Flag table|0|0|16
+025049|amsu-bChannelCombination|flag|AMSU-B channel combination|Flag table|0|0|6
+025050|principalComponentScore|double|Principal component score|Numeric|4|-131072|18
+025051|avhrrChannelCombination|flag|AVHRR channel combination|Flag table|0|0|7
+025052|log1OfPrincipalComponentsNormalizedFitToData|double|Log10 of principal components normalized fit to data|Numeric|4|0|15
+025053|observationQuality|flag|Observation quality|Flag table|0|0|12
+025054|ssmisSubframeIdNumber|long|SSMIS subframe ID number|Numeric|0|0|5
+025055|multiplexerHousekeeping|double|Multiplexer housekeeping|K|2|0|16
+025060|softwareIdentification|long|Software identification|Numeric|0|0|14
+025061|softwareIdentificationAndVersionNumber|string|Software identification and version number|CCITT IA5|0|0|96
+025062|databaseIdentification|long|Database identification|Numeric|0|0|14
+025063|centralProcessorOrSystemIdentifier|table|Central processor or system identifier|Code table|0|0|8
+025065|orientationCorrection(azimuth)|double|Orientation correction (azimuth)|deg|2|-1000|11
+025066|orientationCorrection(elevation)|double|Orientation correction (elevation)|deg|2|-1000|11
+025067|radiosondeReleasePointPressureCorrection|long|Radiosonde release point pressure correction|Pa|0|-8000|14
+025068|numberOfArchiveRecomputes|long|Number of archive recomputes|Numeric|0|0|7
+025069|flightLevelPressureCorrections|flag|Flight level pressure corrections|Flag table|0|0|8
+025070|majorFrameCount|long|Major frame count|Numeric|0|0|4
+025071|frameCount|long|Frame count|Numeric|0|0|5
+025075|satelliteAntennaCorrectionsVersionNumber|long|Satellite antenna corrections version number|Numeric|0|0|5
+025076|log1Of(temperature-radianceCentralWaveNumberForAtovs|double|Log10 of (temperature-radiance central wave number) for ATOVS|log (m-1)|8|0|30
+025077|bandwidthCorrectionCoefficient1|double|Bandwidth correction coefficient 1|Numeric|5|-100000|18
+025078|bandwidthCorrectionCoefficient2|double|Bandwidth correction coefficient 2|Numeric|5|0|17
+025079|albedo-radianceSolarFilteredIrradianceForAtovs|double|Albedo-radiance solar filtered irradiance for ATOVS|W m-2|4|0|24
+025080|albedo-radianceEquivalentFilterWidthForAtovs|double|Albedo-radiance equivalent filter width for ATOVS|m|10|0|14
+025081|incidenceAngle|double|Incidence angle|deg|3|0|17
+025082|azimuthAngle|double|Azimuth angle|deg|3|0|19
+025083|faradayRotationalAngle|double|Faraday rotational angle|deg|3|0|19
+025084|geometricRotationalAngle|double|Geometric rotational angle|deg|5|0|26
+025085|fractionOfClearPixelsInHirsFov|long|Fraction of clear pixels in HIRS FOV|Numeric|0|0|7
+025086|depthCorrectionIndicator|table|Depth correction indicator|Code table|0|0|2
+025090|orbitStateFlag|table|Orbit state flag|Code table|0|0|4
+025091|structureConstantOfTheRefractionIndex(cn2)|double|Structure constant of the refraction index (Cn2)|dB|3|-18192|13
+025092|acousticPropagationVelocity|double|Acoustic propagation velocity|m/s|2|28000|14
+025093|rassComputationCorrection|flag|RASS computation correction|Flag table|0|0|8
+025095|altimeterStateFlag|flag|Altimeter state flag|Flag table|0|0|2
+025096|radiometerStateFlag|flag|Radiometer state flag|Flag table|0|0|5
+025097|three-dimensionalErrorEstimateOfTheNavigatorOrbit|table|Three-dimensional error estimate of the navigator orbit|Code table|0|0|4
+025098|altimeterDataQualityFlag|flag|Altimeter data quality flag|Flag table|0|0|9
+025099|altimeterCorrectionQualityFlag|flag|Altimeter correction quality flag|Flag table|0|0|9
+025100|xbt/xctdFallRateEquationCoefficientA|double|XBT/XCTD fall rate equation coefficient a|Numeric|5|0|20
+025101|xbt/xctdFallRateEquationCoefficientB|double|XBT/XCTD fall rate equation coefficient b|Numeric|5|-500000|21
+025102|numberOfMissingLinesExcludingDataGaps|long|Number of missing lines excluding data gaps|Numeric|0|0|8
+025103|numberOfDirectionalBins|long|Number of directional bins|Numeric|0|0|8
+025104|numberOfWavelengthBins|long|Number of wavelength bins|Numeric|0|0|8
+025105|firstDirectionalBin|double|First directional bin|deg|3|0|19
+025106|directionalBinStep|double|Directional bin step|deg|3|0|19
+025107|firstWavelengthBin|double|First wavelength bin|m|3|0|29
+025108|lastWavelengthBin|double|Last wavelength bin|m|3|0|29
+025110|imageProcessingSummary|flag|Image processing summary|Flag table|0|0|10
+025111|numberOfInputDataGaps|long|Number of input data gaps|Numeric|0|0|8
+025112|bandSpecificAltimeterDataQualityFlag|flag|Band specific altimeter data quality flag|Flag table|0|0|9
+025113|bandSpecificAltimeterCorrectionQualityFlag|flag|Band specific altimeter correction quality flag|Flag table|0|0|9
+025120|ra2-l2-processingFlag|table|RA2-L2-processing flag|Code table|0|0|2
+025121|ra2-l2-processingQuality|long|RA2-L2-processing quality|%|0|0|7
+025122|hardwareConfigurationForRf|table|Hardware configuration for RF|Code table|0|0|2
+025123|hardwareConfigurationForHpa|table|Hardware configuration for HPA|Code table|0|0|2
+025124|mwr-l2-processingFlag|table|MWR-L2-processing flag|Code table|0|0|2
+025125|mwr-l2-processingQuality|long|MWR-L2-processing quality|%|0|0|7
+025126|modelDryTroposphericCorrection|double|Model dry tropospheric correction|m|3|-32768|16
+025127|invertedBarometerCorrection|double|Inverted barometer correction|m|3|-32768|16
+025128|modelWetTroposphericCorrection|double|Model wet tropospheric correction|m|3|-32768|16
+025129|mwrDerivedWetTroposphericCorrection|double|MWR derived wet tropospheric correction|m|3|-32768|16
+025130|raIonosphericCorrectionOnKuBand|double|RA2 ionospheric correction on Ku band|m|3|-32768|16
+025131|ionosphericCorrectionFromDorisOnKuBand|double|Ionospheric correction from Doris on Ku band|m|3|-32768|16
+025132|ionosphericCorrectionFromModelOnKuBand|double|Ionospheric correction from model on Ku band|m|3|-32768|16
+025133|seaStateBiasCorrectionOnKuBand|double|Sea state bias correction on Ku band|m|3|-32768|16
+025134|raIonosphericCorrectionOnSBand|double|RA2 ionospheric correction on S band|m|3|-32768|16
+025135|ionosphericCorrectionFromDorisOnSBand|double|Ionospheric correction from Doris on S band|m|3|-32768|16
+025136|ionosphericCorrectionFromModelOnSBand|double|Ionospheric correction from model on S band|m|3|-32768|16
+025137|seaStateBiasCorrectionOnSBand|double|Sea state bias correction on S band|m|3|-32768|16
+025138|averageSignal-to-noiseRatio|long|Average signal-to-noise ratio|Numeric|0|-2048|12
+025140|startChannel|long|Start channel|Numeric|0|0|14
+025141|endChannel|long|End channel|Numeric|0|0|14
+025142|channelScaleFactor|long|Channel scale factor|Numeric|0|0|6
+025143|linearCoefficient|double|Linear coefficient|Numeric|6|-5000000|24
+025148|coefficientOfVariation|double|Coefficient of variation|Numeric|2|-10000|15
+025149|optimalEstimationCost|long|Optimal estimation cost|Numeric|0|0|8
+025150|methodOfTropicalCycloneIntensityAnalysisUsingSatelliteData|table|Method of tropical cyclone intensity analysis using satellite data|Code table|0|0|4
+025160|kuBandNetInstrumentalCorrection|double|Ku band net instrumental correction|m|4|-120000|18
+025161|cBandNetInstrumentalCorrection|double|C band net instrumental correction|m|4|-120000|18
+025162|seaStateBiasCorrectionOnCBand|double|Sea state bias correction on C band|m|4|-6000|13
+025163|altimeterIonosphericCorrectionOnKuBand|double|Altimeter ionospheric correction on Ku band|m|3|-32768|16
+025164|radiometerWetTroposphericCorrection|double|Radiometer wet tropospheric correction|m|4|-5000|13
+025165|ionosphericCorrectionFromModelOnSpecificBand|double|Ionospheric correction from model on specific band|m|4|-32768|16
+025166|seaStateBiasCorrectionOnSpecificBand|double|Sea state bias correction on specific band|m|4|-32768|16
+025167|specificBandNetInstrumentalCorrection|double|Specific band net instrumental correction|m|4|-120000|18
+025170|samplingInterval(time)|long|Sampling interval (time)|s|0|0|10
+025171|sampleAveragingPeriod|long|Sample averaging period|s|0|0|10
+025172|numberOfSamples|long|Number of samples|Numeric|0|0|10
+025174|smosInformationFlag|flag|SMOS information flag|Flag table|0|0|14
+025175|modifiedResidual|double|Modified residual|Numeric|2|0|13
+025180|lrmPerCent|double|LRM* per cent|%|2|0|16
+025181|lProcessingFlag|table|L2 processing flag|Code table|0|0|2
+025182|lProcessingFlag|table|L1 processing flag|Code table|0|0|2
+025183|lProcessingQuality|double|L1 processing quality|%|2|0|14
+025184|lProductStatus|table|L2 product status|Code table|0|0|2
+025185|encryptionMethod|table|Encryption method|Code table|0|0|8
+025186|encryptionKeyVersion|string|Encryption key version|CCITT IA5|0|0|96
+025187|confidenceFlag|table|Confidence flag|Code table|0|0|4
+025188|methodForReducingPressureToSeaLevel|table|Method for reducing pressure to sea level|Code table|0|0|5
+025189|rangeCut-offWavelength|long|Range cut-off wavelength|m|0|1|9
+025190|altimeterEchoProcessingMode|table|Altimeter echo processing mode|Code table|0|0|8
+025191|altimeterTrackingMode|table|Altimeter tracking mode|Code table|0|0|8
+026001|principalTimeOfDailyReadingInUtcOfMaximumTemperature|double|Principal time of daily reading in UTC of maximum temperature|h|1|0|12
+026002|principalTimeOfDailyReadingInUtcOfMinimumTemperature|double|Principal time of daily reading in UTC of minimum temperature|h|1|0|12
+026003|timeDifference|long|Time difference|min|0|-1440|12
+026010|hoursIncluded|flag|Hours included|Flag table|0|0|26
+026020|durationOfPrecipitation|long|Duration of precipitation|min|0|0|11
+026021|year|long|Year|a|0|0|12
+026022|month|long|Month|mon|0|0|4
+026023|day|long|Day|d|0|0|6
+026030|measurementIntegrationTime|double|Measurement integration time|s|2|0|8
+027001|latitude(highAccuracy)|double|Latitude (high accuracy)|deg|5|-9000000|25
+027002|latitude(coarseAccuracy)|double|Latitude (coarse accuracy)|deg|2|-9000|15
+027003|alternateLatitude(coarseAccuracy)|double|Alternate latitude (coarse accuracy)|deg|2|-9000|15
+027004|alternateLatitude(highAccuracy)|double|Alternate latitude (high accuracy)|deg|5|-9000000|25
+027010|footprintAxis1|double|Footprint axis 1|m|-1|0|14
+027020|satelliteLocationCounter|long|Satellite location counter|Numeric|0|0|16
+027021|satelliteSublocationDimension|long|Satellite sublocation dimension|Numeric|0|0|16
+027031|inDirectionOfDegreesLongitudeDistanceFromTheEarth'sCentre|double|In direction of 0 degrees longitude, distance from the Earth's centre|m|2|-1073741824|31
+027079|horizontalWidthOfSampledVolume|long|Horizontal width of sampled volume|m|0|0|18
+027080|viewingAzimuthAngle|double|Viewing azimuth angle|degree true|2|0|16
+028001|longitude(highAccuracy)|double|Longitude (high accuracy)|deg|5|-18000000|26
+028002|longitude(coarseAccuracy)|double|Longitude (coarse accuracy)|deg|2|-18000|16
+028003|alternateLongitude(coarseAccuracy)|double|Alternate longitude (coarse accuracy)|deg|2|-18000|16
+028004|alternateLongitude(highAccuracy)|double|Alternate longitude (high accuracy)|deg|5|-18000000|26
+028010|footprintAxis2|double|Footprint axis 2|m|-1|0|14
+028031|inDirection9DegreesEastDistanceFromTheEarth'sCentre|double|In direction 90 degrees East, distance from the Earth's centre|m|2|-1073741824|31
+029001|projectionType|table|Projection type|Code table|0|0|3
+029002|coordinateGridType|table|Coordinate grid type|Code table|0|0|3
+029014|optionalListOfParametersForAnExternalMapProjectionLibrary|string|Optional list of parameters for an external map projection library|CCITT IA5|0|0|504
+030001|pixelValue(Bits)|long|Pixel value (4 bits)|Numeric|0|0|4
+030002|pixelValue(Bits)|long|Pixel value (8 bits)|Numeric|0|0|8
+030004|pixelValue(1Bits)|long|Pixel value (16 bits)|Numeric|0|0|16
+030010|numberOfGridPoints|long|Number of grid points|Numeric|0|0|13
+030021|numberOfPixelsPerRow|long|Number of pixels per row|Numeric|0|0|12
+030022|numberOfPixelsPerColumn|long|Number of pixels per column|Numeric|0|0|12
+030031|pictureType|table|Picture type|Code table|0|0|4
+030032|combinationWithOtherData|flag|Combination with other data|Flag table|0|0|16
+030033|numberOfBinsAlongTheRadial|long|Number of bins along the radial|Numeric|0|0|12
+030034|numberOfAzimuths|long|Number of azimuths|Numeric|0|0|12
+031000|shortDelayedDescriptorReplicationFactor|long|Short delayed descriptor replication factor|Numeric|0|0|1
+031001|delayedDescriptorReplicationFactor|long|Delayed descriptor replication factor|Numeric|0|0|8
+031002|extendedDelayedDescriptorReplicationFactor|long|Extended delayed descriptor replication factor|Numeric|0|0|16
+031011|delayedDescriptorAndDataRepetitionFactor|long|Delayed descriptor and data repetition factor|Numeric|0|0|8
+031012|extendedDelayedDescriptorAndDataRepetitionFactor|long|Extended delayed descriptor and data repetition factor|Numeric|0|0|16
+031021|associatedFieldSignificance|table|Associated field significance|Code table|0|0|6
+031031|dataPresentIndicator|flag|Data present indicator|Flag table|0|0|1
+033002|qualityInformation|table|Quality information|Code table|0|0|2
+033003|qualityInformation|table|Quality information|Code table|0|0|3
+033005|qualityInformation(awsData)|flag|Quality information (AWS data)|Flag table|0|0|30
+033006|internalMeasurementStatusInformation(aws)|table|Internal measurement status information (AWS)|Code table|0|0|3
+033007|perCentConfidence|long|Per cent confidence|%|0|0|7
+033015|dataQuality-checkIndicator|table|Data quality-check indicator|Code table|0|0|6
+033020|qualityControlIndicationOfFollowingValue|table|Quality control indication of following value|Code table|0|0|3
+033021|qualityOfFollowingValue|table|Quality of following value|Code table|0|0|2
+033022|qualityOfBuoySatelliteTransmission|table|Quality of buoy satellite transmission|Code table|0|0|2
+033023|qualityOfBuoyLocation|table|Quality of buoy location|Code table|0|0|2
+033024|stationElevationQualityMark(forMobileStations)|table|Station elevation quality mark (for mobile stations)|Code table|0|0|4
+033025|acarsInterpolatedValuesIndicator|table|ACARS interpolated values indicator|Code table|0|0|3
+033026|moistureQuality|table|Moisture quality|Code table|0|0|6
+033027|locationQualityClass(rangeOfRadiusOf6Confidence)|table|Location quality class (range of radius of 66 % confidence)|Code table|0|0|3
+033028|snapshotOverallQuality|table|Snapshot overall quality|Code table|0|0|3
+033030|scanLineStatusFlagsForAtovs|flag|Scan line status flags for ATOVS|Flag table|0|0|24
+033031|scanLineQualityFlagsForAtovs|flag|Scan line quality flags for ATOVS|Flag table|0|0|24
+033032|channelQualityFlagsForAtovs|flag|Channel quality flags for ATOVS|Flag table|0|0|24
+033033|fieldOfViewQualityFlagsForAtovs|flag|Field of view quality flags for ATOVS|Flag table|0|0|24
+033035|manual/automaticQualityControl|table|Manual/automatic quality control|Code table|0|0|4
+033036|nominalConfidenceThreshold|long|Nominal confidence threshold|%|0|0|7
+033037|windCorrelationError|flag|Wind correlation error|Flag table|0|0|20
+033038|qualityFlagsForGround-basedGnssData|flag|Quality flags for ground-based GNSS data|Flag table|0|0|10
+033039|qualityFlagsForRadioOccultationData|flag|Quality flags for radio occultation data|Flag table|0|0|16
+033040|confidenceInterval|long|Confidence interval|%|0|0|7
+033041|attributeOfFollowingValue|table|Attribute of following value|Code table|0|0|2
+033042|typeOfLimitRepresentedByFollowingValue|table|Type of limit represented by following value|Code table|0|0|3
+033043|astConfidence|flag|AST confidence|Flag table|0|0|8
+033044|asarQualityInformation|flag|ASAR quality information|Flag table|0|0|15
+033045|probabilityOfFollowingEvent|long|Probability of following event|%|0|0|7
+033046|conditionalProbabilityOfFollowingEventWithRespectToSpecifiedConditioningEvent|long|Conditional probability of following event with respect to specified conditioning event|%|0|0|7
+033047|measurementConfidenceData|flag|Measurement confidence data|Flag table|0|0|31
+033048|confidenceMeasureOfSarInversion|table|Confidence measure of SAR inversion|Code table|0|0|2
+033049|confidenceMeasureOfWindRetrieval|table|Confidence measure of wind retrieval|Code table|0|0|2
+033050|globalGtsppQualityFlag|table|Global GTSPP quality flag|Code table|0|0|4
+033052|sBandOceanRetrackingQuality|flag|S band ocean retracking quality|Flag table|0|0|21
+033053|kuBandOceanRetrackingQuality|flag|Ku band ocean retracking quality|Flag table|0|0|21
+033060|gqisflagqualIndividualIasi-systemQualityFlag|table|GqisFlagQual - individual IASI-System quality flag|Code table|0|0|2
+033061|gqisqualindexIndicatorForInstrumentNoisePerformance(contributionsFromSpectralAndRadiometricCalibration)|long|GqisQualIndex - indicator for instrument noise performance (contributions from spectral and radiometric calibration)|%|0|0|7
+033062|gqisqualindexlocIndicatorForGeometricQualityIndex|long|GqisQualIndexLoc - indicator for geometric quality index|%|0|0|7
+033063|gqisqualindexradIndicatorForInstrumentNoisePerformance(contributionsFromRadiometricCalibration)|long|GqisQualIndexRad - indicator for instrument noise performance (contributions from radiometric calibration)|%|0|0|7
+033064|gqisqualindexspectIndicatorForInstrumentNoisePerformance(contributionsFromSpectralCalibration)|long|GqisQualIndexSpect - indicator for instrument noise performance (contributions from spectral calibration)|%|0|0|7
+033065|gqissystecsondqualOutputOfSystemTec(technicalExpertiseCentreQualityFunction|long|GqisSysTecSondQual - output of system TEC (Technical Expertise Centre) quality function|Numeric|0|0|24
+033066|amvQualityFlag|flag|AMV quality flag|Flag table|0|0|24
+033070|totalOzoneQuality|table|Total ozone quality|Code table|0|0|4
+033071|profileOzoneQuality|table|Profile ozone quality|Code table|0|0|4
+033072|ozoneError|table|Ozone error|Code table|0|0|5
+033075|scan-levelQualityFlags|flag|Scan-level quality flags|Flag table|0|0|13
+033076|calibrationQualityFlags|flag|Calibration quality flags|Flag table|0|0|9
+033077|field-of-viewQualityFlags|flag|Field-of-view quality flags|Flag table|0|0|19
+033078|geolocationQuality|table|Geolocation quality|Code table|0|0|4
+033079|granuleLevelQualityFlags|flag|Granule level quality flags|Flag table|0|0|16
+033080|scanLevelQualityFlags|flag|Scan level quality flags|Flag table|0|0|20
+033081|channelDataQualityFlags|flag|Channel data quality flags|Flag table|0|0|12
+033082|geolocationQualityFlags|flag|Geolocation quality flags|Flag table|0|0|16
+033083|radianceDataQualityFlags|flag|Radiance data quality flags|Flag table|0|0|16
+033084|pixelLevelQualityFlags|flag|Pixel level quality flags|Flag table|0|0|16
+033085|aerosolOpticalThicknessQualityFlags|flag|Aerosol optical thickness quality flags|Flag table|0|0|18
+033086|qualityOfPixelLevelRetrieval|table|Quality of pixel level retrieval|Code table|0|0|3
+033087|extentOfSatelliteWithinSouthAtlanticAnomaly(basedOnClimatologicalData)|table|Extent of satellite within South Atlantic anomaly (based on climatological data)|Code table|0|0|4
+033088|ozoneTotalColumnQualityFlag|flag|Ozone total column quality flag|Flag table|0|0|18
+033089|noiseEquivalentDeltaTemperature(nedtQualityIndicatorsForWarmTargetCalibration|double|Noise equivalent delta temperature (NEdT) quality indicators for warm target calibration|K|2|0|12
+033090|nedtQualityIndicatorsForColdTargetCalibration|double|NEdT quality indicators for cold target calibration|K|2|0|12
+033091|nedtQualityIndicatorsForOverallCalibration|double|NEdT quality indicators for overall calibration|K|2|0|12
+033092|bandSpecificOceanQualityFlag|flag|Band specific ocean quality flag|Flag table|0|0|9
+035000|fmAndRegionalCodeNumber|table|FM and regional code number|Code table|0|0|10
+035001|timeFrameForMonitoring|table|Time frame for monitoring|Code table|0|0|3
+035011|numberOfReportsActuallyReceived|long|Number of reports actually received|Numeric|0|0|14
+035021|bulletinBeingMonitored(ttaaii)|string|Bulletin being monitored (TTAAii)|CCITT IA5|0|0|48
+035022|bulletinBeingMonitored(yygggg)|string|Bulletin being monitored (YYGGgg)|CCITT IA5|0|0|48
+035023|bulletinBeingMonitored(cccc)|string|Bulletin being monitored (CCCC)|CCITT IA5|0|0|32
+035024|bulletinBeingMonitored(bbb)|string|Bulletin being monitored (BBB)|CCITT IA5|0|0|24
+035030|discrepanciesInTheAvailabilityOfExpectedData|table|Discrepancies in the availability of expected data|Code table|0|0|4
+035031|qualifierOnMonitoringResults|table|Qualifier on monitoring results|Code table|0|0|7
+035032|causeOfMissingData|table|Cause of missing data|Code table|0|0|4
+035033|observationAndCollectionDeficiencies|table|Observation and collection deficiencies|Code table|0|0|7
+035034|statisticalTrendsForAvailabilityOfData(duringTheSurveyPeriod(s))|table|Statistical trends for availability of data (during the survey period(s))|Code table|0|0|3
+035035|reasonForTermination|table|Reason for termination|Code table|0|0|5
+040001|surfaceSoilMoisture(ms)|double|Surface soil moisture (ms)|%|1|0|10
+040002|estimatedErrorInSurfaceSoilMoisture|double|Estimated error in surface soil moisture|%|1|0|10
+040003|meanSurfaceSoilMoisture|double|Mean surface soil moisture|Numeric|3|0|10
+040004|rainFallDetection|double|Rain fall detection|Numeric|3|0|10
+040005|soilMoistureCorrectionFlag|flag|Soil moisture correction flag|Flag table|0|0|8
+040006|soilMoistureProcessingFlag|flag|Soil moisture processing flag|Flag table|0|0|16
+040007|soilMoistureQuality|double|Soil moisture quality|%|1|0|10
+040008|frozenLandSurfaceFraction|double|Frozen land surface fraction|%|1|0|10
+040009|inundationAndWetlandFraction|double|Inundation and wetland fraction|%|1|0|10
+040010|topographicComplexity|double|Topographic complexity|%|1|0|10
+040011|interpolationFlag|flag|Interpolation flag|Flag table|0|0|8
+040012|radiometerDataQualityFlag|flag|Radiometer data quality flag|Flag table|0|0|8
+040013|radiometerBrightnessTemperatureInterpretationFlag|table|Radiometer brightness temperature interpretation flag|Code table|0|0|3
+040014|high-frequencyFluctuationsOfTheSea-surfaceTopographyCorrection|double|High-frequency fluctuations of the sea-surface topography correction|m|4|-3000|13
+040015|normalizedDifferentialVegetationIndex(ndvi)|double|Normalized differential vegetation index (NDVI)|Numeric|2|-100|8
+040016|residualRmsInBand|double|Residual RMS in band|Numeric|3|0|14
+040017|non-normalizedPrincipalComponentScore|long|Non-normalized principal component score|Numeric|0|-1073741824|31
+040018|giacavgimagiisAverageOfImagerMeasurements|double|GIacAvgImagIIS - average of imager measurements|W m-2 sr-1 m|6|0|24
+040019|giacvarimagiisVarianceOfImagerMeasurements|double|GIacVarImagIIS - variance of imager measurements|W m-2 sr-1 m|6|0|24
+040020|gqisflagqualdetailedQualityFlagForTheSystem|flag|GqisFlagQualDetailed - quality flag for the system|Flag table|0|0|17
+040021|fractionOfWeightedAvhrrPixelInIasiFovCoveredWithSnow/ice|long|Fraction of weighted AVHRR pixel in IASI FOV covered with snow/ice|%|0|0|7
+040022|numberOfMissingBadOrFailedAvhrrPixels|long|Number of missing, bad or failed AVHRR pixels|Numeric|0|0|7
+040023|auxiliaryAltimeterStateFlags|flag|Auxiliary altimeter state flags|Flag table|0|0|5
+040024|meteorologicalMapAvailability|table|Meteorological map availability|Code table|0|0|3
+040025|interpolationFlagForMeanDiurnalTide|table|Interpolation flag for mean diurnal tide|Code table|0|0|2
+040026|scoreQuantizationFactor|double|Score quantization factor|Numeric|2|0|16
+040027|sunGlintAngle|double|Sun glint angle|deg|2|-18000|16
+040028|gmiQualityFlag|table|GMI quality flag|Code table|0|0|4
+040029|horizontalObservationIntegrationLength|long|Horizontal observation integration length|m|0|0|26
+040030|horizontalLineOfSightWind|double|Horizontal line of sight wind|m/s|2|-32767|16
+040031|errorEstimateOfHorizontalLineOfSightWind|double|Error estimate of horizontal line of sight wind|m/s|2|0|15
+040032|derivativeWindToPressure|double|Derivative wind to pressure|m s-1 Pa-1|3|-100000|18
+040033|derivativeWindToTemperature|double|Derivative wind to temperature|m s-1 K-1|3|-100000|18
+040034|derivativeWindToBackscatterRatio|double|Derivative wind to backscatter ratio|m/s|3|-200000|19
+040035|satelliteRange|long|Satellite range|m|0|380000|18
+040036|lidarL2bClassificationType|table|Lidar L2b classification type|Code table|0|0|4
+040037|backscatterRatio|double|Backscatter ratio|Numeric|3|500|20
+040038|cloudParticleSize|double|Cloud particle size|m|7|0|28
+040039|singleLookComplexImageIntensity|long|Single look complex image intensity|Numeric|0|-25|5
+040040|singleLookComplexImageSkewness|double|Single look complex image skewness|Numeric|2|1|13
+040041|singleLookComplexImageKurtosis|double|Single look complex image kurtosis|Numeric|2|1|13
+040042|singleLookComplexImageVariance|double|Single look complex image variance|Numeric|2|1|13
+040043|satelliteManoeuvreIndicator|table|Satellite manoeuvre indicator|Code table|0|0|3
+040044|dustIndex|double|Dust index|Numeric|1|0|8
+040045|cloudFormationAndHeightAssignment|flag|Cloud formation and height assignment|Flag table|0|0|5
+040046|cloudinessSummary|table|Cloudiness summary|Code table|0|0|3
+040047|validationFlagForIasiOrIasi-ngLevelProduct|table|Validation flag for IASI or IASI-NG level 1 product|Code table|0|0|3
+040048|validationFlagOfAmsu-aLevelDataFlow|table|Validation flag of AMSU-A level 1 data flow|Code table|0|0|3
+040049|cloudTestsExecutedAndResults|flag|Cloud tests executed and results|Flag table|0|0|16
+040050|retrievalInitialisation|flag|Retrieval initialisation|Flag table|0|0|8
+040051|convergenceOfTheIterativeRetrieval|table|Convergence of the iterative retrieval|Code table|0|0|3
+040052|indicationOfSuper-adiabaticAndSuper-saturationInFinalRetrieval|flag|Indication of super-adiabatic and super-saturation in final retrieval|Flag table|0|0|8
+040053|numberOfIterationsUsedForRetrieval|long|Number of iterations used for retrieval|Numeric|0|0|8
+040054|potentialProcessingAndInputsErrors|flag|Potential processing and inputs errors|Flag table|0|0|13
+040055|diagnosticsOnTheRetrieval|flag|Diagnostics on the retrieval|Flag table|0|0|21
+040056|generalRetrievalQuality|long|General retrieval quality|Code table |0|0|3
+040057|iasiLevelRetrievalFlags|flag|IASI level 2 retrieval flags|Flag table|0|0|31
+040058|numberOfVectorsDescribingTheCharacterizationMatrices|long|Number of vectors describing the characterization matrices|Numeric|0|0|8
+040059|numberOfLayersActuallyRetrieved|long|Number of layers actually retrieved|Numeric|0|0|8
+040060|numberOfProfilesRetrievedInScanline|long|Number of profiles retrieved in scanline|Numeric|0|0|8
+040061|airPartialColumnsOnEachRetrievedLayer|double|Air partial columns on each retrieved layer|mol cm-2|3|0|16
+040062|a-prioriPartialColumnsOnEachRetrievedLayer|double|A-priori partial columns on each retrieved layer|mol cm-2|10|0|16
+040063|scalingVectorMultiplyingTheAPrioriCoVectorInOrderToDefineTheRetrievedCoVector|double|Scaling vector multiplying the a priori CO vector in order to define the retrieved CO vector|Numeric|5|0|26
+040064|mainEigenvaluesOfTheSensitivityMatrix|double|Main eigenvalues of the sensitivity matrix|Numeric|6|0|31
+040065|mainEigenvectorsOfTheSensitivityMatrix|double|Main eigenvectors of the sensitivity matrix|Numeric|6|-1000000000|31
+040066|qualityIndicatorForAtmosphericWaterVapour|double|Quality indicator for atmospheric water vapour|Numeric|1|0|8
+040067|qualityIndicatorForAtmosphericTemperature|double|Quality indicator for atmospheric temperature|Numeric|1|0|8
+040068|generalRetrievalQualityFlagForSo2|table|General retrieval quality flag for SO2|Code table|0|0|4
+040069|pwlrEstimatedRetrievalErrorForSurfaceAirTemperature|double|PWLR estimated retrieval error for surface air temperature|K|4|-1000000|21
+040070|pwlrEstimatedRetrievalErrorOfSurfaceDewpoint|double|PWLR estimated retrieval error of surface dewpoint|K|4|-1000000|21
+040071|retrievalErrorCovarianceMatrixForOzoneInPrincipalComponentDomain|double|Retrieval error covariance matrix for ozone in principal component domain|Numeric|4|-1000000|21
+040072|pwlrEstimatedRetrievalQualityIndicatorOfAtmosphericOzone|double|PWLR estimated retrieval quality indicator of atmospheric ozone|Numeric|1|0|8
+040073|pwlrEstimatedRetrievalErrorOfSurfaceSkinTemperature|double|PWLR estimated retrieval error of surface skin temperature|K|1|0|8
+040074|generalInterferometryQualityFlags|flag|General interferometry quality flags|Flag table|0|0|16
+041001|pco2|double|pCO2|Pa|3|0|18
+041002|fluorescence|double|Fluorescence|kg l-1|12|0|16
+041003|dissolvedNitrates|double|Dissolved nitrates|umol kg-1|3|0|17
+041005|turbidity|double|Turbidity|NTU|2|0|12
+042001|dominantSwellWaveDirectionOfSpectralPartition|long|Dominant swell wave direction of spectral partition|deg|0|0|9
+042002|significantSwellWaveHeightOfSpectralPartition|double|Significant swell wave height of spectral partition|m|1|0|9
+042003|dominantSwellWavelengthOfSpectralPartition|double|Dominant swell wavelength of spectral partition|m|2|100|17
+042004|confidenceOfInversionForEachPartitionOfSwellWaveSpectra|table|Confidence of inversion for each partition of swell wave spectra|Code table|0|0|4
+042005|ambiguityRemovalFactorForSwellWavePartition|double|Ambiguity removal factor for swell wave partition|Numeric|5|-100000|18
+042006|waveAge|double|Wave age|Numeric|2|1|8
+042007|shortestOceanWavelengthOnSpectralResolution|double|Shortest ocean wavelength on spectral resolution|m|2|0|16
+042008|nonlinearInverseSpectralWidth|double|Nonlinear inverse spectral width|m|2|0|16
+042009|binPartitionReference|long|Bin partition reference|Numeric|0|0|8
+042010|partitionNumber|long|Partition number|Numeric|0|1|4
+042011|aCoefficientOfTheDirectionalFourierSeries|double|a1 coefficient of the directional Fourier series|Numeric|4|-20000|15
+042012|bCoefficientOfTheDirectionalFourierSeries|double|b1 coefficient of the directional Fourier series|Numeric|4|-20000|15
+042013|aCoefficientOfTheDirectionalFourierSeries|double|a2 coefficient of the directional Fourier series|Numeric|4|-20000|15
+042014|bCoefficientOfTheDirectionalFourierSeries|double|b2 coefficient of the directional Fourier series|Numeric|4|-20000|15
+042015|checkFactorK|double|Check factor K|Numeric|2|0|12
