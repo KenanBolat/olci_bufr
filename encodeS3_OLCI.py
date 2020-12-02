@@ -104,7 +104,7 @@ class S3olciBUFR(object):
                         OZAintp[m,k] =  vals['OZA'][m,i] + j*((vals['OZA'][m,i+1] - vals['OZA'][m,i]) / intpFac)
                         OAAintp[m,k] =  vals['OAA'][m,i] + j*((vals['OAA'][m,i+1] - vals['OAA'][m,i]) / intpFac)
                         k=k+1
-                        print(m,i,j,k)
+                        # print(m,i,j,k)
 
             #date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
             for en, t in  enumerate(range(len(dims['rows']))):
@@ -119,7 +119,7 @@ class S3olciBUFR(object):
                     codes_set(bufr, 'minute', date.minute)
                     codes_set(bufr, 'second', date.second)
                     # codes_set(bufr, 'longitude(highAccuracy)',vals['longitude'][t][m])
-                    print (vals['longitude'][t][m])
+                    # print (vals['longitude'][t][m])
                 #for en in xrange(len(dims['columns'])):
                     #codes_set(bufr, "#%d#latitude(highAccuracy)" %(en+1),vals['latitude'][t][en])
                 #codes_set_double_array(bufr, 'solarZenithAngle',vals['SZA'][t])
