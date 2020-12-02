@@ -118,7 +118,8 @@ class S3olciBUFR(object):
                     codes_set(bufr, 'hour', date.hour)
                     codes_set(bufr, 'minute', date.minute)
                     codes_set(bufr, 'second', date.second)
-                    # codes_set(bufr, 'longitude(highAccuracy)',vals['longitude'][t][m])
+                    codes_set(bufr, 'longitude(highAccuracy)',vals['longitude'][t][m])
+                    codes_set(bufr, 'latitude(highAccuracy)',vals['latitude'][t][m])
                     # print (vals['longitude'][t][m])
                 #for en in xrange(len(dims['columns'])):
                     #codes_set(bufr, "#%d#latitude(highAccuracy)" %(en+1),vals['latitude'][t][en])
