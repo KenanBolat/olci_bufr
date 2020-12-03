@@ -66,23 +66,23 @@ class S3olciBUFR(object):
         def set_metadata(bufr, attrs, satelliteID ):
             """Set identifying metadata."""
             # Set metadata
-            codes_set(bufr, 'typicalYear', int(attrs['start_time'][1:5]))
-            codes_set(bufr, 'typicalMonth', int(attrs['start_time'][6:8]))
-            codes_set(bufr, 'typicalDay', int(attrs['start_time'][9:11]))
-            codes_set(bufr, 'typicalHour', int(attrs['start_time'][12:14]))
-            codes_set(bufr, 'typicalMinute', int(attrs['start_time'][15:17]))
-            codes_set(bufr, 'typicalSecond', int(attrs['start_time'][18:20]))
+            codes_set(bufr, 'typicalYear', int(attrs['start_time'][2:6]))
+            codes_set(bufr, 'typicalMonth', int(attrs['start_time'][7:9]))
+            codes_set(bufr, 'typicalDay', int(attrs['start_time'][10:12]))
+            codes_set(bufr, 'typicalHour', int(attrs['start_time'][13:15]))
+            codes_set(bufr, 'typicalMinute', int(attrs['start_time'][16:18]))
+            codes_set(bufr, 'typicalSecond', int(attrs['start_time'][19:21]))
             codes_set(bufr, 'satelliteIdentifier', satelliteID) 
             codes_set(bufr, 'satelliteInstruments', 179)
             codes_set(bufr, 'stationAcquisition', (attrs['institution']))
             #codes_set(bufr, 'softwareVersionNumber', (attrs['source'][11:]))
             codes_set(bufr, 'orbitNumber', int(attrs['absolute_orbit_number']))
-            codes_set(bufr, 'year', int(attrs['start_time'][1:5]))
-            codes_set(bufr, 'month', int(attrs['start_time'][6:8]))
-            codes_set(bufr, 'day', int(attrs['start_time'][9:11]))
-            codes_set(bufr, 'hour', int(attrs['start_time'][12:14]))
-            codes_set(bufr, 'minute', int(attrs['start_time'][15:17]))
-            codes_set(bufr, 'second', int(attrs['start_time'][18:20]))
+            codes_set(bufr, 'year', int(attrs['start_time'][2:6]))
+            codes_set(bufr, 'month', int(attrs['start_time'][7:9]))
+            codes_set(bufr, 'day', int(attrs['start_time'][10:12]))
+            codes_set(bufr, 'hour', int(attrs['start_time'][13:15]))
+            codes_set(bufr, 'minute', int(attrs['start_time'][16:18]))
+            codes_set(bufr, 'second', int(attrs['start_time'][19:21]))
             return bufr
 
         def encode_observations(bufr, dims, vals):
@@ -91,39 +91,50 @@ class S3olciBUFR(object):
             SAAintp = np.zeros(vals['longitude'].shape)                        
             OZAintp = np.zeros(vals['longitude'].shape)                        
             OAAintp = np.zeros(vals['longitude'].shape)
-            intpFac = ((vals['longitude'].shape[1]-1) // (vals['SZA'].shape[1]-1))
+            SLPintp = np.zeros(vals['longitude'].shape)
+            WQSFintp = np.zeros(vals['longitude'].shape)
 
-            #TODO interpolation
-            for m in range(vals['SZA'].shape[0]-14950):
+            intpFac = ((vals['longitude'].shape[1]-1) // (vals['SZA'].shape[1]-1))                        
+            for m in range(vals['SZA'].shape[0]-14900):
                 k=0
+                WQSFintp[m,:] = vals['WQSF'][m,:].astype('int8')
                 for i in range(vals['SZA'].shape[1]-1):
                     for j in range(intpFac):
                         SZAintp[m,k] =  vals['SZA'][m,i] + j*((vals['SZA'][m,i+1] - vals['SZA'][m,i]) / intpFac)
                         SAAintp[m,k] =  vals['SAA'][m,i] + j*((vals['SAA'][m,i+1] - vals['SAA'][m,i]) / intpFac)
                         OZAintp[m,k] =  vals['OZA'][m,i] + j*((vals['OZA'][m,i+1] - vals['OZA'][m,i]) / intpFac)
                         OAAintp[m,k] =  vals['OAA'][m,i] + j*((vals['OAA'][m,i+1] - vals['OAA'][m,i]) / intpFac)
+                        SLPintp[m,k] =  vals['sea_level_pressure'][m,i] + j*((vals['sea_level_pressure'][m,i+1] - vals['sea_level_pressure'][m,i]) / intpFac) 
                         k=k+1
-                        # print(m,i,j,k)
+                        print(m,k, SLPintp[m,k])
 
             #date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
             for en, t in  enumerate(range(len(dims['rows']))):
                 print(t)
                 codes_set_array(bufr, 'longitude(highAccuracy)', vals['longitude'][t,:])
                 codes_set_array(bufr, 'latitude(highAccuracy)', vals['latitude'][t,:])
+                codes_set_array(bufr, 'solarZenithAngle',SZAintp[t])
+                #codes_set_array(bufr, 'solarAzimuth', SAAintp[t])
+                codes_set_array(bufr, 'viewingZenithAngle',OZAintp[t])
+                #codes_set_array(bufr, 'viewingAzimuthAngle',OAAintp[t])
                 time_stamp_array = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)
-
                 codes_set(bufr, 'year', time_stamp_array.year)
                 codes_set(bufr, 'month', time_stamp_array.month)
                 codes_set(bufr, 'day', time_stamp_array.day)
                 codes_set(bufr, 'hour', time_stamp_array.hour)
                 codes_set(bufr, 'minute', time_stamp_array.minute)
                 codes_set(bufr, 'second', time_stamp_array.second)
-                # codes_set(bufr, '#%d#presure'%(t+1),1)
+                codes_set(bufr, 'pressure', 1)
                 # codes_set_array(bufr, 'totalColumnWaterVapour', (vals['IWV'].filled()[t,:]).astype('int8'))
                 # codes_set_double_array(bufr, "totalColumnWaterVapour" ,vals['IWV'][t,:].astype('float32'))
-                codes_set_array(bufr, 'radiometerSensedSurfaceType',vals['WQSF'][t,:].astype('int8'))
-                # codes_set_double_array(bufr, 'presure',vals['sea_level_pressure'][t,:])
-                # #codes_set_double_array(bufr, "#%d#presure"%(p+1),vals['sea_level_pressure'][t])
+                #codes_set_array(bufr, 'radiometerSensedSurfaceType',vals['WQSF'][t,:].astype('int8'))
+                codes_set_array(bufr, 'radiometerSensedSurfaceType',WQSFintp[t,:])
+
+                # Kenan normalde burasi array olacak sunun gibi    codes_set_array(bufr, 'pressure', SLPintp[t,:])
+
+                codes_set(bufr, 'pressure', SLPintp[t,0] * 100)
+
+                # #codes_set_double_array(bufr, "#%d#pressure"%(p+1),vals['sea_level_pressure'][t])
 
                 # for m in range(len(dims['columns'])):
                 #     date = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)
@@ -189,7 +200,6 @@ class S3olciBUFR(object):
     def read_s3olci_netcdf(self, s3olci):
         """
         Read input S3 OLCI netCDF file.
-
         Return dictionaries for variables, dimensions and attributes.
         """
         ds = Dataset(s3olci)
