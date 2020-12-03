@@ -111,6 +111,7 @@ class S3olciBUFR(object):
                 codes_set_array(bufr, 'longitude(highAccuracy)', vals['longitude'][t,:])
                 codes_set_array(bufr, 'latitude(highAccuracy)', vals['latitude'][t,:])
                 time_stamp_array = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)
+
                 codes_set(bufr, 'year', time_stamp_array.year)
                 codes_set(bufr, 'month', time_stamp_array.month)
                 codes_set(bufr, 'day', time_stamp_array.day)
@@ -119,7 +120,8 @@ class S3olciBUFR(object):
                 codes_set(bufr, 'second', time_stamp_array.second)
                 # codes_set(bufr, '#%d#presure'%(t+1),1)
                 # codes_set_array(bufr, 'totalColumnWaterVapour', (vals['IWV'].filled()[t,:]).astype('int8'))
-                # codes_set_double_array(bufr, "#%d#totalColumnWaterVapour"%(t+1),vals['IWV'][t])
+                # codes_set_double_array(bufr, "totalColumnWaterVapour" ,vals['IWV'][t,:].astype('float32'))
+                codes_set_array(bufr, 'radiometerSensedSurfaceType',vals['WQSF'][t,:].astype('int8'))
 
                 # for m in range(len(dims['columns'])):
                 #     date = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)

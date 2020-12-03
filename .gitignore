@@ -3,4 +3,4 @@
 *.bufr
 *.nc
 *.tar.gz 
-
+*.bin
