@@ -122,6 +122,8 @@ class S3olciBUFR(object):
                 # codes_set_array(bufr, 'totalColumnWaterVapour', (vals['IWV'].filled()[t,:]).astype('int8'))
                 # codes_set_double_array(bufr, "totalColumnWaterVapour" ,vals['IWV'][t,:].astype('float32'))
                 codes_set_array(bufr, 'radiometerSensedSurfaceType',vals['WQSF'][t,:].astype('int8'))
+                # codes_set_double_array(bufr, 'presure',vals['sea_level_pressure'][t,:])
+                # #codes_set_double_array(bufr, "#%d#presure"%(p+1),vals['sea_level_pressure'][t])
 
                 # for m in range(len(dims['columns'])):
                 #     date = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)
