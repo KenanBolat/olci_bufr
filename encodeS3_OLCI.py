@@ -33,7 +33,7 @@ class S3olciBUFR(object):
         201129, 13095, 201000, 8093, 13095, 8093
         ]
 
-    def __init__(self, infile, outfile):
+    def __init__(self, infile, outfile, append=False):
         """
         Store inputs, extract variables, map them and write to output file.
         """
@@ -45,7 +45,6 @@ class S3olciBUFR(object):
         logging.info("Processing %s" % infile)
         vals, dims, attrs = self.read_s3olci_netcdf(infile)
         bufr = self.populate_bufr(bufr, vals, dims, attrs)
-        self.write_output_bufr(bufr)
 
     def populate_bufr(self, bufr, vals, dims, attrs):
         """Populate BUFR with values from netCDF."""
@@ -151,7 +150,11 @@ class S3olciBUFR(object):
                 # #codes_set(bufr, '#%d#measurementUncertaintySignificance'%(t+1),0)
                 # #codes_set_double_array(bufr, "#%d#totalColumnWaterVapour"%(t+1),vals['IWV_err'][t])
                 # #codes_set(bufr, '#%d#measurementUncertaintySignificance'%(t+1),CODES_MISSING_DOUBLE)
-            return bufr
+                if t == 0:
+                    append = False
+                else:
+                    append = True
+                self.write_output_bufr(bufr, append)
 
         platform, satelliteID = extract_metadata(attrs)
 
@@ -166,12 +169,15 @@ class S3olciBUFR(object):
         bufr = encode_observations(bufr, dims, vals)
         return bufr
 
-    def write_output_bufr(self, bufr):
+    def write_output_bufr(self, bufr, append=False):
         """
         Write BUFR constructed in memory to outfile.
         """
         codes_set(bufr, 'pack', True)
-        fbufrout = open(self.outfile, 'wb')
+        if not append:
+            fbufrout = open(self.outfile, 'wb')
+        else:
+            fbufrout = open(self.outfile, 'ab')
         codes_write(bufr, fbufrout)
         logging.info('Created output BUFR file: %s' % self.outfile)
         fbufrout.close()
