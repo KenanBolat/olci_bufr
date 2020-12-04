@@ -12,26 +12,26 @@ import numpy as np
 from netCDF4 import Dataset
 from datetime import datetime
 from eccodes import (
-                     CODES_MISSING_LONG,
-                     CODES_MISSING_DOUBLE,
-                     codes_bufr_new_from_samples,
-                     codes_set_array,
-                     codes_set,
-                     codes_set_long,
-                     codes_set_double_array,
-                     codes_write,
-                    )
+    CODES_MISSING_LONG,
+    CODES_MISSING_DOUBLE,
+    codes_bufr_new_from_samples,
+    codes_set_array,
+    codes_set,
+    codes_set_long,
+    codes_set_double_array,
+    codes_write,
+)
+
 
 class S3olciBUFR(object):
-
     """Sentinel 3 OLCI BUFR writer."""
 
     # Template for output BUFR
     unexpandedDescriptors = [
-        1007, 2019, 1096, 25061, 5040, 301011, 301013, 301021, 7025, 5022, 10080, 27080, 
-        8003, 8072, 7004, 13093, 8003, 8077, 201131, 202129, 7004, 7004, 202000, 201000, 
+        1007, 2019, 1096, 25061, 5040, 301011, 301013, 301021, 7025, 5022, 10080, 27080,
+        8003, 8072, 7004, 13093, 8003, 8077, 201131, 202129, 7004, 7004, 202000, 201000,
         201129, 13095, 201000, 8093, 13095, 8093
-        ]
+    ]
 
     def __init__(self, infile, outfile, append=False):
         """
@@ -56,62 +56,73 @@ class S3olciBUFR(object):
         def extract_metadata(attrs):
             """Interpret attributes for use in BUFR."""
             # Platform
-            platform=str(attrs['product_name'][2:5])
-            if('A' in platform):
-               satelliteID=61
-            elif('B' in platform):
-               satelliteID=65
+            platform = str(attrs['product_name'][2:5])
+            if ('A' in platform):
+                satelliteID = 61
+            elif ('B' in platform):
+                satelliteID = 65
             return (platform, satelliteID)
 
-        def set_metadata(bufr, attrs, satelliteID ):
+        def set_metadata(bufr, attrs, satelliteID):
             """Set identifying metadata."""
             # Set metadata
-            codes_set(bufr, 'typicalYear', int(attrs['start_time'][2:6]))
-            codes_set(bufr, 'typicalMonth', int(attrs['start_time'][7:9]))
-            codes_set(bufr, 'typicalDay', int(attrs['start_time'][10:12]))
-            codes_set(bufr, 'typicalHour', int(attrs['start_time'][13:15]))
-            codes_set(bufr, 'typicalMinute', int(attrs['start_time'][16:18]))
-            codes_set(bufr, 'typicalSecond', int(attrs['start_time'][19:21]))
-            codes_set(bufr, 'satelliteIdentifier', satelliteID) 
+            date_string = attrs['start_time'].replace('\'', '')
+            date_value = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%fZ")
+
+            codes_set(bufr, 'typicalYear', date_value.year)
+            codes_set(bufr, 'typicalMonth', date_value.month)
+            codes_set(bufr, 'typicalDay', date_value.day)
+            codes_set(bufr, 'typicalHour', date_value.hour)
+            codes_set(bufr, 'typicalMinute', date_value.minute)
+            codes_set(bufr, 'typicalSecond', date_value.second)
+            codes_set(bufr, 'satelliteIdentifier', satelliteID)
             codes_set(bufr, 'satelliteInstruments', 179)
             codes_set(bufr, 'stationAcquisition', (attrs['institution']))
-            #codes_set(bufr, 'softwareVersionNumber', (attrs['source'][11:]))
+            # codes_set(bufr, 'softwareVersionNumber', (attrs['source'][11:]))
             codes_set(bufr, 'orbitNumber', int(attrs['absolute_orbit_number']))
-            codes_set(bufr, 'year', int(attrs['start_time'][2:6]))
-            codes_set(bufr, 'month', int(attrs['start_time'][7:9]))
-            codes_set(bufr, 'day', int(attrs['start_time'][10:12]))
-            codes_set(bufr, 'hour', int(attrs['start_time'][13:15]))
-            codes_set(bufr, 'minute', int(attrs['start_time'][16:18]))
-            codes_set(bufr, 'second', int(attrs['start_time'][19:21]))
+            codes_set(bufr, 'year', date_value.year)
+            codes_set(bufr, 'month', date_value.month)
+            codes_set(bufr, 'day',  date_value.day)
+            codes_set(bufr, 'hour', date_value.hour)
+            codes_set(bufr, 'minute', date_value.minute)
+            codes_set(bufr, 'second', date_value.second)
             return bufr
 
         def encode_observations(bufr, dims, vals):
             """Encode observations into BUFR."""
-            SZAintp = np.zeros(vals['longitude'].shape)                        
-            SAAintp = np.zeros(vals['longitude'].shape)                        
-            OZAintp = np.zeros(vals['longitude'].shape)                        
+            SZAintp = np.zeros(vals['longitude'].shape)
+            SAAintp = np.zeros(vals['longitude'].shape)
+            OZAintp = np.zeros(vals['longitude'].shape)
             OAAintp = np.zeros(vals['longitude'].shape)
             SLPintp = np.zeros(vals['longitude'].shape)
             WQSFintp = np.zeros(vals['longitude'].shape)
 
-            intpFac = ((vals['longitude'].shape[1]-1) // (vals['SZA'].shape[1]-1))                        
-            for m in range(vals['SZA'].shape[0]-14900):
-                k=0
-                WQSFintp[m,:] = vals['WQSF'][m,:].astype('int8')
-                for i in range(vals['SZA'].shape[1]-1):
+            intpFac = ((vals['longitude'].shape[1] - 1) // (vals['SZA'].shape[1] - 1))
+            for m in range(vals['SZA'].shape[0] - 14900):
+                k = 0
+                WQSFintp[m, :] = vals['WQSF'][m, :].astype('int8')
+                for i in range(vals['SZA'].shape[1] - 1):
                     for j in range(intpFac):
-                        SZAintp[m,k] =  vals['SZA'][m,i] + j*((vals['SZA'][m,i+1] - vals['SZA'][m,i]) / intpFac)
-                        SAAintp[m,k] =  vals['SAA'][m,i] + j*((vals['SAA'][m,i+1] - vals['SAA'][m,i]) / intpFac)
-                        OZAintp[m,k] =  vals['OZA'][m,i] + j*((vals['OZA'][m,i+1] - vals['OZA'][m,i]) / intpFac)
-                        OAAintp[m,k] =  vals['OAA'][m,i] + j*((vals['OAA'][m,i+1] - vals['OAA'][m,i]) / intpFac)
-                        SLPintp[m,k] =  vals['sea_level_pressure'][m,i] + j*((vals['sea_level_pressure'][m,i+1] - vals['sea_level_pressure'][m,i]) / intpFac) 
-                        k=k+1
-                        print(m,k, SLPintp[m,k])
+                        SZAintp[m, k] = vals['SZA'][m, i] + j * ((vals['SZA'][m, i + 1] - vals['SZA'][m, i]) / intpFac)
+                        SAAintp[m, k] = vals['SAA'][m, i] + j * ((vals['SAA'][m, i + 1] - vals['SAA'][m, i]) / intpFac)
+                        OZAintp[m, k] = vals['OZA'][m, i] + j * ((vals['OZA'][m, i + 1] - vals['OZA'][m, i]) / intpFac)
+                        OAAintp[m, k] = vals['OAA'][m, i] + j * ((vals['OAA'][m, i + 1] - vals['OAA'][m, i]) / intpFac)
+                        SLPintp[m, k] = vals['sea_level_pressure'][m, i] + j * (
+                                    (vals['sea_level_pressure'][m, i + 1] - vals['sea_level_pressure'][m, i]) / intpFac)
+                        k = k + 1
+                        print(m, k, SLPintp[m, k])
 
-            #date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
-            for en, t in  enumerate(range(len(dims['rows']))):
+            # date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
+            for en, t in enumerate(range(len(dims['rows']))):
                 print(t)
                 time_stamp_array = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)
+                codes_set_array(bufr, 'longitude(highAccuracy)', vals['longitude'][t, :])
+                codes_set_array(bufr, 'latitude(highAccuracy)', vals['latitude'][t, :])
+                codes_set_array(bufr, 'solarZenithAngle', SZAintp[t])
+                # codes_set_array(bufr, 'solarAzimuth', SAAintp[t])
+                codes_set_array(bufr, 'viewingZenithAngle', OZAintp[t])
+                # codes_set_array(bufr, 'viewingAzimuthAngle',OAAintp[t])
+                time_stamp_array = datetime.fromtimestamp(vals['time_stamp'][t] / 1000000 + 946681200)
                 codes_set(bufr, 'year', time_stamp_array.year)
                 codes_set(bufr, 'month', time_stamp_array.month)
                 codes_set(bufr, 'day', time_stamp_array.day)
@@ -136,7 +147,15 @@ class S3olciBUFR(object):
                 codes_set(bufr, 'measurementUncertaintySignificance',0)
                 #codes_set_array(bufr, "totalColumnWaterVapour",vals['IWV_err'].filled()[t,:])
                 codes_set(bufr, 'measurementUncertaintySignificance',CODES_MISSING_DOUBLE)
+                codes_set(bufr, 'pressure', 1)
+                # codes_set_array(bufr, 'totalColumnWaterVapour', (vals['IWV'].filled()[t,:]).astype('int8'))
+                # codes_set_double_array(bufr, "totalColumnWaterVapour" ,vals['IWV'][t,:].astype('float32'))
+                # codes_set_array(bufr, 'radiometerSensedSurfaceType',vals['WQSF'][t,:].astype('int8'))
+                codes_set_array(bufr, 'radiometerSensedSurfaceType', WQSFintp[t, :])
 
+                # Kenan normalde burasi array olacak sunun gibi    codes_set_array(bufr, 'pressure', SLPintp[t,:])
+
+                codes_set(bufr, 'pressure', SLPintp[t, 0] * 100)
 
                 # #codes_set_double_array(bufr, "#%d#pressure"%(p+1),vals['sea_level_pressure'][t])
 
@@ -179,9 +198,9 @@ class S3olciBUFR(object):
 
         # Setup structure of BUFR
         codes_set(bufr, 'numberOfSubsets', len(dims['columns']))
-        #delayedDescriptorReplication=[len(dims['oswPartitions']),len(dims['oswAngularBinSize'])]
-        #delayedDescriptorReplication=len(dims['columns'])
-        #codes_set_array(bufr, 'inputDelayedDescriptorReplicationFactor', delayedDescriptorReplication)
+        # delayedDescriptorReplication=[len(dims['oswPartitions']),len(dims['oswAngularBinSize'])]
+        # delayedDescriptorReplication=len(dims['columns'])
+        # codes_set_array(bufr, 'inputDelayedDescriptorReplicationFactor', delayedDescriptorReplication)
         codes_set_array(bufr, 'unexpandedDescriptors', self.unexpandedDescriptors)
 
         bufr = set_metadata(bufr, attrs, satelliteID)
@@ -211,7 +230,7 @@ class S3olciBUFR(object):
         grps = {}
         vals = {}
         dims = {}
-        attrs= {}
+        attrs = {}
         for g in ds.groups:
             grps[g] = ds.groups[g]
             for v in ds[g].variables:
@@ -221,8 +240,8 @@ class S3olciBUFR(object):
             for a in ds[g].ncattrs():
                 attrs[a] = repr(ds[g].getncattr(a))
         # read all attributes from the nc file and store it in dictionary
-        #attrs= {}
-        #for a in ds.ncattrs():
+        # attrs= {}
+        # for a in ds.ncattrs():
         #     attrs[a] = repr(ds.getncattr(a))
 
         return vals, dims, attrs
@@ -248,15 +267,18 @@ class S3olciBUFR(object):
         codes_set(bufr, 'compressedData', 1)
         return bufr
 
+
 def set_file_name(inputFile):
     """
     WMO file name convention.
     """
-    fileName=os.path.basename(inputFile).split('_',21)
-    dateTime=fileName[7].split('T',2)
-    satId=fileName[0].upper()
-    outFile='W_XX-EUMETSAT-Darmstadt,SURFACE+SATELLITE,'+satId+'+OL+NRT+WV_C_EUMP_'+dateTime[0]+dateTime[1]+'_WV_VV.bin'
+    fileName = os.path.basename(inputFile).split('_', 21)
+    dateTime = fileName[7].split('T', 2)
+    satId = fileName[0].upper()
+    outFile = 'W_XX-EUMETSAT-Darmstadt,SURFACE+SATELLITE,' + satId + '+OL+NRT+WV_C_EUMP_' + dateTime[0] + dateTime[
+        1] + '_WV_VV.bin'
     return outFile
+
 
 def main():
     """
@@ -265,7 +287,7 @@ def main():
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("infile", help="Input netCDF file")
-#    parser.add_argument("outfile", help="Output BUFR file")
+    #    parser.add_argument("outfile", help="Output BUFR file")
     parser.add_argument("-v", "--verbose", action="store_true",
                         help="verbose mode")
     args = parser.parse_args()
@@ -273,5 +295,6 @@ def main():
         logging.basicConfig(format="%(asctime)s: %(message)s", level=logging.INFO)
     outfile = set_file_name(args.infile)
     bufr = S3olciBUFR(args.infile, outfile)
+
 
 main()
