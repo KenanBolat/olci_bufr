@@ -131,7 +131,7 @@ class S3olciBUFR(object):
                 codes_set(bufr, 'verticalSignificance(satelliteObservations)',0)
                 codes_set_array(bufr, 'radiometerSensedSurfaceType',WQSFintp[t,:])
                 codes_set(bufr, 'pressure', 1)
-                codes_set(bufr, 'pressure', SLPintp[t,0])
+                #codes_set(bufr, 'pressure', SLPintp[t,:])
                 #codes_set_array(bufr, "totalColumnWaterVapour" ,[ row*0.299998 if (0 > row < 255) else CODES_MISSING_DOUBLE for row in vals['IWV'].filled()[t,:]])
                 codes_set(bufr, 'measurementUncertaintySignificance',0)
                 #codes_set_array(bufr, "totalColumnWaterVapour",vals['IWV_err'].filled()[t,:])
