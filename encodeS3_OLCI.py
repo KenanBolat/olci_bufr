@@ -143,7 +143,20 @@ class S3olciBUFR(object):
                 codes_set_array(bufr, 'radiometerSensedSurfaceType',WQSFintp[t,:])
                 codes_set(bufr, 'pressure', 1)
                 #codes_set(bufr, 'pressure', SLPintp[t,:])
-                #codes_set_array(bufr, "totalColumnWaterVapour" ,[ row*0.299998 if (0 > row < 255) else CODES_MISSING_DOUBLE for row in vals['IWV'].filled()[t,:]])
+                a = [row * 0.299998 if (0 > row < 255) else CODES_MISSING_DOUBLE for row in vals['IWV'].filled()[t, :]]
+                # a = np.ones((1217))
+                # a = np.ones((1217))
+                # b = [row * 0.299998 if (0 > row < 255) else CODES_MISSING_DOUBLE for row in vals['IWV_err'].filled()[t, :]]
+
+
+                # iwv_combined = list(map(lambda x,y:[x,y],a,b))
+                # codes_set_double_array(bufr, "#1#totalColumnWaterVapour",  vals['IWV'].filled()[t, :])
+                codes_set_double_array(bufr, "#1#totalColumnWaterVapour",  np.random.uniform(low=1, high=50, size=(1217,)))
+                codes_set_double_array(bufr, "#2#totalColumnWaterVapour",  np.random.uniform(low=1, high=50, size=(1217,)))
+                # codes_set_double_array(bufr, "#2#totalColumnWaterVapour",  vals['IWV_err'].filled()[t, :])
+                # codes_set_array(bufr, "totalColumnWaterVapour", b)
+
+
                 codes_set(bufr, 'measurementUncertaintySignificance',0)
                 #codes_set_array(bufr, "totalColumnWaterVapour",vals['IWV_err'].filled()[t,:])
                 codes_set(bufr, 'measurementUncertaintySignificance',CODES_MISSING_DOUBLE)
