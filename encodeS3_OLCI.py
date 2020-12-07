@@ -11,6 +11,12 @@ import numpy as np
 
 from netCDF4 import Dataset
 from datetime import datetime
+# region for debugging
+import matplotlib
+
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
+# endregion
 from eccodes import (
     CODES_MISSING_LONG,
     CODES_MISSING_DOUBLE,
@@ -82,7 +88,7 @@ class S3olciBUFR(object):
             codes_set(bufr, 'orbitNumber', int(attrs['absolute_orbit_number']))
             codes_set(bufr, 'year', date_value.year)
             codes_set(bufr, 'month', date_value.month)
-            codes_set(bufr, 'day',  date_value.day)
+            codes_set(bufr, 'day', date_value.day)
             codes_set(bufr, 'hour', date_value.hour)
             codes_set(bufr, 'minute', date_value.minute)
             codes_set(bufr, 'second', date_value.second)
@@ -108,14 +114,26 @@ class S3olciBUFR(object):
                         OZAintp[m, k] = vals['OZA'][m, i] + j * ((vals['OZA'][m, i + 1] - vals['OZA'][m, i]) / intpFac)
                         OAAintp[m, k] = vals['OAA'][m, i] + j * ((vals['OAA'][m, i + 1] - vals['OAA'][m, i]) / intpFac)
                         SLPintp[m, k] = vals['sea_level_pressure'][m, i] + j * (
-                                    (vals['sea_level_pressure'][m, i + 1] - vals['sea_level_pressure'][m, i]) / intpFac)
+                                (vals['sea_level_pressure'][m, i + 1] - vals['sea_level_pressure'][m, i]) / intpFac)
                         k = k + 1
                         print(m, k, SLPintp[m, k])
 
             # date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
+            scale_factor = 0.299998
+
+            ivw_data = vals['IWV'].filled()
+            ivw_data_rectified = np.where((ivw_data < 255) & (ivw_data > 0),
+                                          ivw_data * scale_factor,
+                                          CODES_MISSING_DOUBLE)
+
+            ivw_err_data = vals['IWV_err'].filled()
+            ivw_err_data_rectified = np.where((ivw_err_data < 255) & (ivw_err_data > 0),
+                                              ivw_err_data * scale_factor,
+                                              CODES_MISSING_DOUBLE)
+
             for en, t in enumerate(range(len(dims['rows']))):
                 print(t)
-                time_stamp_array = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)
+                time_stamp_array = datetime.fromtimestamp(vals['time_stamp'][t] / 1000000 + 946681200)
                 codes_set_array(bufr, 'longitude(highAccuracy)', vals['longitude'][t, :])
                 codes_set_array(bufr, 'latitude(highAccuracy)', vals['latitude'][t, :])
                 codes_set_array(bufr, 'solarZenithAngle', SZAintp[t])
@@ -129,41 +147,27 @@ class S3olciBUFR(object):
                 codes_set(bufr, 'hour', time_stamp_array.hour)
                 codes_set(bufr, 'minute', time_stamp_array.minute)
                 codes_set(bufr, 'second', time_stamp_array.second)
-                codes_set_array(bufr, 'longitude(highAccuracy)', vals['longitude'][t,:])
-                codes_set_array(bufr, 'latitude(highAccuracy)', vals['latitude'][t,:])
-                codes_set_array(bufr, 'solarZenithAngle',SZAintp[t])
-                #codes_set_array(bufr, 'solarAzimuth', SAAintp[t])
-                codes_set_array(bufr, 'viewingZenithAngle',OZAintp[t])
-                #codes_set_array(bufr, 'viewingAzimuthAngle',OAAintp[t])
-                codes_set(bufr, 'verticalSignificance(satelliteObservations)',2)
-                codes_set(bufr, 'pixel(sType',0)
-                codes_set(bufr, 'pressure',CODES_MISSING_DOUBLE)
-                codes_set(bufr, 'cloudOpticalThickness',CODES_MISSING_DOUBLE)
-                codes_set(bufr, 'verticalSignificance(satelliteObservations)',0)
-                codes_set_array(bufr, 'radiometerSensedSurfaceType',WQSFintp[t,:])
+                codes_set_array(bufr, 'longitude(highAccuracy)', vals['longitude'][t, :])
+                codes_set_array(bufr, 'latitude(highAccuracy)', vals['latitude'][t, :])
+                codes_set_array(bufr, 'solarZenithAngle', SZAintp[t])
+                # codes_set_array(bufr, 'solarAzimuth', SAAintp[t])
+                codes_set_array(bufr, 'viewingZenithAngle', OZAintp[t])
+                # codes_set_array(bufr, 'viewingAzimuthAngle',OAAintp[t])
+                codes_set(bufr, 'verticalSignificance(satelliteObservations)', 2)
+                codes_set(bufr, 'pixel(sType', 0)
+                codes_set(bufr, 'pressure', CODES_MISSING_DOUBLE)
+                codes_set(bufr, 'cloudOpticalThickness', CODES_MISSING_DOUBLE)
+                codes_set(bufr, 'verticalSignificance(satelliteObservations)', 0)
+                codes_set_array(bufr, 'radiometerSensedSurfaceType', WQSFintp[t, :])
                 codes_set(bufr, 'pressure', 1)
-                #codes_set(bufr, 'pressure', SLPintp[t,:])
-                a = [row * 0.299998 if (0 > row < 255) else CODES_MISSING_DOUBLE for row in vals['IWV'].filled()[t, :]]
-                # a = np.ones((1217))
-                # a = np.ones((1217))
-                # b = [row * 0.299998 if (0 > row < 255) else CODES_MISSING_DOUBLE for row in vals['IWV_err'].filled()[t, :]]
+                # codes_set(bufr, 'pressure', SLPintp[t,:])
+                codes_set_double_array(bufr, "#1#totalColumnWaterVapour", ivw_data_rectified[t, :])
+                codes_set_double_array(bufr, "#2#totalColumnWaterVapour", ivw_err_data_rectified[t,: ])
 
-
-                # iwv_combined = list(map(lambda x,y:[x,y],a,b))
-                # codes_set_double_array(bufr, "#1#totalColumnWaterVapour",  vals['IWV'].filled()[t, :])
-                codes_set_double_array(bufr, "#1#totalColumnWaterVapour",  np.random.uniform(low=1, high=50, size=(1217,)))
-                codes_set_double_array(bufr, "#2#totalColumnWaterVapour",  np.random.uniform(low=1, high=50, size=(1217,)))
-                # codes_set_double_array(bufr, "#2#totalColumnWaterVapour",  vals['IWV_err'].filled()[t, :])
-                # codes_set_array(bufr, "totalColumnWaterVapour", b)
-
-
-                codes_set(bufr, 'measurementUncertaintySignificance',0)
-                #codes_set_array(bufr, "totalColumnWaterVapour",vals['IWV_err'].filled()[t,:])
-                codes_set(bufr, 'measurementUncertaintySignificance',CODES_MISSING_DOUBLE)
+                codes_set(bufr, 'measurementUncertaintySignificance', 0)
+                # codes_set_array(bufr, "totalColumnWaterVapour",vals['IWV_err'].filled()[t,:])
+                codes_set(bufr, 'measurementUncertaintySignificance', CODES_MISSING_DOUBLE)
                 codes_set(bufr, 'pressure', 1)
-                # codes_set_array(bufr, 'totalColumnWaterVapour', (vals['IWV'].filled()[t,:]).astype('int8'))
-                # codes_set_double_array(bufr, "totalColumnWaterVapour" ,vals['IWV'][t,:].astype('float32'))
-                # codes_set_array(bufr, 'radiometerSensedSurfaceType',vals['WQSF'][t,:].astype('int8'))
                 codes_set_array(bufr, 'radiometerSensedSurfaceType', WQSFintp[t, :])
 
                 # Kenan normalde burasi array olacak sunun gibi    codes_set_array(bufr, 'pressure', SLPintp[t,:])
