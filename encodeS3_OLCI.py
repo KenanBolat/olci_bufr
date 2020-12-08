@@ -13,7 +13,6 @@ from netCDF4 import Dataset
 from datetime import datetime
 # region for debugging
 import matplotlib
-
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 # endregion
@@ -124,12 +123,14 @@ class S3olciBUFR(object):
             ivw_data = vals['IWV'].filled()
             ivw_data_rectified = np.where((ivw_data < 255) & (ivw_data > 0),
                                           ivw_data * scale_factor,
-                                          CODES_MISSING_DOUBLE)
+                                          CODES_MISSING_LONG)
 
             ivw_err_data = vals['IWV_err'].filled()
             ivw_err_data_rectified = np.where((ivw_err_data < 255) & (ivw_err_data > 0),
                                               ivw_err_data * scale_factor,
-                                              CODES_MISSING_DOUBLE)
+                                              CODES_MISSING_LONG)
+            SAAintp_rec = np.where((SAAintp < 0 ), SAAintp + 180, SAAintp)
+            OAAintp_rec = np.where((OAAintp < 0 ), OAAintp + 180, OAAintp)
 
             for en, t in enumerate(range(len(dims['rows']))):
                 print(t)
@@ -137,9 +138,9 @@ class S3olciBUFR(object):
                 codes_set_array(bufr, 'longitude(highAccuracy)', vals['longitude'][t, :])
                 codes_set_array(bufr, 'latitude(highAccuracy)', vals['latitude'][t, :])
                 codes_set_array(bufr, 'solarZenithAngle', SZAintp[t])
-                # codes_set_array(bufr, 'solarAzimuth', SAAintp[t])
+                codes_set_array(bufr, 'solarAzimuth', SAAintp_rec[t])
                 codes_set_array(bufr, 'viewingZenithAngle', OZAintp[t])
-                # codes_set_array(bufr, 'viewingAzimuthAngle',OAAintp[t])
+                codes_set_array(bufr, 'viewingAzimuthAngle',OAAintp_rec[t])
                 time_stamp_array = datetime.fromtimestamp(vals['time_stamp'][t] / 1000000 + 946681200)
                 codes_set(bufr, 'year', time_stamp_array.year)
                 codes_set(bufr, 'month', time_stamp_array.month)
@@ -163,11 +164,11 @@ class S3olciBUFR(object):
                 # codes_set(bufr, 'pressure', SLPintp[t,:])
                 codes_set_double_array(bufr, "#1#totalColumnWaterVapour", ivw_data_rectified[t, :])
                 codes_set_double_array(bufr, "#2#totalColumnWaterVapour", ivw_err_data_rectified[t,: ])
-
                 codes_set(bufr, 'measurementUncertaintySignificance', 0)
-                # codes_set_array(bufr, "totalColumnWaterVapour",vals['IWV_err'].filled()[t,:])
                 codes_set(bufr, 'measurementUncertaintySignificance', CODES_MISSING_DOUBLE)
-                codes_set(bufr, 'pressure', 1)
+                # codes_set(bufr, '#1#pressure', np.ones(vals['longitude'][0,:].shape))
+                # codes_set(bufr, '#2#pressure', np.ones(vals['longitude'][0,:].shape)*CODES_MISSING_DOUBLE)
+                # codes_set(bufr, '#3#pressure', vals['sea_level_pressure'][t,: ])
                 codes_set_array(bufr, 'radiometerSensedSurfaceType', WQSFintp[t, :])
 
                 # Kenan normalde burasi array olacak sunun gibi    codes_set_array(bufr, 'pressure', SLPintp[t,:])
