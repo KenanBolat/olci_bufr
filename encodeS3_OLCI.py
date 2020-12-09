@@ -103,7 +103,7 @@ class S3olciBUFR(object):
             WQSFintp = np.zeros(vals['longitude'].shape)
 
             intpFac = ((vals['longitude'].shape[1] - 1) // (vals['SZA'].shape[1] - 1))
-            for m in range(vals['SZA'].shape[0] - 14900):
+            for m in range(vals['SZA'].shape[0]):
                 k = 0
                 WQSFintp[m, :] = vals['WQSF'][m, :].astype('int8')
                 for i in range(vals['SZA'].shape[1] - 1):
@@ -135,12 +135,6 @@ class S3olciBUFR(object):
             for en, t in enumerate(range(len(dims['rows']))):
                 print(t)
                 time_stamp_array = datetime.fromtimestamp(vals['time_stamp'][t] / 1000000 + 946681200)
-                codes_set_array(bufr, 'longitude(highAccuracy)', vals['longitude'][t, :])
-                codes_set_array(bufr, 'latitude(highAccuracy)', vals['latitude'][t, :])
-                codes_set_array(bufr, 'solarZenithAngle', SZAintp[t])
-                codes_set_array(bufr, 'solarAzimuth', SAAintp_rec[t])
-                codes_set_array(bufr, 'viewingZenithAngle', OZAintp[t])
-                codes_set_array(bufr, 'viewingAzimuthAngle',OAAintp_rec[t])
                 time_stamp_array = datetime.fromtimestamp(vals['time_stamp'][t] / 1000000 + 946681200)
                 codes_set(bufr, 'year', time_stamp_array.year)
                 codes_set(bufr, 'month', time_stamp_array.month)
@@ -151,32 +145,22 @@ class S3olciBUFR(object):
                 codes_set_array(bufr, 'longitude(highAccuracy)', vals['longitude'][t, :])
                 codes_set_array(bufr, 'latitude(highAccuracy)', vals['latitude'][t, :])
                 codes_set_array(bufr, 'solarZenithAngle', SZAintp[t])
-                # codes_set_array(bufr, 'solarAzimuth', SAAintp[t])
+                codes_set_array(bufr, 'solarAzimuth', SAAintp_rec[t])
                 codes_set_array(bufr, 'viewingZenithAngle', OZAintp[t])
-                # codes_set_array(bufr, 'viewingAzimuthAngle',OAAintp[t])
+                codes_set_array(bufr, 'viewingAzimuthAngle',OAAintp_rec[t])
                 codes_set(bufr, 'verticalSignificance(satelliteObservations)', 2)
                 codes_set(bufr, 'pixel(sType', 0)
-                codes_set(bufr, 'pressure', CODES_MISSING_DOUBLE)
+                codes_set(bufr, '#1#pressure',CODES_MISSING_DOUBLE)
                 codes_set(bufr, 'cloudOpticalThickness', CODES_MISSING_DOUBLE)
                 codes_set(bufr, 'verticalSignificance(satelliteObservations)', 0)
                 codes_set_array(bufr, 'radiometerSensedSurfaceType', WQSFintp[t, :])
-                codes_set(bufr, 'pressure', 1)
-                # codes_set(bufr, 'pressure', SLPintp[t,:])
+                codes_set(bufr, '#2#pressure', 1)
+                codes_set_array(bufr, '#3#pressure', SLPintp[t,:] * 100)
                 codes_set_double_array(bufr, "#1#totalColumnWaterVapour", ivw_data_rectified[t, :])
+                codes_set(bufr, '#1#measurementUncertaintySignificance', 0)
                 codes_set_double_array(bufr, "#2#totalColumnWaterVapour", ivw_err_data_rectified[t,: ])
-                codes_set(bufr, 'measurementUncertaintySignificance', 0)
-                codes_set(bufr, 'measurementUncertaintySignificance', CODES_MISSING_DOUBLE)
-                # codes_set(bufr, '#1#pressure', np.ones(vals['longitude'][0,:].shape))
-                # codes_set(bufr, '#2#pressure', np.ones(vals['longitude'][0,:].shape)*CODES_MISSING_DOUBLE)
-                # codes_set(bufr, '#3#pressure', vals['sea_level_pressure'][t,: ])
-                codes_set_array(bufr, 'radiometerSensedSurfaceType', WQSFintp[t, :])
-
-                # Kenan normalde burasi array olacak sunun gibi    codes_set_array(bufr, 'pressure', SLPintp[t,:])
-
-                codes_set(bufr, 'pressure', SLPintp[t, 0] * 100)
-
-                # #codes_set_double_array(bufr, "#%d#pressure"%(p+1),vals['sea_level_pressure'][t])
-
+                codes_set(bufr, '#2#measurementUncertaintySignificance', CODES_MISSING_DOUBLE)
+                
                 # for m in range(len(dims['columns'])):
                 #     date = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)
                 #     codes_set(bufr, 'year', date.year)
