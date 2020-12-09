@@ -104,7 +104,8 @@ class S3olciBUFR(object):
 
             intpFac = ((vals['longitude'].shape[1] - 1) // (vals['SZA'].shape[1] - 1))
             for m in range(vals['SZA'].shape[0]):
-                k = 0
+               print(m)
+               k = 0
                 WQSFintp[m, :] = vals['WQSF'][m, :].astype('int8')
                 for i in range(vals['SZA'].shape[1] - 1):
                     for j in range(intpFac):
@@ -115,7 +116,6 @@ class S3olciBUFR(object):
                         SLPintp[m, k] = vals['sea_level_pressure'][m, i] + j * (
                                 (vals['sea_level_pressure'][m, i + 1] - vals['sea_level_pressure'][m, i]) / intpFac)
                         k = k + 1
-                        print(m, k, SLPintp[m, k])
 
             # date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
             scale_factor = 0.299998
