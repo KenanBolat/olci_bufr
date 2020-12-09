@@ -13,8 +13,9 @@ from netCDF4 import Dataset
 from datetime import datetime
 # region for debugging
 import matplotlib
-matplotlib.use('TkAgg')
-import matplotlib.pyplot as plt
+
+#matplotlib.use('TkAgg')
+#import matplotlib.pyplot as plt
 # endregion
 from eccodes import (
     CODES_MISSING_LONG,
@@ -35,7 +36,7 @@ class S3olciBUFR(object):
     unexpandedDescriptors = [
         1007, 2019, 1096, 25061, 5040, 301011, 301013, 301021, 7025, 5022, 10080, 27080,
         8003, 8072, 7004, 13093, 8003, 8077, 201131, 202129, 7004, 7004, 202000, 201000,
-        201129, 13095, 201000, 8093, 13095, 8093
+        202129, 13095, 201000, 8093, 13095, 8093
     ]
 
     def __init__(self, infile, outfile, append=False):
@@ -71,26 +72,24 @@ class S3olciBUFR(object):
         def set_metadata(bufr, attrs, satelliteID):
             """Set identifying metadata."""
             # Set metadata
-            date_string = attrs['start_time'].replace('\'', '')
-            date_value = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%fZ")
-
-            codes_set(bufr, 'typicalYear', date_value.year)
-            codes_set(bufr, 'typicalMonth', date_value.month)
-            codes_set(bufr, 'typicalDay', date_value.day)
-            codes_set(bufr, 'typicalHour', date_value.hour)
-            codes_set(bufr, 'typicalMinute', date_value.minute)
-            codes_set(bufr, 'typicalSecond', date_value.second)
-            codes_set(bufr, 'satelliteIdentifier', satelliteID)
+            # Set metadata
+            codes_set(bufr, 'typicalYear', int(attrs['start_time'][2:6]))
+            codes_set(bufr, 'typicalMonth', int(attrs['start_time'][7:9]))
+            codes_set(bufr, 'typicalDay', int(attrs['start_time'][10:12]))
+            codes_set(bufr, 'typicalHour', int(attrs['start_time'][13:15]))
+            codes_set(bufr, 'typicalMinute', int(attrs['start_time'][16:18]))
+            codes_set(bufr, 'typicalSecond', int(attrs['start_time'][19:21]))
+            codes_set(bufr, 'satelliteIdentifier', satelliteID) 
             codes_set(bufr, 'satelliteInstruments', 179)
             codes_set(bufr, 'stationAcquisition', (attrs['institution']))
-            # codes_set(bufr, 'softwareVersionNumber', (attrs['source'][11:]))
+            #codes_set(bufr, 'softwareVersionNumber', (attrs['source'][11:]))
             codes_set(bufr, 'orbitNumber', int(attrs['absolute_orbit_number']))
-            codes_set(bufr, 'year', date_value.year)
-            codes_set(bufr, 'month', date_value.month)
-            codes_set(bufr, 'day', date_value.day)
-            codes_set(bufr, 'hour', date_value.hour)
-            codes_set(bufr, 'minute', date_value.minute)
-            codes_set(bufr, 'second', date_value.second)
+            codes_set(bufr, 'year', int(attrs['start_time'][2:6]))
+            codes_set(bufr, 'month', int(attrs['start_time'][7:9]))
+            codes_set(bufr, 'day', int(attrs['start_time'][10:12]))
+            codes_set(bufr, 'hour', int(attrs['start_time'][13:15]))
+            codes_set(bufr, 'minute', int(attrs['start_time'][16:18]))
+            codes_set(bufr, 'second', int(attrs['start_time'][19:21]))
             return bufr
 
         def encode_observations(bufr, dims, vals):
@@ -104,8 +103,8 @@ class S3olciBUFR(object):
 
             intpFac = ((vals['longitude'].shape[1] - 1) // (vals['SZA'].shape[1] - 1))
             for m in range(vals['SZA'].shape[0]):
-               print(m)
-               k = 0
+                print (m)
+                k = 0
                 WQSFintp[m, :] = vals['WQSF'][m, :].astype('int8')
                 for i in range(vals['SZA'].shape[1] - 1):
                     for j in range(intpFac):
@@ -116,22 +115,22 @@ class S3olciBUFR(object):
                         SLPintp[m, k] = vals['sea_level_pressure'][m, i] + j * (
                                 (vals['sea_level_pressure'][m, i + 1] - vals['sea_level_pressure'][m, i]) / intpFac)
                         k = k + 1
-
             # date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
-            scale_factor = 0.299998
+            scale_factor = 0.0299998 # should be 0.0299998
 
             ivw_data = vals['IWV'].filled()
             ivw_data_rectified = np.where((ivw_data < 255) & (ivw_data > 0),
                                           ivw_data * scale_factor,
-                                          CODES_MISSING_LONG)
+                                          0)# should be CODE_MISSING_DOUBLE
 
             ivw_err_data = vals['IWV_err'].filled()
             ivw_err_data_rectified = np.where((ivw_err_data < 255) & (ivw_err_data > 0),
                                               ivw_err_data * scale_factor,
-                                              CODES_MISSING_LONG)
-            SAAintp_rec = np.where((SAAintp < 0 ), SAAintp + 180, SAAintp)
-            OAAintp_rec = np.where((OAAintp < 0 ), OAAintp + 180, OAAintp)
+                                              0)# should be CODE_MISSING_DOUBLE
 
+            SAAintp_rec = np.where((SAAintp < 0 ), SAAintp + 180, SAAintp)
+            OAAintp_rec = np.where((OAAintp < 0 ), OAAintp + 180, OAAintp)           
+            
             for en, t in enumerate(range(len(dims['rows']))):
                 print(t)
                 time_stamp_array = datetime.fromtimestamp(vals['time_stamp'][t] / 1000000 + 946681200)
@@ -160,7 +159,8 @@ class S3olciBUFR(object):
                 codes_set(bufr, '#1#measurementUncertaintySignificance', 0)
                 codes_set_double_array(bufr, "#2#totalColumnWaterVapour", ivw_err_data_rectified[t,: ])
                 codes_set(bufr, '#2#measurementUncertaintySignificance', CODES_MISSING_DOUBLE)
-                
+
+
                 # for m in range(len(dims['columns'])):
                 #     date = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)
                 #     codes_set(bufr, 'year', date.year)
