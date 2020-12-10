@@ -130,17 +130,17 @@ class S3olciBUFR(object):
 
 
             # date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
-            scale_factor = 0.299998  # should be 0.0299998
+            scale_factor = 0.0299998  # should be 0.0299998
 
             ivw_data = vals['IWV'].filled()
             ivw_data_rectified = np.where((ivw_data < 255) & (ivw_data > 0),
                                           ivw_data * scale_factor,
-                                          CODE_MISSING_DOUBLE)  # should be CODE_MISSING_DOUBLE
+                                          CODES_MISSING_DOUBLE)  # should be CODE_MISSING_DOUBLE
 
             ivw_err_data = vals['IWV_err'].filled()
             ivw_err_data_rectified = np.where((ivw_err_data < 255) & (ivw_err_data > 0),
                                               ivw_err_data * scale_factor,
-                                              CODE_MISSING_DOUBLE)  # should be CODE_MISSING_DOUBLE
+                                              CODES_MISSING_DOUBLE)  # should be CODE_MISSING_DOUBLE
 
             SAAintp_rec = np.where((SAAintp < 0), SAAintp + 180, SAAintp)
             OAAintp_rec = np.where((OAAintp < 0), OAAintp + 180, OAAintp)
