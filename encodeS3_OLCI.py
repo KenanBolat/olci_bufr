@@ -11,13 +11,7 @@ import numpy as np
 
 from netCDF4 import Dataset
 from datetime import datetime
-from pathlib import Path
-# region for debugging
-import matplotlib
-matplotlib.use('TkAgg')
-import matplotlib.pyplot as plt
 
-# endregion
 from eccodes import (
     CODES_MISSING_LONG,
     CODES_MISSING_DOUBLE,
@@ -37,7 +31,7 @@ class S3olciBUFR(object):
     unexpandedDescriptors = [
         1007, 2019, 1096, 25061, 5040, 301011, 301013, 301021, 7025, 5022, 10080, 27080,
         8003, 8072, 7004, 13093, 8003, 8077, 201131, 202129, 7004, 7004, 202000, 201000,
-        202129, 13095, 201000, 8093, 13095, 8093
+        201129, 13095, 201000, 8093, 13095, 8093
     ]
 
     def __init__(self, infile, outfile, append=False):
@@ -54,11 +48,11 @@ class S3olciBUFR(object):
         bufr = self.populate_bufr(bufr, vals, dims, attrs)
 
     def interpolate_and_populate(self, value, extent):
+        intpFac = ((extent[1] - 1) // (value[0].shape[0] - 1))
         populated_value = np.array([])
         for m in range(value[0].shape[0]):
-            # print(m)
             if m not in [(value[0].shape[0] - 1)]:
-                populated_value = np.append(populated_value, np.linspace(value[:, m], value[:, m + 1], 16))
+                populated_value = np.append(populated_value, np.linspace(value[:, m], value[:, m + 1], intpFac))
             else:
                 populated_value = np.append(populated_value, value[:, m])
 
@@ -87,10 +81,8 @@ class S3olciBUFR(object):
         def set_metadata(bufr, attrs, satelliteID):
             """Set identifying metadata."""
             # Set metadata
-            # Set metadata
-
             date_string = attrs['start_time'].replace('\'', '')
-            date_value = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%fZ")
+            date_value = datetime.strptime(date_string, "u%Y-%m-%dT%H:%M:%S.%fZ")
 
             codes_set(bufr, 'typicalYear', date_value.year)
             codes_set(bufr, 'typicalMonth', date_value.month)
@@ -102,7 +94,7 @@ class S3olciBUFR(object):
             codes_set(bufr, 'satelliteIdentifier', satelliteID)
             codes_set(bufr, 'satelliteInstruments', 179)
             codes_set(bufr, 'stationAcquisition', (attrs['institution']))
-            # codes_set(bufr, 'softwareVersionNumber', (attrs['source'][11:]))
+            codes_set(bufr, 'softwareIdentificationAndVersionNumber', (attrs['source'][11:]))
             codes_set(bufr, 'orbitNumber', int(attrs['absolute_orbit_number']))
             codes_set(bufr, 'year', date_value.year)
             codes_set(bufr, 'month', date_value.month)
@@ -115,32 +107,27 @@ class S3olciBUFR(object):
 
         def encode_observations(bufr, dims, vals):
             """Encode observations into BUFR."""
-            start = datetime.now()
             SZAintp = self.interpolate_and_populate(vals['SZA'],vals['WQSF'].shape )
             SAAintp = self.interpolate_and_populate(vals['SAA'],vals['WQSF'].shape )
             OZAintp = self.interpolate_and_populate(vals['OZA'],vals['WQSF'].shape )
             OAAintp = self.interpolate_and_populate(vals['OAA'],vals['WQSF'].shape )
             SLPintp = self.interpolate_and_populate(vals['sea_level_pressure'],vals['WQSF'].shape )
-            end = datetime.now()
-            print(end - start )
 
 
-
-            intpFac = ((vals['longitude'].shape[1] - 1) // (vals['SZA'].shape[1] - 1))
-
+            WQSFintp = np.zeros(vals['WQSF'].shape)
 
             # date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
-            scale_factor = 0.0299998  # should be 0.0299998
+            scale_factor = 0.299998  # should be 0.299998
 
             ivw_data = vals['IWV'].filled()
             ivw_data_rectified = np.where((ivw_data < 255) & (ivw_data > 0),
                                           ivw_data * scale_factor,
-                                          CODES_MISSING_DOUBLE)  # should be CODE_MISSING_DOUBLE
+                                          CODES_MISSING_DOUBLE)  
 
             ivw_err_data = vals['IWV_err'].filled()
             ivw_err_data_rectified = np.where((ivw_err_data < 255) & (ivw_err_data > 0),
                                               ivw_err_data * scale_factor,
-                                              CODES_MISSING_DOUBLE)  # should be CODE_MISSING_DOUBLE
+                                              CODES_MISSING_DOUBLE)  
 
             SAAintp_rec = np.where((SAAintp < 0), SAAintp + 180, SAAintp)
             OAAintp_rec = np.where((OAAintp < 0), OAAintp + 180, OAAintp)
@@ -165,43 +152,14 @@ class S3olciBUFR(object):
                 codes_set(bufr, '#1#pressure', CODES_MISSING_DOUBLE)
                 codes_set(bufr, 'cloudOpticalThickness', CODES_MISSING_DOUBLE)
                 codes_set(bufr, 'verticalSignificance(satelliteObservations)', 0)
-                # codes_set_array(bufr, 'radiometerSensedSurfaceType', vals['WQSF'][t, :])
+                WQSFintp[t, :] = vals['WQSF'][t, :].astype('int8')
+                codes_set_array(bufr, 'radiometerSensedSurfaceType',  WQSFintp[t, :])
                 codes_set(bufr, '#2#pressure', 1)
                 codes_set_array(bufr, '#3#pressure', SLPintp[t, :] * 100)
                 codes_set_double_array(bufr, "#1#totalColumnWaterVapour", ivw_data_rectified[t, :])
                 codes_set(bufr, '#1#measurementUncertaintySignificance', 0)
                 codes_set_double_array(bufr, "#2#totalColumnWaterVapour", ivw_err_data_rectified[t, :])
                 codes_set(bufr, '#2#measurementUncertaintySignificance', CODES_MISSING_DOUBLE)
-
-                # for m in range(len(dims['columns'])):
-                #     date = datetime.fromtimestamp(vals['time_stamp'][t]/1000000 + 946681200)
-                #     codes_set(bufr, 'year', date.year)
-                #     codes_set(bufr, 'month', date.month)
-                #     codes_set(bufr, 'day', date.day)
-                #     codes_set(bufr, 'hour', date.hour)
-                #     codes_set(bufr, 'minute', date.minute)
-                #     codes_set(bufr, 'second', date.second)
-                #     # codes_set(bufr, 'longitude(highAccuracy)',vals['longitude'][t][m])
-                #     # codes_set(bufr, 'latitude(highAccuracy)',vals['latitude'][t][m])
-                #     # print (vals['longitude'][t][m])
-                # #for en in xrange(len(dims['columns'])):
-                #     #codes_set(bufr, "#%d#latitude(highAccuracy)" %(en+1),vals['latitude'][t][en])
-                # #codes_set_double_array(bufr, 'solarZenithAngle',vals['SZA'][t])
-                # #codes_set_double_array(bufr, 'solarAzimuth',vals['SAA'][t])
-                # #codes_set_double_array(bufr, 'viewingZenithAngle',vals['OZA'][t])
-                # #codes_set_double_array(bufr, 'viewingAzimuthAngle',vals['OAA'][t])
-                #     codes_set(bufr, 'verticalSignificance(satelliteObservations)',2)
-                #     codes_set(bufr, 'pixel(sType',0)
-                #     codes_set(bufr, 'pressure',CODES_MISSING_DOUBLE)
-                #     codes_set(bufr, 'cloudOpticalThickness',CODES_MISSING_DOUBLE)
-                #     codes_set(bufr, 'verticalSignificance(satelliteObservations)',0)
-                # #codes_set_array(bufr, '#%d#radiometerSensedSurfaceType',vals['WQFS'][t])
-                # #codes_set(bufr, '#%d#presure'%(t+1),1)
-                # #codes_set_double_array(bufr, "#%d#presure"%(p+1),vals['sea_level_pressure'][t])
-                # #codes_set_double_array(bufr, "#%d#totalColumnWaterVapour"%(t+1),vals['IWV'][t])
-                # #codes_set(bufr, '#%d#measurementUncertaintySignificance'%(t+1),0)
-                # #codes_set_double_array(bufr, "#%d#totalColumnWaterVapour"%(t+1),vals['IWV_err'][t])
-                # #codes_set(bufr, '#%d#measurementUncertaintySignificance'%(t+1),CODES_MISSING_DOUBLE)
                 if t == 0:
                     append = False
                 else:
@@ -212,9 +170,6 @@ class S3olciBUFR(object):
 
         # Setup structure of BUFR
         codes_set(bufr, 'numberOfSubsets', len(dims['columns']))
-        # delayedDescriptorReplication=[len(dims['oswPartitions']),len(dims['oswAngularBinSize'])]
-        # delayedDescriptorReplication=len(dims['columns'])
-        # codes_set_array(bufr, 'inputDelayedDescriptorReplicationFactor', delayedDescriptorReplication)
         codes_set_array(bufr, 'unexpandedDescriptors', self.unexpandedDescriptors)
 
         bufr = set_metadata(bufr, attrs, satelliteID)
@@ -228,11 +183,10 @@ class S3olciBUFR(object):
         codes_set(bufr, 'pack', True)
         if not append:
             fbufrout = open(self.outfile, 'wb')
-            # print(Path(self.outfile).stat().st_size / 1024 ** 3)
         else:
             fbufrout = open(self.outfile, 'ab')
         codes_write(bufr, fbufrout)
-        print(Path(self.outfile).stat().st_size / 1024 ** 3)
+        #print fbufrout.tell()
         logging.info('Created output BUFR file: %s' % self.outfile)
         fbufrout.close()
 
