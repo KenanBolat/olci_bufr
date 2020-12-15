@@ -131,10 +131,11 @@ class S3olciBUFR(object):
 
             SAAintp_rec = np.where((SAAintp < 0), SAAintp + 180, SAAintp)
             OAAintp_rec = np.where((OAAintp < 0), OAAintp + 180, OAAintp)
-
+            fsize = 0
             for en, t in enumerate(range(len(dims['rows']))):
-                print(t)
+                #print(t)
                 time_stamp_array = datetime.fromtimestamp(vals['time_stamp'][t] / 1000000 + 946681200)
+                date_value = datetime.strftime(time_stamp_array, "%Y%m%d%H%M%S")
                 codes_set(bufr, 'year', time_stamp_array.year)
                 codes_set(bufr, 'month', time_stamp_array.month)
                 codes_set(bufr, 'day', time_stamp_array.day)
@@ -164,7 +165,12 @@ class S3olciBUFR(object):
                     append = False
                 else:
                     append = True
-                self.write_output_bufr(bufr, append)
+                if fsize > 20000000:
+                    fname = self.outfile.replace(self.outfile[63:77], date_value)
+                    self.outfile = fname
+                    append = False
+                    print (fname)
+                fsize = self.write_output_bufr(bufr, append)
 
         platform, satelliteID = extract_metadata(attrs)
 
@@ -186,9 +192,10 @@ class S3olciBUFR(object):
         else:
             fbufrout = open(self.outfile, 'ab')
         codes_write(bufr, fbufrout)
-        #print fbufrout.tell()
+        fsize = fbufrout.tell()
         logging.info('Created output BUFR file: %s' % self.outfile)
         fbufrout.close()
+        return fsize
 
     def read_s3olci_netcdf(self, s3olci):
         """
