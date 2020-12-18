@@ -81,7 +81,7 @@ class S3olciBUFR(object):
             """Set identifying metadata."""
             # Set metadata
             date_string = attrs['start_time'].replace('\'', '')
-            date_value = datetime.strptime(date_string, "u%Y-%m-%dT%H:%M:%S.%fZ")
+            date_value = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%fZ")
 
             codes_set(bufr, 'typicalYear', date_value.year)
             codes_set(bufr, 'typicalMonth', date_value.month)
