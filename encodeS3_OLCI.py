@@ -46,7 +46,6 @@ class S3olciBUFR(object):
         logging.info("Processing %s" % infile)
         vals, dims, attrs = self.read_s3olci_netcdf(infile)
         bufr = self.populate_bufr(bufr, vals, dims, attrs)
-
     def interpolate_and_populate(self, value, extent):
         intpFac = ((extent[1] - 1) // (value[0].shape[0] - 1))
         populated_value = np.array([])
@@ -93,8 +92,8 @@ class S3olciBUFR(object):
             codes_set(bufr, 'satelliteIdentifier', satelliteID)
             codes_set(bufr, 'satelliteIdentifier', satelliteID)
             codes_set(bufr, 'satelliteInstruments', 179)
-            codes_set(bufr, 'stationAcquisition', (attrs['institution']))
-            codes_set(bufr, 'softwareIdentificationAndVersionNumber', (attrs['source'][11:]))
+            codes_set(bufr, 'stationAcquisition', (attrs['institution'][2:5]))
+            codes_set(bufr, 'softwareIdentificationAndVersionNumber', (attrs['source'][11:15]))
             codes_set(bufr, 'orbitNumber', int(attrs['absolute_orbit_number']))
             codes_set(bufr, 'year', date_value.year)
             codes_set(bufr, 'month', date_value.month)
@@ -117,21 +116,21 @@ class S3olciBUFR(object):
             WQSFintp = np.zeros(vals['WQSF'].shape)
 
             # date = datetime.fromtimestamp(vals['time_stamp'][0]/1000000 + 946681200) # convert milisec to sec / add seconds from year 1900
-            scale_factor = 0.299998  # should be 0.299998
 
             ivw_data = vals['IWV'].filled()
-            ivw_data_rectified = np.where((ivw_data < 255) & (ivw_data > 0),
-                                          ivw_data * scale_factor,
+            ivw_data_rectified = np.where((ivw_data < 104.8) & (ivw_data > 0),
+                                          ivw_data,
                                           CODES_MISSING_DOUBLE)  
 
             ivw_err_data = vals['IWV_err'].filled()
-            ivw_err_data_rectified = np.where((ivw_err_data < 255) & (ivw_err_data > 0),
-                                              ivw_err_data * scale_factor,
+            ivw_err_data_rectified = np.where((ivw_err_data < 52.4) & (ivw_err_data > 0),
+                                              ivw_err_data,
                                               CODES_MISSING_DOUBLE)  
 
             SAAintp_rec = np.where((SAAintp < 0), SAAintp + 180, SAAintp)
             OAAintp_rec = np.where((OAAintp < 0), OAAintp + 180, OAAintp)
             fsize = 0
+            print (self.outfile)
             for en, t in enumerate(range(len(dims['rows']))):
                 #print(t)
                 time_stamp_array = datetime.fromtimestamp(vals['time_stamp'][t] / 1000000 + 946681200)
