@@ -9,6 +9,7 @@ import logging
 import os
 import numpy as np
 
+from scipy import interpolate
 from netCDF4 import Dataset
 from datetime import datetime
 
@@ -46,8 +47,9 @@ class S3olciBUFR(object):
         logging.info("Processing %s" % infile)
         vals, dims, attrs = self.read_s3olci_netcdf(infile)
         bufr = self.populate_bufr(bufr, vals, dims, attrs)
+
     def interpolate_and_populate(self, value, extent):
-        intpFac = ((extent[1] - 1) // (value[0].shape[0] - 1))
+        intpFac = ((extent[1] - 1) // (value[0].shape[0] - 1)) 
         populated_value = np.array([])
         for m in range(value[0].shape[0]):
             if m not in [(value[0].shape[0] - 1)]:
@@ -58,7 +60,23 @@ class S3olciBUFR(object):
         populated_value = populated_value.reshape(extent[1], extent[0]).transpose()
         return populated_value
 
-
+    def interpolate_zenith(self, value, extent):
+        intpFac = ((extent[1] - 1) // (value[0].shape[0] - 1))
+        num = extent[1]
+        ntp = value[0].shape[0]
+        intp_value = np.array([])
+        for m in range(value.shape[0]):
+            ylin = value[m, :]
+            ymip = ylin.argmin()
+            rpos = np.array([ylin[ymip-1], ylin[ymip+1]]).argmin()
+            ylin[ymip+rpos:] = ylin[ymip+rpos:] * -1.0
+            xi = np.arange(num)
+            x = np.arange(ntp)*intpFac
+            interpfunc = interpolate.interp1d(x ,ylin , kind='linear')
+            y = interpfunc(xi)
+            intp_value = np.append(intp_value, abs(y))
+        intp_value = intp_value.reshape(extent[1], extent[0]).transpose()
+        return intp_value
 
     def populate_bufr(self, bufr, vals, dims, attrs):
         """Populate BUFR with values from netCDF."""
@@ -81,7 +99,7 @@ class S3olciBUFR(object):
             """Set identifying metadata."""
             # Set metadata
             date_string = attrs['start_time'].replace('\'', '')
-            date_value = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%fZ")
+            date_value = datetime.strptime(date_string, "u%Y-%m-%dT%H:%M:%S.%fZ")
 
             codes_set(bufr, 'typicalYear', date_value.year)
             codes_set(bufr, 'typicalMonth', date_value.month)
@@ -107,8 +125,10 @@ class S3olciBUFR(object):
         def encode_observations(bufr, dims, vals):
             """Encode observations into BUFR."""
             SZAintp = self.interpolate_and_populate(vals['SZA'],vals['WQSF'].shape )
+            #SZAintp = self.interpolate_zenith(vals['SZA'],vals['WQSF'].shape)
             SAAintp = self.interpolate_and_populate(vals['SAA'],vals['WQSF'].shape )
-            OZAintp = self.interpolate_and_populate(vals['OZA'],vals['WQSF'].shape )
+            #OZAintp = self.interpolate_and_populate(vals['OZA'],vals['WQSF'].shape )
+            OZAintp = self.interpolate_zenith(vals['OZA'],vals['WQSF'].shape)
             OAAintp = self.interpolate_and_populate(vals['OAA'],vals['WQSF'].shape )
             SLPintp = self.interpolate_and_populate(vals['sea_level_pressure'],vals['WQSF'].shape )
 
@@ -126,6 +146,9 @@ class S3olciBUFR(object):
             ivw_err_data_rectified = np.where((ivw_err_data < 52.4) & (ivw_err_data > 0),
                                               ivw_err_data,
                                               CODES_MISSING_DOUBLE)  
+            print OZAintp.shape
+            print SZAintp.shape
+            #OZAintp_rec = np.where((OZAintp > -90.0) & (OZAintp < 90.0 ), OZAintp, CODES_MISSING_DOUBLE)
 
             SAAintp_rec = np.where((SAAintp < 0), SAAintp + 180, SAAintp)
             OAAintp_rec = np.where((OAAintp < 0), OAAintp + 180, OAAintp)
